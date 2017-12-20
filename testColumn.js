@@ -1,3 +1,25 @@
+
+class column{
+  constructor(){
+    this.components = new Array();
+  }
+
+  addLens(originSide, height, centerPoint, y, focalLength){
+    components.push(new component(originSide, height, centerPoint, y, focalLength));
+  }
+
+  drawLenses(scene){
+    this.components.map((current) => {
+      current.drawLens(scene);
+    });
+  }
+}
+
+
+
+
+
+/*
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
@@ -45,3 +67,4 @@ let animate = function(){
 }
 
 animate();
+*/
