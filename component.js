@@ -6,6 +6,8 @@ class component {
     this.y = y;
     this.focalLength = focalLength;
 
+
+    this.created = false;
     this.shape = new THREE.Shape();
 
     if (this.originSide === 'left'){
@@ -36,6 +38,9 @@ class component {
   }
 
   drawLens(scene){
+    if (!this.created){
+      this.createLens();
+    } 
     scene.add(this.mesh);
   }
 }
