@@ -24,20 +24,20 @@ class component {
 
   createLens(){
     //TODO: create lens stuff
-    this.shape.vertices.push(this.xOffset, this.y);
-    this.shape.vertices.push(this.centerPoint, this.focalLength);
-    this.shape.vertices.push(this.centerPoint, this.focalLength);
-    this.shape.vertices.push(this.oppSide, this.focalLength * 2);
-    this.shape.vertices.push(this.oppSide, this.focalLength * 2);
-    this.shape.vertices.push(this.oppSide, this.focalLength * 4);
-    this.shape.vertices.push(this.oppSide, this.focalLength * 4);
-    this.shape.vertices.push(this.xOffset, this.y);
-    this.shape.vertices.push(this.xOffset, this.y);
-    this.shape.vertices.push(this.xOffset, this.focalLength * 2);
-    this.shape.vertices.push(this.xOffset, this.focalLength * 2);
-    this.shape.vertices.push(this.centerPoint, this.focalLength * 3);
-    this.shape.vertices.push(this.centerPoint, this.focalLength * 3);
-    this.shape.vertices.push(this.oppSide, this.focalLength * 4);
+    this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.y, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 2, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 2, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 4, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 4, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.y, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.y));
+    this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.focalLength * 2, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.focalLength * 2, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength * 3, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength * 3, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 4, 0));
 
     this.line = new THREE.Line(this.shape, this.material);
   }
