@@ -4,7 +4,8 @@ class column{
   }
 
   addLens(originSide, height, centerPoint, y, focalLength){
-    components.push(new component(originSide, height, centerPoint, y, focalLength));
+    let newComp = new component(originSide, height, centerPoint, y, focalLength);
+    this.components.push(newComp);
   }
 
   drawLenses(scene){
