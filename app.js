@@ -1,13 +1,15 @@
-const scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+let scene = new THREE.Scene();
+let camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0,0,100);
+camera.lookAt(new THREE.Vector3(0,0,0));
 
 let renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth - 5, window.innerHeight - 5);
 document.body.appendChild(renderer.domElement);
 
 let newColumn = new column();
-newColumn.addLens('left', 50, 40, 5, 20);
-newColumn.drawLenses(scene);
+newColumn.addLens('right', 50, 40, 0, 20);
+newColumn.drawLenses(scene, renderer, camera);
 /*
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
