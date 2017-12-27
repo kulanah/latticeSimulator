@@ -8,9 +8,11 @@ class column{
     this.components.push(newComp);
   }
 
-  drawLenses(scene){
+  drawLenses(scene, renderer, camera){
     this.components.map((current) => {
       current.drawLens(scene);
     });
+
+    renderer.render(scene, camera);
   }
 }
