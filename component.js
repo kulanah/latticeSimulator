@@ -26,29 +26,18 @@ class component {
     console.log('x: ' + this.xOffset)
     console.log('y: ' + this.y)
     //TODO: create lens stuff
-    // this.shape.vertices.push(new THREE.Vector3(10,15));
-    // this.shape.vertices.push(new THREE.Vector3(-10,15));
+    this.shape.vertices.push(new THREE.Vector3(10,15));
+    this.shape.vertices.push(new THREE.Vector3(-10,15));
     // this.shape.vertices.push(new THREE.Vector3(0,0));
+    this.shape.vertices.push(new THREE.Vector3(10,0));
+    this.shape.vertices.push(new THREE.Vector3(10,15));
+
+    this.shape.faces.push(new THREE.Face3(0,1,2));
+
     // this.shape.vertices.push(new THREE.Vector3(-10,0,10));
     let x = this.xOffset;
     let y = this.y;
 
-    this.shape.vertices.push(new THREE.Vector3(this.xOffset,this.y));
-    // this.shape.vertices.push(new THREE.Vector3(80,0));
-    this.shape.vertices.push(new THREE.Vector3(0,0));
-    this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength));
-    // this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength));
-    // this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * -2));
-    // this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 2));
-    // this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 4));
-    // this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 4));
-    // this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.y));
-    // this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.y));
-    // this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.focalLength * 2));
-    // this.shape.vertices.push(new THREE.Vector3(this.xOffset, this.focalLength * 2));
-    // this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength * 3));
-    // this.shape.vertices.push(new THREE.Vector3(this.centerPoint, this.focalLength * 3));
-    // this.shape.vertices.push(new THREE.Vector3(this.oppSide, this.focalLength * 4));
 
     this.line = new THREE.Line(this.shape, this.material);
   }
