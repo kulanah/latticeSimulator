@@ -1,6 +1,6 @@
 let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 100);
-camera.position.set(0,0,10);
+let camera = new THREE.PerspectiveCamera(20, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0,0,5);
 camera.lookAt(new THREE.Vector3(0,0,0));
 
 let renderer = new THREE.WebGLRenderer();
@@ -16,11 +16,20 @@ let drawColumn = function(){
 }
 
 let drawSpecimen = function(){
-  let newSpecimen = new Specimen('square', 0, 0, 0, 2);
-  newSpecimen.drawShape(scene, renderer, camera);
+  newSpecimen.drawShape(scene);
+
 }
 
+let animate = function(){
+  newSpecimen.rotateObject();
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+
+}
+
+let newSpecimen = new Specimen('square', 0, 0, 0, 2);
 drawSpecimen();
+animate();
 /*
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
