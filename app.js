@@ -1,11 +1,12 @@
 let scene = new THREE.Scene();
 let angle = 0.1;
 let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 150);
-camera.position.set(0,30,20);
+camera.position.set(0,45,0);
 camera.lookAt(new THREE.Vector3(0,0,0));
 
 let renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth - 5, window.innerHeight - 5);
+renderer.domElement.id = 'threeCanvas';
 document.body.appendChild(renderer.domElement);
 
 
@@ -23,20 +24,23 @@ let drawSpecimen = function(){
 
 }
 
-let animate = function(){
-  // newSpecimen.rotateObject();
-  requestAnimationFrame(animate);
+let rotate = function(delta){
+  // console.log(delta);
   renderer.render(scene, camera);
-  camera.position.x = 45 * Math.cos(angle);
-  camera.position.z = 45 * Math.sin(angle);
-  camera.lookAt(scene.position)
-  angle += 0.01;
+  camera.position.x = 65 * Math.cos(angle + delta);
+  camera.position.z = 65 * Math.sin(angle + delta);
+  camera.lookAt(scene.position);
+}
 
+let animate = function(){
+  requestAnimationFrame(animate);
+  // rotate(angle);
 }
 
 let newSpecimen = new Specimen('square', 2);
 drawSpecimen();
 animate();
+rotate(angle);
 /*
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);

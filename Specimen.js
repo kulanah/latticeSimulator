@@ -2,7 +2,10 @@ class Specimen{
   constructor(shape, count){
     switch(shape){
       case 'square': 
-        this.shape = new THREE.BoxGeometry(5, 5, 5);
+        this.shape = new THREE.BoxGeometry(10, 10, 10);
+        this.width = 10;
+        this.height = 10;
+        this.depth = 10;
         break;
     }
 
@@ -28,7 +31,7 @@ class Specimen{
 
   createSpheres(){
     this.spheres = [];
-    for (let i = 0; i < 12; ++i){
+    for (let i = 0; i < 16; ++i){
       this.spheres.push({
         geometry: new THREE.SphereGeometry(0.25, 11, 11),
         material: new THREE.MeshBasicMaterial({color: 0xffff00}),
@@ -38,10 +41,28 @@ class Specimen{
   }
 
   placeSpheres(){
-    this.spheres[0].sphere.translateX(-2);
-    this.spheres[0].sphere.translateY(-2);
-    this.spheres[0].sphere.translateZ(-2);
-    scene.add(this.spheres[0].sphere);
+    for (let i = 0; i < 16; i += 4){
+      this.spheres[i].sphere.translateX(this.width / i * 2);
+      this.spheres[i].sphere.translateY(this.height / i * 2);
+      this.spheres[i].sphere.translateZ(this.depth / i * 2);
+      scene.add(this.spheres[i].sphere);
+
+      this.spheres[i + 1].sphere.translateX(-this.width / i * 2);
+      this.spheres[i + 1].sphere.translateY(this.height / i * 2);
+      this.spheres[i + 1].sphere.translateZ(-this.depth / i * 2);
+      scene.add(this.spheres[i + 1].sphere);
+
+      this.spheres[i + 2].sphere.translateX(-this.width / i * 2);
+      this.spheres[i + 2].sphere.translateY(this.height / i * 2);
+      this.spheres[i + 2].sphere.translateZ(this.depth / i * 2);
+      scene.add(this.spheres[i + 2].sphere);
+
+      this.spheres[i + 3].sphere.translateX(this.width / i * 2);
+      this.spheres[i + 3].sphere.translateY(this.height / i * 2);
+      this.spheres[i + 3].sphere.translateZ(-this.depth / i * 2);
+      scene.add(this.spheres[i + 3].sphere);
+
+    }
 
   }
 }
