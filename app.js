@@ -31,7 +31,6 @@ let rotateX = function(delta){
   camera.position.x = 65 * Math.cos(angle);
   camera.position.z = 65 * Math.sin(angle);
   camera.lookAt(scene.position);
-  setStartX();
 }
 
 let animate = function(){
@@ -42,7 +41,7 @@ let animate = function(){
 let newSpecimen = new Specimen('square', 2);
 drawSpecimen();
 animate();
-rotate(1.0);
+rotateX(0.0);
 /*
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);

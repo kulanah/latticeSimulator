@@ -6,7 +6,8 @@ let setStartX = function(){
 
 let mousemovetemplate = function(event){
   let delta = handleDrag(event);
-  rotate(delta / 500);
+  rotateX(delta / 500);
+  setStartX();
 };
 
 let mouseuptemplate = function(event){
@@ -19,9 +20,11 @@ let handleDrag = function(event){
 };
 
 $('#threeCanvas').on('mousedown', function(event){
-  setStartX();
-
-  $('body')[0].addEventListener('mousemove', mousemovetemplate);
-  $('body')[0].addEventListener('mouseup', mouseuptemplate);
+  if (event.ctrlKey){
+    setStartX();
+    $('body')[0].addEventListener('mousemove', mousemovetemplate);
+    $('body')[0].addEventListener('mouseup', mouseuptemplate);
+  } else if (event.altKey){
+  }
 
 });
