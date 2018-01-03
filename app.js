@@ -6,6 +6,7 @@ camera.lookAt(new THREE.Vector3(0,0,0));
 
 let renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth - 5, window.innerHeight - 5);
+//change this to be based on the size of the crystals we use
 renderer.domElement.id = 'threeCanvas';
 document.body.appendChild(renderer.domElement);
 
@@ -24,12 +25,14 @@ let drawSpecimen = function(){
 
 }
 
-let rotate = function(delta){
+let rotateX = function(delta){
   // console.log(delta);
   renderer.render(scene, camera);
-  camera.position.x = 65 * Math.cos(angle + delta);
-  camera.position.z = 65 * Math.sin(angle + delta);
+  angle += delta;
+  camera.position.x = 65 * Math.cos(angle);
+  camera.position.z = 65 * Math.sin(angle);
   camera.lookAt(scene.position);
+  setStartX();
 }
 
 let animate = function(){
@@ -40,7 +43,7 @@ let animate = function(){
 let newSpecimen = new Specimen('square', 2);
 drawSpecimen();
 animate();
-rotate(angle);
+rotate(1.0);
 /*
 let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
