@@ -26,7 +26,6 @@ let drawSpecimen = function(){
 }
 
 let rotateX = function(delta){
-  // console.log(delta);
   renderer.render(scene, camera);
   angle += delta;
   camera.position.x = 65 * Math.cos(angle);
