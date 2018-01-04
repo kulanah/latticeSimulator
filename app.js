@@ -1,5 +1,7 @@
 let scene = new THREE.Scene();
-let angle = 0.1;
+let angleX = 0.1;
+let angleY = 0.1;
+let angleZ = 0;
 let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 150);
 camera.position.set(0,45,0);
 camera.lookAt(new THREE.Vector3(0,0,0));
@@ -27,9 +29,20 @@ let drawSpecimen = function(){
 
 let rotateX = function(delta){
   renderer.render(scene, camera);
-  angle += delta;
-  camera.position.x = 65 * Math.cos(angle);
-  camera.position.z = 65 * Math.sin(angle);
+  angleX += delta;
+  angleZ += delta;
+  
+  camera.position.x = 65 * Math.cos(angleX);
+  camera.position.z = 65 * Math.sin(angleZ);
+  camera.lookAt(scene.position);
+}
+
+let rotateY = function(delta){
+  renderer.render(scene, camera);
+  angleY += delta;
+  angleZ += delta;
+  camera.position.z = 1 * Math.cos(angleZ);
+  camera.position.y = 100 * Math.cos(angleY);
   camera.lookAt(scene.position);
 }
 
