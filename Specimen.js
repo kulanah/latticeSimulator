@@ -33,8 +33,8 @@ class Specimen{
     this.spheres = [];
     for (let i = 0; i < 16; ++i){
       this.spheres.push({
-        geometry: new THREE.SphereGeometry(0.25, 11, 11),
-        material: new THREE.MeshBasicMaterial({color: 0xffff00}),
+        geometry: new THREE.SphereGeometry(0.25, 4, 4),
+        material: new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true, transparent: true}),
       });
       this.spheres[i].sphere = new THREE.Mesh(this.spheres[i].geometry, this.spheres[i].material)
     }
