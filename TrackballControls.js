@@ -8,7 +8,7 @@
 THREE.TrackballControls = function ( object, domElement ) {
 
 	var _this = this;
-	var STATE = { NONE: - 1, ROTATE: 0, ZOOM: 1, PAN: 2, TOUCH_ROTATE: 3, TOUCH_ZOOM_PAN: 4 };
+	var STATE = { NONE: - 1, ZOOM: 1, PAN: 2, ROTATEX: 3, ROTATEY: 4, TOUCH_ROTATE: 5, TOUCH_ZOOM_PAN: 6 };
 
 	this.object = object;
 	this.domElement = ( domElement !== undefined ) ? domElement : document;
@@ -35,6 +35,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 	this.keys = [ 65 /*A*/, 83 /*S*/, 68 /*D*/, 17 /*ctrl*/, 18/*alt*/];
 
+	this.mouseDown = false;
 	// internals
 
 	this.target = new THREE.Vector3();
@@ -155,7 +156,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 			moveDirection = new THREE.Vector3(),
 			angle;
 
-		return function rotateCamera() {
+		return function rotateCamera(input) {
 
 			moveDirection.set( _moveCurr.x - _movePrev.x, _moveCurr.y - _movePrev.y, 0 );
 			angle = moveDirection.length();
@@ -354,6 +355,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 	function keydown( event ) {
 		if ( _this.enabled === false ) return;
+		console.log(_state)
 
 		window.removeEventListener( 'keydown', keydown );
 
@@ -363,9 +365,13 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 			return;
 
-		} else if ( event.keyCode === _this.keys[ STATE.ROTATE ] && ! _this.noRotate ) {
+		} else if ( event.keyCode === _this.keys[ STATE.ROTATEX ] && ! _this.noRotate ) {
 
-			_state = STATE.ROTATE;
+			_state = STATE.ROTATEX;
+
+		} else if ( event.keyCode === _this.keys[ STATE.ROTATEY ] && ! _this.noRotate ) {
+
+			_state = STATE.ROTATEY;
 
 		} else if ( event.keyCode === _this.keys[ STATE.ZOOM ] && ! _this.noZoom ) {
 
@@ -380,8 +386,11 @@ THREE.TrackballControls = function ( object, domElement ) {
 	}
 
 	function keyup( event ) {
-
 		if ( _this.enabled === false ) return;
+
+		if (!event.ctrlKey && !event.altKey){
+			_this.mouseup(event);
+		}
 
 		_state = _prevState;
 
@@ -395,6 +404,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 		event.preventDefault();
 		event.stopPropagation();
+		this.mouseDown = true;
 
 		if ( _state === STATE.NONE ) {
 
@@ -402,9 +412,20 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 		}
 
-		if ( _state === STATE.ROTATE && ! _this.noRotate ) {
+		if (event.ctrlKey){
+			_state = STATE.ROTATEX;
+		} else if (event.altKey){
+			_state = STATE.ROTATEY;
+		}
 
-			_moveCurr.copy( getMouseOnCircle( event.pageX, event.pageY ) );
+		if ( _state === STATE.ROTATEX && ! _this.noRotate ) {
+
+			_moveCurr.copy( getMouseOnCircle( event.pageX, 0 ) );
+			_movePrev.copy( _moveCurr );
+
+		} else if ( _state === STATE.ROTATEY && ! _this.noRotate ) {
+
+			_moveCurr.copy( getMouseOnCircle( 0, event.pageY ) );
 			_movePrev.copy( _moveCurr );
 
 		} else if ( _state === STATE.ZOOM && ! _this.noZoom ) {
@@ -420,7 +441,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 		}
 
 		document.addEventListener( 'mousemove', mousemove, false );
-		document.addEventListener( 'mouseup', mouseup, false );
+		document.addEventListener( 'mouseup', _this.mouseup, false );
 
 		_this.dispatchEvent( startEvent );
 
@@ -433,10 +454,15 @@ THREE.TrackballControls = function ( object, domElement ) {
 		event.preventDefault();
 		event.stopPropagation();
 
-		if ( _state === STATE.ROTATE && ! _this.noRotate ) {
+		if ( _state === STATE.ROTATEX && ! _this.noRotate ) {
 
 			_movePrev.copy( _moveCurr );
-			_moveCurr.copy( getMouseOnCircle( event.pageX, event.pageY ) );
+			_moveCurr.copy( getMouseOnCircle( event.pageX, 0 ) );
+
+		} else if ( _state === STATE.ROTATEY && ! _this.noRotate ) {
+
+			_movePrev.copy( _moveCurr );
+			_moveCurr.copy( getMouseOnCircle( 0, event.pageY ) );
 
 		} else if ( _state === STATE.ZOOM && ! _this.noZoom ) {
 
@@ -450,18 +476,21 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 	}
 
-	function mouseup( event ) {
-
-		if ( _this.enabled === false ) return;
-
-		event.preventDefault();
-		event.stopPropagation();
-
+	this.mouseup = function( event ) {
+		this.mouseDown = false;
 		_state = STATE.NONE;
+		if (!event.ctrlKey && !event.altKey){
 
-		document.removeEventListener( 'mousemove', mousemove );
-		document.removeEventListener( 'mouseup', mouseup );
-		_this.dispatchEvent( endEvent );
+			if ( _this.enabled === false ) return;
+
+			event.preventDefault();
+			event.stopPropagation();
+
+
+			document.removeEventListener( 'mousemove', mousemove );
+			document.removeEventListener( 'mouseup', _this.mouseup );
+			_this.dispatchEvent( endEvent );
+		}
 
 	}
 
