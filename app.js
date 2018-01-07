@@ -2,7 +2,7 @@ let scene = new THREE.Scene();
 let angleX = 0.1;
 let angleY = 0.1;
 let angleZ = 0;
-let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 150);
+let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
 let controls;
 let renderer;
 
@@ -55,7 +55,7 @@ let animate = function(){
   controls.update();
 }
 
-let newSpecimen = new Specimen('square', 3, 1);
+let newSpecimen = new Specimen('square', 1, 5);
 drawSpecimen();
 init();
 animate();

@@ -15,31 +15,47 @@ class Specimen{
     this.createCrystals = this.createCrystals.bind(this);
     this.crystals = new Array;
     this.createCrystals();
+    this.placeCrystals();
   }
 
   createCrystals(){
     for (let x = 0; x < this.countX; ++x){
-
-      let materials = new THREE.MeshBasicMaterial ({color: 0xff37d8, wireframe: true, transparent: true})
-      let edges = new THREE.EdgesGeometry(this.shape);
-      let lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color: 0xff37d8}));
-      this.crystals[x] = {
-        materials: materials,
-        edges: edges,
-        lines: lines,
-      };
-      
-      if(x > 0){
-        this.crystals[x].lines.translateX(this.width * x);
+      for (let y = 0; y < this.countY; ++y){
+        let materials = new THREE.MeshBasicMaterial ({color: 0xff37d8, wireframe: true, transparent: true})
+        let edges = new THREE.EdgesGeometry(this.shape);
+        let lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color: 0xff37d8}));
+        this.crystals.push({
+          materials: materials,
+          edges: edges,
+          lines: lines,
+        });
       }
-
     }
+  }
+
+  placeCrystals(){
+    let xOffset = 0;
+    let count = 0;
+    for (let x = 0; x < this.countX; ++x){
+      for (let y = 0; y < this.countY; ++y){
+        this.crystals[count].lines.translateX(xOffset);
+        this.crystals[count].lines.translateY(this.height * y);
+        ++count;
+      }
+      xOffset += 10;
+    }
+
   }
   
   drawShape(scene){
-    for (let i = 0; i < this.countX * this.countY; ++i){
-      scene.add(this.crystals[i].lines);
+    let i;
+    for (i = 0; i < this.countX * this.countY; ++i){
+      if (this.crystals[i]){
+        scene.add(this.crystals[i].lines);
+      }
     }
+    console.log('we displayed ' + i + ' total crystals');
+    
   }
 
   createSpheres(){
