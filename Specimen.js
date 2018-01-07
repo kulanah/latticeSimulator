@@ -81,25 +81,26 @@ class Specimen{
   }
 
   placeSpheres(scene){
-    let xOffset = -5;
-    let yOffset = -5;
-    let zOffset = -5;
+    let xOffset = -this.height / 2;
+    let yOffset = -this.width / 2;
+    let zOffset = -this.depth / 2;
     let count = 0;
     for (let x = 0; x < this.countX; ++x){
+      yOffset = -this.width / 2;
       for (let y = 0; y < this.countY; ++y){
-        this.placeSpheresInCrystal(0, xOffset, yOffset, zOffset);
+        this.placeSpheresInCrystal(count, xOffset, yOffset, zOffset);
         ++count;
+        yOffset += this.width;
       }
-      yOffset += 10;
+      xOffset += this.height;
     }
-    xOffset += 10;
   }
 
   placeSpheresInCrystal(crystalIndex, xOffset, yOffset, zOffset){
     for (let i = 0; i < this.spheres.length; ++i){
-      this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + 10 * this.spheres[i].xMult)
-      this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + 10 * this.spheres[i].yMult)
-      this.crystals[crystalIndex].spheres[i].sphere.translateZ(zOffset + 10 * this.spheres[i].zMult);
+      this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + this.height * this.spheres[i].xMult)
+      this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + this.width * this.spheres[i].yMult)
+      this.crystals[crystalIndex].spheres[i].sphere.translateZ(zOffset + this.depth * this.spheres[i].zMult);
 
       // this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + this.spheres[i].hMult * this.height);
       // this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + this.spheres[i].wMult * this.width);
