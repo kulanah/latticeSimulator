@@ -14,6 +14,7 @@ class Specimen{
 
     this.createCrystals = this.createCrystals.bind(this);
     this.crystals = new Array;
+    this.spheres = new Array;
     this.createCrystals();
     this.placeCrystals();
   }
@@ -28,6 +29,7 @@ class Specimen{
           materials: materials,
           edges: edges,
           lines: lines,
+          spheres: new Array,
         });
       }
     }
@@ -48,50 +50,65 @@ class Specimen{
   }
   
   drawShape(scene){
-    let i;
-    for (i = 0; i < this.countX * this.countY; ++i){
+    this.createSpheres();
+    this.placeSpheres();
+    for (let i = 0; i < this.countX * this.countY; ++i){
       if (this.crystals[i]){
         scene.add(this.crystals[i].lines);
+        this.addSpheresToScene(this.crystals[i], scene);
       }
     }
-    console.log('we displayed ' + i + ' total crystals');
-    
+  }
+
+  addSphere(hMult, wMult, dMult){
+    this.spheres.push({
+      xMult: hMult, 
+      yMult: wMult, 
+      zMult: dMult,
+    });
   }
 
   createSpheres(){
-    this.spheres = [];
-    for (let i = 0; i < 16; ++i){
-      this.spheres.push({
-        geometry: new THREE.SphereGeometry(0.25, 4, 4),
-        material: new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true, transparent: true}),
-      });
-      this.spheres[i].sphere = new THREE.Mesh(this.spheres[i].geometry, this.spheres[i].material)
+    for (let i = 0; i < this.crystals.length; ++i){
+      for (let j = 0; j < this.spheres.length; ++j){
+        this.crystals[i].spheres.push({
+          geometry: new THREE.SphereGeometry(0.25, 4, 4),
+          material: new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true, transparent: true}),
+        });
+        this.crystals[i].spheres[j].sphere = new THREE.Mesh(this.crystals[i].spheres[j].geometry, this.crystals[i].spheres[j].material)
+      }
     }
   }
 
-  placeSpheres(){
-    for (let i = 0; i < 16; i += 4){
-      this.spheres[i].sphere.translateX(this.width / i * 2);
-      this.spheres[i].sphere.translateY(this.height / i * 2);
-      this.spheres[i].sphere.translateZ(this.depth / i * 2);
-      scene.add(this.spheres[i].sphere);
-
-      this.spheres[i + 1].sphere.translateX(-this.width / i * 2);
-      this.spheres[i + 1].sphere.translateY(this.height / i * 2);
-      this.spheres[i + 1].sphere.translateZ(-this.depth / i * 2);
-      scene.add(this.spheres[i + 1].sphere);
-
-      this.spheres[i + 2].sphere.translateX(-this.width / i * 2);
-      this.spheres[i + 2].sphere.translateY(this.height / i * 2);
-      this.spheres[i + 2].sphere.translateZ(this.depth / i * 2);
-      scene.add(this.spheres[i + 2].sphere);
-
-      this.spheres[i + 3].sphere.translateX(this.width / i * 2);
-      this.spheres[i + 3].sphere.translateY(this.height / i * 2);
-      this.spheres[i + 3].sphere.translateZ(-this.depth / i * 2);
-      scene.add(this.spheres[i + 3].sphere);
-
+  placeSpheres(scene){
+    let xOffset = -5;
+    let yOffset = -5;
+    let zOffset = -5;
+    let count = 0;
+    for (let x = 0; x < this.countX; ++x){
+      for (let y = 0; y < this.countY; ++y){
+        this.placeSpheresInCrystal(0, xOffset, yOffset, zOffset);
+        ++count;
+      }
+      yOffset += 10;
     }
+    xOffset += 10;
+  }
 
+  placeSpheresInCrystal(crystalIndex, xOffset, yOffset, zOffset){
+    for (let i = 0; i < this.spheres.length; ++i){
+      this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + 10 * this.spheres[i].xMult)
+      this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + 10 * this.spheres[i].yMult)
+      this.crystals[crystalIndex].spheres[i].sphere.translateZ(zOffset + 10 * this.spheres[i].zMult);
+
+      // this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + this.spheres[i].hMult * this.height);
+      // this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + this.spheres[i].wMult * this.width);
+      // this.crystals[crystalIndex].spheres[i].sphere.translateZ(this.spheres[i].dMult * this.depth);
+    }
+  }
+  addSpheresToScene(crystal, scene){
+    for (let i = 0; i < crystal.spheres.length; ++i){
+      scene.add(crystal.spheres[i].sphere);
+    }
   }
 }

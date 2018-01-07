@@ -27,8 +27,6 @@ let render = function(){
 
 let drawSpecimen = function(){
   newSpecimen.drawShape(scene);
-  newSpecimen.createSpheres();
-  newSpecimen.placeSpheres();
 }
 
 let rotateX = function(delta){
@@ -55,7 +53,15 @@ let animate = function(){
   controls.update();
 }
 
-let newSpecimen = new Specimen('square', 1, 5);
+let newSpecimen = new Specimen('square', 1, 1);
+newSpecimen.addSphere(0, 0, 0);
+newSpecimen.addSphere(1, 1, 1);
+newSpecimen.addSphere(1, 0, 1);
+newSpecimen.addSphere(1, 0, 0);
+newSpecimen.addSphere(0.5, 0.5, 0.5);
+newSpecimen.addSphere(0.25, 0.25, 0.25);
+
+
 drawSpecimen();
 init();
 animate();
