@@ -55,7 +55,7 @@ let animate = function(){
   controls.update();
 }
 
-let newSpecimen = new Specimen('square', 2, 1);
+let newSpecimen = new Specimen('square', 3, 1);
 drawSpecimen();
 init();
 animate();

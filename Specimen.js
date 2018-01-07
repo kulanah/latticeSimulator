@@ -9,24 +9,33 @@ class Specimen{
         break;
     }
 
-    this.material = new THREE.MeshBasicMaterial ({color: 0xff37d8, wireframe: true, transparent: true})
-    this.edges = new THREE.EdgesGeometry(this.shape);
-    this.line = new THREE.LineSegments(this.edges, new THREE.LineBasicMaterial({color: 0xff37d8}));
-    this.angle = 0.1;
+    this.createCrystals = this.createCrystals.bind(this);
+    this.crystals = new Array;
+    this.createCrystals(countX, countY);
+  }
 
+  createCrystals(countX, countY){
+    for (let x = 0; x < countX; ++x){
+
+      let materials = new THREE.MeshBasicMaterial ({color: 0xff37d8, wireframe: true, transparent: true})
+      let edges = new THREE.EdgesGeometry(this.shape);
+      let lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color: 0xff37d8}));
+      this.crystals[x] = {
+        materials: materials,
+        edges: edges,
+        lines: lines,
+      };
+      
+      if(x > 0){
+        this.crystals[x].lines.translateX(this.width * x);
+
+      }
+
+    }
   }
   
   drawShape(scene){
-    scene.add(this.line)
-  }
-
-  rotateObject(camera){
-    
-    camera.position.x = 500 * Match.cos(this.angle);
-    camera.position.z = 500 * Match.sin(this.angle);
-    this.angle += 0.1;
-    // this.line.rotation.x += 0.006;
-    // this.line.rotation.y -= 0.004;
+    scene.add(this.crystals[0].lines);
   }
 
   createSpheres(){
