@@ -9,13 +9,16 @@ class Specimen{
         break;
     }
 
+    this.countX = countX;
+    this.countY = countY;
+
     this.createCrystals = this.createCrystals.bind(this);
     this.crystals = new Array;
-    this.createCrystals(countX, countY);
+    this.createCrystals();
   }
 
-  createCrystals(countX, countY){
-    for (let x = 0; x < countX; ++x){
+  createCrystals(){
+    for (let x = 0; x < this.countX; ++x){
 
       let materials = new THREE.MeshBasicMaterial ({color: 0xff37d8, wireframe: true, transparent: true})
       let edges = new THREE.EdgesGeometry(this.shape);
@@ -28,14 +31,15 @@ class Specimen{
       
       if(x > 0){
         this.crystals[x].lines.translateX(this.width * x);
-
       }
 
     }
   }
   
   drawShape(scene){
-    scene.add(this.crystals[0].lines);
+    for (let i = 0; i < this.countX * this.countY; ++i){
+      scene.add(this.crystals[i].lines);
+    }
   }
 
   createSpheres(){
