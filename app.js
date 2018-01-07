@@ -25,18 +25,10 @@ let render = function(){
   renderer.render(scene, camera);
 }
 
-
-let drawColumn = function(){
-  let newColumn = new Column();
-  newColumn.addLens('right', 50, 40, 0, 20);
-  newColumn.drawLenses(scene, renderer, camera);
-}
-
 let drawSpecimen = function(){
   newSpecimen.drawShape(scene);
   newSpecimen.createSpheres();
   newSpecimen.placeSpheres();
-
 }
 
 let rotateX = function(delta){
@@ -63,7 +55,7 @@ let animate = function(){
   controls.update();
 }
 
-let newSpecimen = new Specimen('square', 2);
+let newSpecimen = new Specimen('square', 2, 1);
 drawSpecimen();
 init();
 animate();

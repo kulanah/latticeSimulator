@@ -1,5 +1,5 @@
 class Specimen{
-  constructor(shape, count){
+  constructor(shape, countX, countY){
     switch(shape){
       case 'square': 
         this.shape = new THREE.BoxGeometry(10, 10, 10);
