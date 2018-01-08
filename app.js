@@ -53,7 +53,7 @@ let animate = function(){
   controls.update();
 }
 
-let newSpecimen = new Specimen('square', 2, 2);
+let newSpecimen = new Specimen('square', 2, 3);
 newSpecimen.addSphere(0, 0, 0);
 newSpecimen.addSphere(1, 1, 1);
 newSpecimen.addSphere(1, 0, 1);
