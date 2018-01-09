@@ -18,7 +18,10 @@ let init = function(){
   //change this to be based on the size of the crystals we use
   renderer.domElement.id = 'threeCanvas';
   document.body.appendChild(renderer.domElement);
-  rotateX(0.0);
+  camera.position.x = 60;
+  camera.position.z = 60;
+  camera.lookAt(scene.position);
+
 }
 
 let render = function(){
@@ -27,25 +30,6 @@ let render = function(){
 
 let drawSpecimen = function(){
   newSpecimen.drawShape(scene);
-}
-
-let rotateX = function(delta){
-  renderer.render(scene, camera);
-  angleX += delta;
-  angleZ += delta;
-  
-  camera.position.x = 65 * Math.cos(angleX);
-  camera.position.z = 65 * Math.sin(angleZ);
-  camera.lookAt(scene.position);
-}
-
-let rotateY = function(delta){
-  renderer.render(scene, camera);
-  angleY += delta;
-  angleZ += delta;
-  camera.position.z = 1 * Math.cos(angleZ);
-  camera.position.y = 100 * Math.cos(angleY);
-  camera.lookAt(scene.position);
 }
 
 let animate = function(){
