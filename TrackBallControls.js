@@ -388,7 +388,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 	function keyup( event ) {
 		if ( _this.enabled === false ) return;
 
-		if (!event.ctrlKey && !event.altKey){
+		if (!event.ctrlKey && !event.shiftKey){
 			_this.mouseup(event);
 		}
 
@@ -414,7 +414,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 		if (event.ctrlKey){
 			_state = STATE.ROTATEX;
-		} else if (event.altKey){
+		} else if (event.shiftKey){
 			_state = STATE.ROTATEY;
 		}
 
@@ -479,7 +479,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.mouseup = function( event ) {
 		this.mouseDown = false;
 		_state = STATE.NONE;
-		if (!event.ctrlKey && !event.altKey){
+		if (!event.ctrlKey && !event.shiftKey){
 
 			if ( _this.enabled === false ) return;
 
