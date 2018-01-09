@@ -101,12 +101,9 @@ class Specimen{
       this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + this.height * this.spheres[i].xMult)
       this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + this.width * this.spheres[i].yMult)
       this.crystals[crystalIndex].spheres[i].sphere.translateZ(zOffset + this.depth * this.spheres[i].zMult);
-
-      // this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + this.spheres[i].hMult * this.height);
-      // this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + this.spheres[i].wMult * this.width);
-      // this.crystals[crystalIndex].spheres[i].sphere.translateZ(this.spheres[i].dMult * this.depth);
     }
   }
+
   addSpheresToScene(crystal, scene){
     for (let i = 0; i < crystal.spheres.length; ++i){
       scene.add(crystal.spheres[i].sphere);
