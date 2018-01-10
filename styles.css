@@ -1,9 +1,14 @@
+body{
+  overflow: hidden;
+}
+
 #controlsbox{
   position: absolute;
   bottom: 0;
   right: 0;
   width: 40vh;
   height: 20vh;
-  background: grey;
+  background: #48C6D4;
+  border: 1px white solid;
   z-index: 1;
 }

@@ -14,7 +14,7 @@ let init = function(){
   controls.addEventListener('change', render);
 
   renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth - 5, window.innerHeight - 5);
+  renderer.setSize(window.innerWidth, window.innerHeight);
   //change this to be based on the size of the crystals we use
   renderer.domElement.id = 'threeCanvas';
   document.body.appendChild(renderer.domElement);
