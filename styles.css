@@ -1,0 +1,9 @@
+#controlsbox{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 40vh;
+  height: 20vh;
+  background: grey;
+  z-index: 1;
+}
