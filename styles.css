@@ -1,15 +1,41 @@
 #controlsbox{
+  display: grid;
   position: absolute;
   bottom: 0;
   right: 0;
   width: 40vh;
-  height: 20vh;
-  background: grey;
+  height: 80vh;
+  background: #ECE9D8;
   z-index: 1;
-  border: white 1px solid;
-  border-radius: 10px;
+  border: #2744AA 2px solid;
+  border-radius: 5px;
+
+  grid-template-rows: repeat(3, 5fr) repeat(2, 28.6fr);
+}
+
+.griditem{
+  border:  1px white solid;
+}
+
+#unitrow{
+  display: grid;
+  grid-template-columns: 4fr 10fr 4fr 10fr 4fr 10fr 4fr 10fr 4fr 10fr 4fr 10fr;
+  align-items: center;
+}
+
+#controlsrow{
+  display: flex;
+}
+
+.gridtitle{
+  margin:  0px 5px 0px 2px;
 }
 
 body{
   overflow: hidden;
+}
+
+.unitinput{
+  width: 85%;
+  height: 60%
 }
