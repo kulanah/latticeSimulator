@@ -10,6 +10,68 @@
 	</head>
 	<body>
 		<div id='controlsbox'>
+			<span class='griditem'>
+				<p class='gridtitle'>Specimen Name</p>
+				<input type='text'></input>
+			</span>
+			<span class='griditem'>
+				<p class='gridtitle'>Bravias lattice</p>
+				<select>
+					<option value="asf">first</option>
+					<option value="asfd">second</option>
+					<option value="asdlsf">third</option>
+				</select>
+			</span>
+			<span class='griditem'>
+				<p class='gridtitle'>Units</p>
+				<span id='unitrow'> 
+					<p>a = </p>
+					<input class='unitinput' type="text">
+					<p>b = </p>
+					<input class='unitinput' type="text">
+					<p>c = </p>
+					<input class='unitinput' type="text">
+					<p>A = </p>
+					<input class='unitinput' type="text">
+					<p>B = </p>
+					<input class='unitinput' type="text">
+					<p>C = </p>
+					<input class='unitinput' type="text">
+				</span>
+			</span>
+			<span class='griditem'>
+				<p class='gridtitle'>Coordinates of Atoms</p>
+				<span class='atomsrow'>
+					<p>atom</p>
+					<input class='unitinput' type='text'>
+					<p>Elements</p>
+					<input class='unitinput' type='text'>
+					<p>x</p>
+					<input class='unitinput' type='text'>
+					<p>y</p>
+					<input class='unitinput' type='text'>
+					<p>z</p>
+					<input class='unitinput' type='text'>
+					<!-- new row here-->
+					<button>Add</button>
+					<button>Remove</button>
+					<button>Clear</button>
+					<button>View</button>
+
+					<textarea name="" id="" cols="45" rows="5">
+						test
+					</textarea>
+				</span>
+			</span>
+			<span class='griditem'>
+				<p>Scale # of unit</p>
+				<p>x</p>
+				<p>1</p>
+				<p>y</p>
+				<p>1</p>
+				<p>z</p>
+				<p>1</p>
+			</span>
 			<!-- create form here -->
 		</div>
 		<script src="three.js"></script>
