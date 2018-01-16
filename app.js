@@ -10,17 +10,20 @@ let init = function(){
   camera.position.set(0,45,0);
   camera.lookAt(new THREE.Vector3(0,0,0));
 
-  controls = new THREE.TrackballControls(camera);
-  controls.addEventListener('change', render);
 
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   //change this to be based on the size of the crystals we use
   renderer.domElement.id = 'threeCanvas';
   document.body.appendChild(renderer.domElement);
+
+  controls = new THREE.TrackballControls(camera, document.getElementById('threeCanvas'));
+  controls.addEventListener('change', render);
+
   camera.position.x = 60;
   camera.position.z = 60;
   camera.lookAt(scene.position);
+
 
 }
 
