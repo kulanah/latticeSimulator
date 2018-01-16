@@ -6,4 +6,10 @@
   height: 20vh;
   background: grey;
   z-index: 1;
+  border: white 1px solid;
+  border-radius: 10px;
+}
+
+body{
+  overflow: hidden;
 }
