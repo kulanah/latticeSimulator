@@ -23,6 +23,28 @@
   align-items: center;
 }
 
+.atomgrid{
+  display:grid;
+  grid-template-rows: 40fr 20px auto;
+}
+
+.atomrow{
+  display:grid;
+  grid-template-columns: repeat(4, 20fr);
+}
+.atomcolumn{
+  border: 1px solid #BAB7A8;
+  border-radius: 2px;
+}
+
+.atomrows{
+  display:grid;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2px;
+  grid-template-columns: repeat(5, 20fr);
+}
+
 #controlsrow{
   display: flex;
 }
