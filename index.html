@@ -45,23 +45,23 @@
 					<span class="atomrows">
 						<span class="atomcolumn">
 							<p>atom</p>
-							<input class='unitinput' type='text'>
+							<input id='atominput' class='unitinput' type='text'>
 						</span>
 						<span class="atomcolumn">
 							<p>Elements</p>
-							<input class='unitinput' type='text'>
+							<input id='elementsinput' class='unitinput' type='text'>
 						</span>
 						<span class="atomcolumn">
 							<p>x</p>
-							<input class='unitinput' type='text'>
+							<input id='xinput' class='unitinput' type='text'>
 						</span>
 						<span class="atomcolumn">
 							<p>y</p>
-							<input class='unitinput' type='text'>
+							<input id='yinput' class='unitinput' type='text'>
 						</span>
 						<span class="atomcolumn">
 							<p>z</p>
-							<input class='unitinput' type='text'>
+							<input id='zinput' class='unitinput' type='text'>
 						</span>
 					</span>
 					<span class="atomrow">
@@ -70,33 +70,42 @@
 						<button>Clear</button>
 						<button>View</button>
 					</span>
-					<!-- <span class="atomrow"> -->
-						<textarea name="" id="" cols="45" rows="5">
-							test
-						</textarea>
-					</span>
 				</span>
+			</span>
+			<span class="griditem">
+				<textarea name="" id="atomlist" disabled='true'>
+					1
+					2
+					3
+					4
+					5
+					6
+					7
+					8
+					9
+				</textarea>
 			</span>
 			<span class='griditem'>
 				<p>Scale # of unit</p>
-				<p>x</p>
-				<p>1</p>
-				<p>y</p>
-				<p>1</p>
-				<p>z</p>
-				<p>1</p>
-			</span>
-			<!-- create form here -->
-		</div>
-		<script src="three.js"></script>
-		<script src="jquery.js"></script>
-		<script src="TrackBallControls.js"></script>
+				<span class="scaleitem">
+					<p>x</p>
+					<p>y</p>
+					<p>z</p>
+					<p>1</p>
+					<p>2</p>
+					<p>3</p>
 
-		<script src="Specimen.js"></script>
-		<script src='component.js'></script>
-		<script src='column.js'></script>
-		<script src="controls.js"></script>
-		<script src='app.js'></script> 
+				</span>
+		</div>
+		<script src="js/three.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/TrackBallControls.js"></script>
+
+		<script src="js/Specimen.js"></script>
+		<script src='js/component.js'></script>
+		<script src='js/column.js'></script>
+		<script src="js/controls.js"></script>
+		<script src='js/app.js'></script> 
 		<link rel='stylesheet' href='./styles.css'>
 	</body>
 </html>
