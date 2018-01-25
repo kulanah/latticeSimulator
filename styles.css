@@ -3,12 +3,84 @@ body{
 }
 
 #controlsbox{
+  display: grid;
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   width: 40vh;
-  height: 20vh;
-  background: #48C6D4;
-  border: 1px white solid;
+  height: 50vh;
+  background: #ECE9D8;
   z-index: 1;
+  border: #2744AA 2px solid;
+  border-radius: 5px;
+
+  grid-template-rows: 1fr 1fr 2fr 2fr 50fr 2fr;
+}
+
+span p{
+  margin: 0.25em;
+}
+
+.scaleitem{
+  display:grid;
+  grid-template: repeat(3, 1em) / repeat(3, 1fr);
+}
+
+.griditem{
+  border:  1px white solid;
+}
+
+#unitrow{
+  display: grid;
+  grid-template-columns: 4fr 10fr 4fr 10fr 4fr 10fr 4fr 10fr 4fr 10fr 4fr 10fr;
+  align-items: center;
+}
+
+.atomgrid{
+  display:grid;
+  grid-template-rows: 40fr 20px auto;
+}
+
+.atomrow{
+  display:grid;
+  grid-template-columns: repeat(4, 20fr);
+  align-items: center;  
+}
+
+.atomcolumn{
+  border: 1px solid #BAB7A8;
+  border-radius: 2px;
+}
+
+#atomlist{
+  width: 98.5%;
+  height: 100%;
+  resize: none;
+  overflow-x: hidden;
+  color: black;
+}
+
+.atomrows{
+  display:grid;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2px;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+#controlsrow{
+  display: flex;
+}
+
+.gridtitle{
+  margin:  0px 5px 0px 2px;
+}
+
+body{
+  overflow: hidden;
+}
+
+.unitinput{
+  width: 85%;
+  height: 2em;
 }

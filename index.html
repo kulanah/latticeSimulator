@@ -10,17 +10,102 @@
 	</head>
 	<body>
 		<div id='controlsbox'>
-			<!-- create form here -->
-		</div>
-		<script src="three.js"></script>
-		<script src="jquery.js"></script>
-		<script src="TrackBallControls.js"></script>
+			<span class='griditem'>
+				<p class='gridtitle'>Specimen Name</p>
+				<input type='text'></input>
+			</span>
+			<span class='griditem'>
+				<p class='gridtitle'>Bravias lattice</p>
+				<select>
+					<option value="asf">first</option>
+					<option value="asfd">second</option>
+					<option value="asdlsf">third</option>
+				</select>
+			</span>
+			<span class='griditem'>
+				<p class='gridtitle'>Units</p>
+				<span id='unitrow'> 
+					<p>a = </p>
+					<input class='unitinput' type="text">
+					<p>b = </p>
+					<input class='unitinput' type="text">
+					<p>c = </p>
+					<input class='unitinput' type="text">
+					<p>A = </p>
+					<input class='unitinput' type="text">
+					<p>B = </p>
+					<input class='unitinput' type="text">
+					<p>C = </p>
+					<input class='unitinput' type="text">
+				</span>
+			</span>
+			<span class='griditem'>
+				<p class='gridtitle'>Coordinates of Atoms</p>
+				<span class='atomgrid'>
+					<span class="atomrows">
+						<span class="atomcolumn">
+							<p>atom</p>
+							<input id='atominput' class='unitinput' type='text'>
+						</span>
+						<span class="atomcolumn">
+							<p>Elements</p>
+							<input id='elementsinput' class='unitinput' type='text'>
+						</span>
+						<span class="atomcolumn">
+							<p>x</p>
+							<input id='xinput' class='unitinput' type='text'>
+						</span>
+						<span class="atomcolumn">
+							<p>y</p>
+							<input id='yinput' class='unitinput' type='text'>
+						</span>
+						<span class="atomcolumn">
+							<p>z</p>
+							<input id='zinput' class='unitinput' type='text'>
+						</span>
+					</span>
+					<span class="atomrow">
+						<button>Add</button>
+						<button>Remove</button>
+						<button>Clear</button>
+						<button>View</button>
+					</span>
+				</span>
+			</span>
+			<span class="griditem">
+				<textarea name="" id="atomlist" disabled='true'>
+					1
+					2
+					3
+					4
+					5
+					6
+					7
+					8
+					9
+				</textarea>
+			</span>
+			<span class='griditem'>
+				<p>Scale # of unit</p>
+				<span class="scaleitem">
+					<p>x</p>
+					<p>y</p>
+					<p>z</p>
+					<p>1</p>
+					<p>2</p>
+					<p>3</p>
 
-		<script src="Specimen.js"></script>
-		<script src='component.js'></script>
-		<script src='column.js'></script>
-		<script src="controls.js"></script>
-		<script src='app.js'></script> 
+				</span>
+		</div>
+		<script src="js/three.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/TrackBallControls.js"></script>
+
+		<script src="js/Specimen.js"></script>
+		<script src='js/component.js'></script>
+		<script src='js/column.js'></script>
+		<script src="js/controls.js"></script>
+		<script src='js/app.js'></script> 
 		<link rel='stylesheet' href='./styles.css'>
 	</body>
 </html>
