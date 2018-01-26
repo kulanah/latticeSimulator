@@ -56,23 +56,23 @@
 				<div id='atomsflex'>
 					<span>
 						<p>atoms</p>
-						<input type="text">
+						<input id='atominput' type="text">
 					</span>
 					<span>
 						<p>element</p>
-						<input type="text">
+						<input id='elementinput' type="text">
 					</span>
 					<span>
 						<p>X</p>
-						<input type="text">
+						<input id='xinput' type="text">
 					</span>
 					<span>
 						<p>Y</p>
-						<input type="text">
+						<input id='yinput' type="text">
 					</span>
 					<span>
 						<p>Z</p>
-						<input type="text">
+						<input id='zinput' type="text">
 					</span>
 					<span>
 						<p>Color</p>
@@ -82,23 +82,21 @@
 				</div>
 			</div>
 			<div class='controlsboxdiv' id='buttonflex'>
-				<button class='buttonrow'>Add</button>
+				<button id='atomaddbutton' class='buttonrow'>Add</button>
 				<button class='buttonrow'>Remove</button>
 				<button class='buttonrow'>Clear</button>
 				<button class='buttonrow'>View</button>
 			</div>
 			<div class='controlsboxdiv' id='atomslist'>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
-				1 <br>
+				<table id='atomslisttable'>
+					<tr>
+						<td>X</td>
+						<td>Y</td>
+						<td>Z</td>
+						<td>Color</td>
+					</tr>
+				</table>
+
 			</div>
 			<div class='controlsboxdiv' id='tablediv'>
 				<p>Scale # of Unit</p>
