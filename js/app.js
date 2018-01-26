@@ -26,7 +26,8 @@ let init = function(){
 
 
   $('#colorpicker').spectrum({
-    color: "#f00"
+    color: "#f00",
+    preferredFormat: "hex",
   });
 
 }
