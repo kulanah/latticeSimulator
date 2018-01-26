@@ -25,6 +25,10 @@ let init = function(){
   camera.lookAt(scene.position);
 
 
+  $('#colorpicker').spectrum({
+    color: "#f00"
+  });
+
 }
 
 let render = function(){

@@ -65,7 +65,7 @@ span p{
   margin-top: 5px;
   margin-bottom: 5px;
   margin-left: 2px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
 }
 
 #controlsrow{
