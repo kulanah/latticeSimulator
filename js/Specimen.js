@@ -15,6 +15,7 @@ class Specimen{
     this.createCrystals = this.createCrystals.bind(this);
     this.crystals = new Array;
     this.spheres = new Array;
+    this.sphereInstances = new Array;
     this.createCrystals();
     this.placeCrystals();
     this.scene = scene;
@@ -63,19 +64,35 @@ class Specimen{
 
   addSphere(crystalX, crystalY, crystalZ, crystalColor, index){
     this.spheres.push({x: crystalX, y: crystalY, z: crystalZ, color: crystalColor, index: index});
+    let instances = new Array;
     for (let x = 0; x < this.countX; ++x){
       for (let y = 0; y < this.countY; ++y){
         let geometry = new THREE.SphereGeometry(0.25, 4, 4);
         let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});    
         let sphere = new THREE.Mesh(geometry, material);
+        sphere.name = index;
 
         sphere.translateX((crystalX * this.width)+ x * this.width);
         sphere.translateY((crystalY * this.height) + y * this.height);
         sphere.translateZ(crystalZ * this.depth);
         
         this.scene.add(sphere);
+        this.sphereInstances.push(sphere);
       }
     }
+    console.log(this.sphereInstances);
+  }
+
+  remove(index){
+    for (let i = 0; i < this.sphereInstances.length; ++i){
+      if (this.sphereInstances[i].name == index){
+        scene.remove(this.sphereInstances[i]);
+        this.sphereInstances.splice(i, 1);
+        --i;
+
+      }
+    }
+    render();
   }
 
 

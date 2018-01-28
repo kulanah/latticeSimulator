@@ -32,5 +32,7 @@ $('#atomremovebutton').on('click', function(){
   if (selected){
     selected.remove();
     selected = null;
+    newSpecimen.remove(id);
+    render();
   }
 });
