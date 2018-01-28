@@ -30,7 +30,6 @@ body{
 #unitsflex{
   display:flex;
   justify-content: space-around;
-  width: 40vh;
 }
 
 #atomsflex input{
@@ -48,7 +47,6 @@ body{
 }
 
 #atomslist{
-  width: 39.8vh;
   height: 15vh;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -58,7 +56,6 @@ body{
 #atomsflex{
   display:flex;
   justify-content: space-around;
-  width: 40vh;
 }
 
 #colorpicker{
@@ -67,6 +64,19 @@ body{
 
 div p{
   margin: 0.25em;
+}
+
+td{
+  width:102.75px;
+  text-align: center;
+}
+tr:hover{
+  background: blue;
+  border: 1px grey solid;
+}
+
+tr:click{
+
 }
 
 #tablediv td{
