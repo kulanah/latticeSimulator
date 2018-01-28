@@ -70,14 +70,11 @@ td{
   width:102.75px;
   text-align: center;
 }
-tr:hover{
-  background: blue;
+.crystalrow:hover{
+  background: grey;
   border: 1px grey solid;
 }
 
-tr:click{
-
-}
 
 #tablediv td{
   width: 137px; 
