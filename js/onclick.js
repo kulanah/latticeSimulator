@@ -14,10 +14,10 @@ $('#atomaddbutton').on('click', function(){
     color: colorHex
   };
 
-  let tableRow = "<tr><td>" + x + "</td><td>" + y + "</td><td>" + z + "</td><td style=\"background:" + colorHex + ";\"></td></tr>";
+  index = Date.now();
+  let tableRow = "<tr index=\"" + index + "\"><td>" + x + "</td><td>" + y + "</td><td>" + z + "</td><td style=\"background:" + colorHex + ";\"></td></tr>";
+  $("#atomslisttable").append(tableRow);
+  newSpecimen.addSphere(x, y, z, colorHex, index);
 
-
-  $("#atomslisttable").append(tableRow)
-
-  console.log(tableRow);
+  render();
 });
