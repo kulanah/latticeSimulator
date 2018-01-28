@@ -1,8 +1,12 @@
 let addRowOnClick = function(){
   $('.crystalrow').on('click', function(){
+    if (selected){
+      $(selected).css('background', '#ffffff')
+    }
 
     id = $(this).attr('index');
     selected = this;
+    $(this).css('background', '#ff0000');
   });
 };
 
