@@ -54,6 +54,8 @@ newSpecimen.addSphere(1, 1, 1, '#22d951', 2);
 // newSpecimen.addSphere(0.25, 0.25, 0.25);
 
 
+let selected;
+let id;
 drawSpecimen();
 init();
 animate();

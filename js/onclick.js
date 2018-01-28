@@ -1,3 +1,11 @@
+let addRowOnClick = function(){
+  $('.crystalrow').on('click', function(){
+
+    id = $(this).attr('index');
+    selected = this;
+  });
+};
+
 $('#atomaddbutton').on('click', function(){
   let atom = $('#atominput')[0].value;
   let element = $('#elementinput')[0].value;
@@ -5,19 +13,20 @@ $('#atomaddbutton').on('click', function(){
   let y = $('#yinput')[0].value;
   let z = $('#zinput')[0].value;
   let colorHex = $('#colorpicker').spectrum("get").toHexString();
-  newAtom = {
-    atom: atom,
-    element: element,
-    x: x,
-    y: y, 
-    z: z,
-    color: colorHex
-  };
 
   index = Date.now();
   let tableRow = "<tr class=\"crystalrow\" index=\"" + index + "\"><td>" + x + "</td><td>" + y + "</td><td>" + z + "</td><td style=\"background:" + colorHex + ";\"></td></tr>";
   $("#atomslisttable").append(tableRow);
+  addRowOnClick();
   newSpecimen.addSphere(x, y, z, colorHex, index);
 
   render();
+});
+
+
+$('#atomremovebutton').on('click', function(){
+  if (selected){
+    selected.remove();
+    selected = null;
+  }
 });
