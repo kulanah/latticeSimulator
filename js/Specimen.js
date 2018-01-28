@@ -1,5 +1,5 @@
 class Specimen{
-  constructor(shape, countX, countY){
+  constructor(shape, countX, countY, scene){
     switch(shape){
       case 'square': 
         this.shape = new THREE.BoxGeometry(10, 10, 10);
@@ -17,6 +17,7 @@ class Specimen{
     this.spheres = new Array;
     this.createCrystals();
     this.placeCrystals();
+    this.scene = scene;
   }
 
   createCrystals(){
@@ -36,12 +37,15 @@ class Specimen{
   }
 
   placeCrystals(){
-    let xOffset = 0;
+    let xOffset = 5;
+    let yOffset =  5;
+    let zOffset = 5;
     let count = 0;
     for (let x = 0; x < this.countX; ++x){
       for (let y = 0; y < this.countY; ++y){
         this.crystals[count].lines.translateX(xOffset);
-        this.crystals[count].lines.translateY(this.height * y);
+        this.crystals[count].lines.translateY(yOffset + this.height * y);
+        this.crystals[count].lines.translateZ(zOffset);
         ++count;
       }
       xOffset += 10;
@@ -50,63 +54,47 @@ class Specimen{
   }
   
   drawShape(scene){
-    this.createSpheres();
-    this.placeSpheres();
     for (let i = 0; i < this.countX * this.countY; ++i){
       if (this.crystals[i]){
         scene.add(this.crystals[i].lines);
-        this.addSpheresToScene(this.crystals[i], scene);
       }
     }
   }
 
-  addSphere(hMult, wMult, dMult){
-    this.spheres.push({
-      xMult: hMult, 
-      yMult: wMult, 
-      zMult: dMult,
-    });
-  }
-
-  createSpheres(){
-    for (let i = 0; i < this.crystals.length; ++i){
-      for (let j = 0; j < this.spheres.length; ++j){
-        this.crystals[i].spheres.push({
-          geometry: new THREE.SphereGeometry(0.25, 4, 4),
-          material: new THREE.MeshBasicMaterial({color: 0xffff00, wireframe: true, transparent: true}),
-        });
-        this.crystals[i].spheres[j].sphere = new THREE.Mesh(this.crystals[i].spheres[j].geometry, this.crystals[i].spheres[j].material)
-      }
-    }
-  }
-
-  placeSpheres(scene){
-    let xOffset = -this.height / 2;
-    let yOffset = -this.width / 2;
-    let zOffset = -this.depth / 2;
-    let count = 0;
+  addSphere(crystalX, crystalY, crystalZ, crystalColor, index){
+    this.spheres.push({x: crystalX, y: crystalY, z: crystalZ, color: crystalColor, index: index});
     for (let x = 0; x < this.countX; ++x){
-      yOffset = -this.width / 2;
       for (let y = 0; y < this.countY; ++y){
-        this.placeSpheresInCrystal(count, xOffset, yOffset, zOffset);
-        ++count;
-        yOffset += this.width;
+        let geometry = new THREE.SphereGeometry(0.25, 4, 4);
+        let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});    
+        let sphere = new THREE.Mesh(geometry, material);
+
+        sphere.translateX((crystalX * this.width)+ x * this.width);
+        sphere.translateY((crystalY * this.height) + y * this.height);
+        sphere.translateZ(crystalZ * this.depth);
+        
+        this.scene.add(sphere);
       }
-      xOffset += this.height;
     }
   }
 
-  placeSpheresInCrystal(crystalIndex, xOffset, yOffset, zOffset){
-    for (let i = 0; i < this.spheres.length; ++i){
-      this.crystals[crystalIndex].spheres[i].sphere.translateX(xOffset + this.height * this.spheres[i].xMult)
-      this.crystals[crystalIndex].spheres[i].sphere.translateY(yOffset + this.width * this.spheres[i].yMult)
-      this.crystals[crystalIndex].spheres[i].sphere.translateZ(zOffset + this.depth * this.spheres[i].zMult);
-    }
-  }
 
-  addSpheresToScene(crystal, scene){
-    for (let i = 0; i < crystal.spheres.length; ++i){
-      scene.add(crystal.spheres[i].sphere);
+  redrawSpheres(){
+    for (let i = 0; i < this.crystals.length; ++i){
+      for (let x = 0; x < this.countX; ++x){
+        for (let y = 0; y < this.countY; ++y){
+          let geometry = new THREE.SphereGeometry(0.25, 4, 4);
+          let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});    
+          let sphere = new THREE.Mesh(geometry, material);
+
+          sphere.translateX((this.spheres[i].x * this.width)+ x * this.width);
+          sphere.translateY((this.spheres[i].y * this.height) + y * this.height);
+          sphere.translateZ(this.spheres[i].z * this.depth);
+          
+          this.scene.add(sphere);
+
+        }
+      }
     }
   }
 }
