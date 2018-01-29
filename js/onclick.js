@@ -25,6 +25,12 @@ $('#atomaddbutton').on('click', function(){
   newSpecimen.addSphere(x, y, z, colorHex, index);
 
   render();
+
+  $('#atominput')[0].value = '';
+  $('#elementinput')[0].value = '';
+  $('#xinput')[0].value = '';
+  $('#yinput')[0].value = '';
+  $('#zinput')[0].value = '';
 });
 
 
