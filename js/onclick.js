@@ -42,3 +42,18 @@ $('#atomremovebutton').on('click', function(){
     render();
   }
 });
+
+
+$('#crystalX').on('click', function(){
+  console.log($(this));
+  alert(value);
+
+});
+
+$('#crystalY').on('click', function(){
+
+});
+
+$('#crystalZ').on('click', function(){
+
+});
