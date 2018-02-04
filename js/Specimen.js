@@ -1,16 +1,20 @@
 class Specimen{
-  constructor(shape, countX, countY, scene){
+  constructor(shape, countX, countY, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene){
     switch(shape){
       case 'square': 
-        this.shape = new THREE.BoxGeometry(10, 10, 10);
-        this.width = 10;
-        this.height = 10;
-        this.depth = 10;
+        this.shape = new THREE.Geometry();
+        this.material = new THREE.LineBasicMaterial({color: 0xff37d8});
+
+        this.width = lengthA;
+        this.height = lengthB;
+        this.depth = lengthC;
         break;
     }
 
     this.countX = countX;
     this.countY = countY;
+
+    this.scene = scene;
 
     this.createCrystals = this.createCrystals.bind(this);
     this.crystals = new Array;
@@ -18,40 +22,63 @@ class Specimen{
     this.sphereInstances = new Array;
     this.createCrystals();
     this.placeCrystals();
-    this.scene = scene;
+    
+
+    //this is all for the rewrite to angles and lengths
+    this.angleA = angleA;
+    this.angleB = angleB;
+    this.angleC = angleC;
   }
 
   createCrystals(){
-    for (let x = 0; x < this.countX; ++x){
-      for (let y = 0; y < this.countY; ++y){
-        let materials = new THREE.MeshBasicMaterial ({color: 0xff37d8, wireframe: true, transparent: true})
-        let edges = new THREE.EdgesGeometry(this.shape);
-        let lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color: 0xff37d8}));
-        this.crystals.push({
-          materials: materials,
-          edges: edges,
-          lines: lines,
-          spheres: new Array,
-        });
-      }
-    }
+    let depthValue = this.depth / Math.cos(this.angleA);
+    let widthDifference = this.width - (Math.tan(180 - this.angleA) * this.depth);
+    
+    this.shape.vertices.push(new THREE.Vector3(0, 0, 0));
+    this.shape.vertices.push(new THREE.Vector3(this.width, 0, 0));
+    this.shape.vertices.push(new THREE.Vector3(widthDifference, depthValue, 0));
+    this.shape.vertices.push(new THREE.Vector3(0 - widthDifference, depthValue, 0));
+    this.shape.vertices.push(new THREE.Vector3(0, 0, 0));
+
+    // this.shape.vertices.push(new THREE.Vector3(0, 0, this.depth));
+    // this.shape.vertices.push(new THREE.Vector3(0, 0, 0));
+
+
+
+    // for (let x = 0; x < this.countX; ++x){
+    //   for (let y = 0; y < this.countY; ++y){
+    //     let materials = new THREE.MeshBasicMaterial ({color: 0xff37d8, wireframe: true, transparent: true})
+    //     let edges = new THREE.EdgesGeometry(this.shape);
+    //     let lines = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({color: 0xff37d8}));
+    //     this.crystals.push({
+    //       materials: materials,
+    //       edges: edges,
+    //       lines: lines,
+    //       spheres: new Array,
+    //     });
+    //   }
+    // }
+    this.line = new THREE.Line(this.shape, this.material);
+
+    //TODO: MOVE THIS OUT OF THIS FUNCTION
+    this.scene.add(this.line); 
   }
 
-  placeCrystals(){
-    let xOffset = 5;
-    let yOffset =  5;
-    let zOffset = 5;
-    let count = 0;
-    for (let x = 0; x < this.countX; ++x){
-      for (let y = 0; y < this.countY; ++y){
-        this.crystals[count].lines.translateX(xOffset);
-        this.crystals[count].lines.translateY(yOffset + this.height * y);
-        this.crystals[count].lines.translateZ(zOffset);
-        ++count;
-      }
-      xOffset += 10;
-    }
 
+  placeCrystals(){
+    // let xOffset = 5;
+    // let yOffset =  5;
+    // let zOffset = 5;
+    // let count = 0;
+    // for (let x = 0; x < this.countX; ++x){
+    //   for (let y = 0; y < this.countY; ++y){
+    //     this.crystals[count].lines.translateX(xOffset);
+    //     this.crystals[count].lines.translateY(yOffset + this.height * y);
+    //     this.crystals[count].lines.translateZ(zOffset);
+    //     ++count;
+    //   }
+    //   xOffset += 10;
+    // }
   }
   
   drawShape(scene){
