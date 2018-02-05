@@ -7,8 +7,8 @@ let controls;
 let renderer;
 
 let init = function(){
-  camera.position.set(0,45,0);
-  camera.lookAt(new THREE.Vector3(0,0,0));
+  camera.position.set(0,0,0);
+  // camera.lookAt(new THREE.Vector3(0,0,0));
 
 
   renderer = new THREE.WebGLRenderer();
@@ -20,8 +20,9 @@ let init = function(){
   controls = new THREE.TrackballControls(camera, document.getElementById('threeCanvas'));
   controls.addEventListener('change', render);
 
-  camera.position.x = 60;
-  camera.position.z = 60;
+  camera.position.x = 0;
+  // camera.position.y = -100;
+  camera.position.z = 100;
   camera.lookAt(scene.position);
 
 
@@ -45,7 +46,15 @@ let animate = function(){
   controls.update();
 }
 
-let newSpecimen = new Specimen('square', 1, 3, 10, 10, 10, 90, 90, 90, scene);
+let lengthX = 10;
+let lengthY = 10;
+let lengthZ = 10;
+let angleA = 60;
+let angleB = 60;
+let angleC = 60;
+
+
+let newSpecimen = new Specimen('square', 1, 1, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene);
 
 let selected;
 let id;

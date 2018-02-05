@@ -5,14 +5,20 @@ class Specimen{
         this.shape = new THREE.Geometry();
         this.material = new THREE.LineBasicMaterial({color: 0xff37d8});
 
-        this.width = lengthA;
-        this.height = lengthB;
-        this.depth = lengthC;
+        this.lengthX = lengthA;
+        this.lengthY = lengthB;
+        this.lengthZ = lengthC;
         break;
     }
 
     this.countX = countX;
     this.countY = countY;
+
+
+    //this is all for the rewrite to angles and lengths
+    this.angleA = angleA * Math.PI / 180;
+    this.angleB = angleB * Math.PI / 180;
+    this.angleC = angleC * Math.PI / 180;
 
     this.scene = scene;
 
@@ -22,27 +28,61 @@ class Specimen{
     this.sphereInstances = new Array;
     this.createCrystals();
     this.placeCrystals();
+    // this.createPoles();
     
 
-    //this is all for the rewrite to angles and lengths
-    this.angleA = angleA;
-    this.angleB = angleB;
-    this.angleC = angleC;
   }
 
   createCrystals(){
-    let depthValue = this.depth / Math.cos(this.angleA);
-    let widthDifference = this.width - (Math.tan(180 - this.angleA) * this.depth);
     
-    this.shape.vertices.push(new THREE.Vector3(0, 0, 0));
-    this.shape.vertices.push(new THREE.Vector3(this.width, 0, 0));
-    this.shape.vertices.push(new THREE.Vector3(widthDifference, depthValue, 0));
-    this.shape.vertices.push(new THREE.Vector3(0 - widthDifference, depthValue, 0));
-    this.shape.vertices.push(new THREE.Vector3(0, 0, 0));
+    let widthDifferenceH1 = this.lengthX + (Math.cos(this.angleB) * this.lengthY);
+    let heightValue = Math.sin(this.angleB) * this.lengthY;
 
-    // this.shape.vertices.push(new THREE.Vector3(0, 0, this.depth));
-    // this.shape.vertices.push(new THREE.Vector3(0, 0, 0));
+    let widthDifferenceH0 = Math.cos(Math.PI - this.angleC) * -this.lengthZ;
+    let depth = Math.sin(Math.PI - this.angleC) * -this.lengthZ;
 
+    let widthDifferenceH12 = this.lengthY * Math.cos(this.angleA);
+    
+    //create points
+    let bottomFrontLeft = new THREE.Vector3(0,0,0);
+    let bottomFrontRight = new THREE.Vector3(this.lengthX, 0, 0);
+    let topFrontRight = new THREE.Vector3(widthDifferenceH1, heightValue, 0);
+    let topFrontLeft = new THREE.Vector3(widthDifferenceH1 - this.lengthX, heightValue, 0);
+
+    let bottomBackLeft = new THREE.Vector3(widthDifferenceH0, 0, depth);
+    let bottomBackRight = new THREE.Vector3(widthDifferenceH0 + this.lengthX, 0, depth);
+
+    let topBackRight = new THREE.Vector3(this.lengthX + 2 * widthDifferenceH12, heightValue, depth);
+    let topBackLeft = new THREE.Vector3(widthDifferenceH12 * 2, heightValue, depth);
+
+    //creating front facing shape
+    this.shape.vertices.push(bottomFrontLeft);
+    this.shape.vertices.push(bottomFrontRight);
+    this.shape.vertices.push(topFrontRight);
+    this.shape.vertices.push(topFrontLeft);
+    this.shape.vertices.push(bottomFrontLeft);
+    
+    //setting variables for the bottom of the shape
+
+
+    //creating bottom of shape
+    this.shape.vertices.push(bottomBackLeft);
+    this.shape.vertices.push(bottomBackRight);
+    this.shape.vertices.push(bottomFrontRight);
+
+    // //creating right side of shape
+    this.shape.vertices.push(topFrontRight);
+    this.shape.vertices.push(topBackRight);
+    this.shape.vertices.push(bottomBackRight);
+    
+    // //creating top of shape
+    this.shape.vertices.push(topBackRight);
+    this.shape.vertices.push(topBackLeft);
+    this.shape.vertices.push(topFrontLeft);
+
+    // //finishing off left side
+    this.shape.vertices.push(topBackLeft);
+    this.shape.vertices.push(bottomBackLeft);
 
 
     // for (let x = 0; x < this.countX; ++x){
@@ -62,6 +102,31 @@ class Specimen{
 
     //TODO: MOVE THIS OUT OF THIS FUNCTION
     this.scene.add(this.line); 
+  }
+
+
+  createPoles(){
+    let xMaterial = new THREE.LineBasicMaterial({color: 0xff0000});
+    let xShape = new THREE.Geometry();
+    xShape.vertices.push(new THREE.Vector3(-1000, 0, 0));
+    xShape.vertices.push(new THREE.Vector3(1000, 0, 0));
+    let xPole = new THREE.Line(xShape, xMaterial);
+
+    let yMaterial = new THREE.LineBasicMaterial({color: 0x00ff00});
+    let yShape = new THREE.Geometry();
+    yShape.vertices.push(new THREE.Vector3(0, -1000, 0));
+    yShape.vertices.push(new THREE.Vector3(0, 1000, 0));
+    let yPole = new THREE.Line(yShape, yMaterial);
+
+    let zMaterial = new THREE.LineBasicMaterial({color: 0x0000ff});
+    let zShape = new THREE.Geometry();
+    zShape.vertices.push(new THREE.Vector3(0, 0, -1000));
+    zShape.vertices.push(new THREE.Vector3(0, 0, 1000));
+    let zPole = new THREE.Line(zShape, zMaterial);
+
+    this.scene.add(xPole);
+    this.scene.add(yPole);
+    this.scene.add(zPole);
   }
 
 
