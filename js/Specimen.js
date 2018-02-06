@@ -34,26 +34,46 @@ class Specimen{
   }
 
   createCrystals(){
-    
-    let widthDifferenceH1 = this.lengthX + (Math.cos(this.angleB) * this.lengthY);
-    let heightValue = Math.sin(this.angleB) * this.lengthY;
+    let x1 = this.lengthY * Math.cos(this.angleB);
+    let y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC);
+    let z1 = this.lengthY * Math.sin(this.angleB);
 
-    let widthDifferenceH0 = Math.cos(Math.PI - this.angleC) * -this.lengthZ;
-    let depth = Math.sin(Math.PI - this.angleC) * -this.lengthZ;
+    let x2 = this.lengthZ * Math.cos(this.angleC);
+    let y2 = this.lengthZ * Math.sin(this.angleC);
+    let z2 = 0;
 
-    let widthDifferenceH12 = this.lengthY * Math.cos(this.angleA);
+    let x3 = this.lengthX;
+    let y3 = 0;
+    let z3 = 0;
+
+    let x4 = x1 + x2;
+    let y4 = y1 + y2;
+    let z4 = z1 + z2;
+
+    let x5 = x1 + x3;
+    let y5 = y1 + y3;
+    let z5 = z1 + z3;
+
+    let x6 = x3 + x2;
+    let y6 = y3 + y2;
+    let z6 = z3 + z2;
+
+    let x7 = x1 + x6;
+    let y7 = y1 + y6;
+    let z7 = z1 + z6;
+
     
     //create points
     let bottomFrontLeft = new THREE.Vector3(0,0,0);
-    let bottomFrontRight = new THREE.Vector3(this.lengthX, 0, 0);
-    let topFrontRight = new THREE.Vector3(widthDifferenceH1, heightValue, 0);
-    let topFrontLeft = new THREE.Vector3(widthDifferenceH1 - this.lengthX, heightValue, 0);
+    let bottomFrontRight = new THREE.Vector3(x3, y3, z3);
+    let topFrontRight = new THREE.Vector3(x5, y5, z5);
+    let topFrontLeft = new THREE.Vector3(x1, y1, z1);
 
-    let bottomBackLeft = new THREE.Vector3(widthDifferenceH0, 0, depth);
-    let bottomBackRight = new THREE.Vector3(widthDifferenceH0 + this.lengthX, 0, depth);
+    let bottomBackLeft = new THREE.Vector3(x2, y2, z2);
+    let bottomBackRight = new THREE.Vector3(x6, y6, z6);
 
-    let topBackRight = new THREE.Vector3(this.lengthX + 2 * widthDifferenceH12, heightValue, depth);
-    let topBackLeft = new THREE.Vector3(widthDifferenceH12 * 2, heightValue, depth);
+    let topBackRight = new THREE.Vector3(x7, y7, z7);
+    let topBackLeft = new THREE.Vector3(x4, y4, z4);
 
     //creating front facing shape
     this.shape.vertices.push(bottomFrontLeft);
