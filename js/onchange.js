@@ -1,23 +1,23 @@
-$('#angleA').on('change', function(){
+$('#angleA').on('input', function(){
+  console.log($('#angleA')[0].value);
+});
+
+$('#angleB').on('input', function(){
 
 });
 
-$('#angleB').on('change', function(){
+$('#angleC').on('input', function(){
 
 });
 
-$('#angleC').on('change', function(){
+$('#lengthX').on('input', function(){
 
 });
 
-$('#lengthX').on('change', function(){
+$('#lengthY').on('input', function(){
 
 });
 
-$('#lengthY').on('change', function(){
-
-});
-
-$('#lengthY').on('change', function(){
+$('#lengthY').on('input', function(){
 
 });
