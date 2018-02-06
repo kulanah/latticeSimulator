@@ -23,8 +23,9 @@ body{
 }
 
 #unitsflex input{
-  width: 2em;
-  height: 3em;
+  width: 3em;
+  height: 1.5em;
+  font-size: 16px;
 }
 
 #unitsflex{
@@ -35,6 +36,7 @@ body{
 #atomsflex input{
   width: 3.5em;
   height: 3.5em;
+  margin-bottom: 3px;
 }
 
 #buttonflex{
