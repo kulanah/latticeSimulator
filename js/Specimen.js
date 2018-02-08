@@ -28,7 +28,7 @@ class Specimen{
     this.sphereInstances = new Array;
     this.createCrystals();
     this.placeCrystals();
-    // this.createPoles();
+    this.createPoles();
     
 
   }
@@ -147,6 +147,11 @@ class Specimen{
     this.scene.add(xPole);
     this.scene.add(yPole);
     this.scene.add(zPole);
+  }
+
+  redrawCrystals(){
+    //1. remove odl crystals
+    //2. redraw new crystals
   }
 
 
