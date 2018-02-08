@@ -99,9 +99,18 @@ class Specimen{
     //   }
     // }
     this.line = new THREE.Line(this.shape, this.material);
+    this.line.name = 'crystalline';
 
     //TODO: MOVE THIS OUT OF THIS FUNCTION
     this.scene.add(this.line); 
+  }
+
+  redrawCrystals(){
+    this.scene.remove(this.line);
+    this.createCrystals();
+    //delete old crystals
+    //call draw crystal function with new vars
+    render();
   }
 
 
@@ -181,13 +190,17 @@ class Specimen{
         scene.remove(this.sphereInstances[i]);
         this.sphereInstances.splice(i, 1);
         --i;
-
       }
     }
     render();
   }
 
 
+  changeAngleA(newVal){
+    this.angleA = newVal;
+    console.log(this.angleA);
+
+  }
   redrawSpheres(){
     for (let i = 0; i < this.crystals.length; ++i){
       for (let x = 0; x < this.countX; ++x){
