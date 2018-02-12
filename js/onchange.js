@@ -28,3 +28,28 @@ $('#lengthZ').on('input', function(){
   newSpecimen.changeLengthZ($('#lengthZ')[0].value);
   newSpecimen.redrawCrystals();
 });
+
+
+$('#xcountnumber').on('input', function(){
+  if ($('#xcountnumber')[0].value < 1){
+    $('#xcountnumber')[0].value = 1;
+  }
+  newSpecimen.changeXCount($('#xcountnumber')[0].value);
+  newSpecimen.redrawCrystals();
+});
+
+$('#ycountnumber').on('input', function(){
+  if ($('#ycountnumber')[0].value < 1){
+    $('#ycountnumber')[0].value = 1;
+  }
+  newSpecimen.changeYCount($('#ycountnumber')[0].value);
+  newSpecimen.redrawCrystals();
+});
+
+$('#zcountnumber').on('input', function(){
+  if ($('#zcountnumber')[0].value < 1){
+    $('#zcountnumber')[0].value = 1;
+  }
+  newSpecimen.changeZCount($('#zcountnumber')[0].value);
+  newSpecimen.redrawCrystals();
+});
