@@ -36,83 +36,85 @@ class Specimen{
 
   createCrystals(){
     let crystalCount = 0;
-    for (let x = 0; x < 1; ++x){
-      let x1 = this.lengthY * Math.cos(this.angleB);
-      let y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC);
-      let z1 = this.lengthY * Math.sin(this.angleB);
+    
+    for (let y = 0; y < this.countY; ++y){
+      for (let x = 0; x < this.countX; ++x){
+        let x1 = this.lengthY * Math.cos(this.angleB);
+        let y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC);
+        let z1 = this.lengthY * Math.sin(this.angleB);
 
-      let x2 = this.lengthZ * Math.cos(this.angleC);
-      let y2 = this.lengthZ * Math.sin(this.angleC);
-      let z2 = 0;
+        let x2 = this.lengthZ * Math.cos(this.angleC);
+        let y2 = this.lengthZ * Math.sin(this.angleC);
+        let z2 = 0;
 
-      let x3 = this.lengthX;
-      let y3 = 0;
-      let z3 = 0;
+        let x3 = this.lengthX + (this.lengthX * x);
+        let y3 = 0;
+        let z3 = 0;
 
-      let x4 = x1 + x2;
-      let y4 = y1 + y2;
-      let z4 = z1 + z2;
+        let x4 = x1 + x2;
+        let y4 = y1 + y2;
+        let z4 = z1 + z2;
 
-      let x5 = Number(x1) + Number(x3);
-      let y5 = y1 + y3;
-      let z5 = z1 + z3;
+        let x5 = Number(x1) + Number(x3);
+        let y5 = y1 + y3;
+        let z5 = z1 + z3;
 
-      let x6 = Number(x3) + Number(x2);
-      let y6 = y3 + y2;
-      let z6 = z3 + z2;
+        let x6 = Number(x3) + Number(x2);
+        let y6 = y3 + y2;
+        let z6 = z3 + z2;
 
-      let x7 = Number(x1) + Number(x6);
-      let y7 = y1 + y6;
-      let z7 = z1 + z6;
+        let x7 = Number(x1) + Number(x6);
+        let y7 = y1 + y6;
+        let z7 = z1 + z6;
 
-      //create points
-      let bottomFrontLeft = new THREE.Vector3(0,0,0);
-      let bottomFrontRight = new THREE.Vector3(x3, y3, z3);
-      let topFrontRight = new THREE.Vector3(x5, y5, z5);
-      let topFrontLeft = new THREE.Vector3(x1, y1, z1);
+        //create points
+        let bottomFrontLeft = new THREE.Vector3(0,0,0);
+        let bottomFrontRight = new THREE.Vector3(x3, y3, z3);
+        let topFrontRight = new THREE.Vector3(x5, y5, z5);
+        let topFrontLeft = new THREE.Vector3(x1, y1, z1);
 
-      let bottomBackLeft = new THREE.Vector3(x2, y2, z2);
-      let bottomBackRight = new THREE.Vector3(x6, y6, z6);
+        let bottomBackLeft = new THREE.Vector3(x2, y2, z2);
+        let bottomBackRight = new THREE.Vector3(x6, y6, z6);
 
-      let topBackRight = new THREE.Vector3(x7, y7, z7);
-      let topBackLeft = new THREE.Vector3(x4, y4, z4);
+        let topBackRight = new THREE.Vector3(x7, y7, z7);
+        let topBackLeft = new THREE.Vector3(x4, y4, z4);
 
-      //creating front facing shape
-      this.shape.vertices.push(bottomFrontLeft);
-      this.shape.vertices.push(bottomFrontRight);
-      this.shape.vertices.push(topFrontRight);
-      this.shape.vertices.push(topFrontLeft);
-      this.shape.vertices.push(bottomFrontLeft);
-      
-      //setting variables for the bottom of the shape
+        //creating front facing shape
+        this.shape.vertices.push(bottomFrontLeft);
+        this.shape.vertices.push(bottomFrontRight);
+        this.shape.vertices.push(topFrontRight);
+        this.shape.vertices.push(topFrontLeft);
+        this.shape.vertices.push(bottomFrontLeft);
+        
+        //setting variables for the bottom of the shape
 
-      //creating bottom of shape
-      this.shape.vertices.push(bottomBackLeft);
-      this.shape.vertices.push(bottomBackRight);
-      this.shape.vertices.push(bottomFrontRight);
+        //creating bottom of shape
+        this.shape.vertices.push(bottomBackLeft);
+        this.shape.vertices.push(bottomBackRight);
+        this.shape.vertices.push(bottomFrontRight);
 
-      // //creating right side of shape
-      this.shape.vertices.push(topFrontRight);
-      this.shape.vertices.push(topBackRight);
-      this.shape.vertices.push(bottomBackRight);
-      
-      // //creating top of shape
-      this.shape.vertices.push(topBackRight);
-      this.shape.vertices.push(topBackLeft);
-      this.shape.vertices.push(topFrontLeft);
+        // //creating right side of shape
+        this.shape.vertices.push(topFrontRight);
+        this.shape.vertices.push(topBackRight);
+        this.shape.vertices.push(bottomBackRight);
+        
+        // //creating top of shape
+        this.shape.vertices.push(topBackRight);
+        this.shape.vertices.push(topBackLeft);
+        this.shape.vertices.push(topFrontLeft);
 
-      // //finishing off left side
-      this.shape.vertices.push(topBackLeft);
-      this.shape.vertices.push(bottomBackLeft);
+        // //finishing off left side
+        this.shape.vertices.push(topBackLeft);
+        this.shape.vertices.push(bottomBackLeft);
 
-      this.line = new THREE.Line(this.shape, this.material);
+        this.line = new THREE.Line(this.shape, this.material);
 
-      //TODO: MOVE THIS OUT OF THIS FUNCTION
-      this.crystals.push(this.line);
-      this.scene.add(this.crystals[crystalCount]); 
-      console.log(this.crystals);
-      
-      ++crystalCount;
+        //TODO: MOVE THIS OUT OF THIS FUNCTION
+        this.crystals.push(this.line);
+        this.scene.add(this.crystals[crystalCount]); 
+        
+        ++crystalCount;
+      }
     }
   }
 
@@ -231,6 +233,17 @@ class Specimen{
     this.lengthZ = newVal;
   }
 
+  changeXCount(newVal){
+    this.countX = newVal
+  }
+
+  changeYCount(newVal){
+    this.countY = newVal
+  }
+
+  changeZCount(newVal){
+    this.countZ = newVal
+  }
   redrawSpheres(){
     for (let i = 0; i < this.crystals.length; ++i){
       for (let x = 0; x < this.countX; ++x){
