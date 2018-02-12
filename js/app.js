@@ -54,7 +54,7 @@ let angleB = 60;
 let angleC = 60;
 
 
-let newSpecimen = new Specimen('square', 1, 1, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene);
+let newSpecimen = new Specimen('square', 1, 1, 1, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene);
 
 let selected;
 let id;

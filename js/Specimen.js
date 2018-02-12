@@ -1,5 +1,5 @@
 class Specimen{
-  constructor(shape, countX, countY, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene){
+  constructor(shape, countX, countY, countZ, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene){
     switch(shape){
       case 'square': 
         this.shape = new THREE.Geometry();
@@ -13,6 +13,7 @@ class Specimen{
 
     this.countX = countX;
     this.countY = countY;
+    this.countZ = countZ;
 
 
     //this is all for the rewrite to angles and lengths
@@ -34,6 +35,10 @@ class Specimen{
   }
 
   createCrystals(){
+    /*
+    for(z = 0; z < )
+
+    */
     let x1 = this.lengthY * Math.cos(this.angleB);
     let y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC);
     let z1 = this.lengthY * Math.sin(this.angleB);
@@ -50,15 +55,15 @@ class Specimen{
     let y4 = y1 + y2;
     let z4 = z1 + z2;
 
-    let x5 = Math.round(x1) + Math.round(x3);
+    let x5 = Number(x1) + Number(x3);
     let y5 = y1 + y3;
     let z5 = z1 + z3;
 
-    let x6 = Math.round(x3) + Math.round(x2);
+    let x6 = Number(x3) + Number(x2);
     let y6 = y3 + y2;
     let z6 = z3 + z2;
 
-    let x7 = Math.round(x1) + Math.round(x6);
+    let x7 = Number(x1) + Number(x6);
     let y7 = y1 + y6;
     let z7 = z1 + z6;
 
