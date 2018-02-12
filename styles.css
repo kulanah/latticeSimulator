@@ -86,8 +86,9 @@ td{
   border: 1px black solid;
 }
 
-
-
+#tablediv input{
+  width: 129px;
+}
 
 body{
   overflow: hidden;
