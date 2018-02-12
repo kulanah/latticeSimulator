@@ -36,39 +36,43 @@ class Specimen{
 
   createCrystals(){
     let crystalCount = 0;
+    let x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, x5, y5, z5, x6, y6, z6, x7, y7, z7;
+
+    let xStart = 0;
     
     for (let y = 0; y < this.countY; ++y){
       for (let x = 0; x < this.countX; ++x){
-        let x1 = this.lengthY * Math.cos(this.angleB);
-        let y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC);
-        let z1 = this.lengthY * Math.sin(this.angleB);
+        x1 = this.lengthY * Math.cos(this.angleB) + xStart;
+        y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + this.lengthY * y;
+        z1 = this.lengthY * Math.sin(this.angleB);
 
-        let x2 = this.lengthZ * Math.cos(this.angleC);
-        let y2 = this.lengthZ * Math.sin(this.angleC);
-        let z2 = 0;
+        x2 = this.lengthZ * Math.cos(this.angleC) + xStart;
+        y2 = this.lengthZ * Math.sin(this.angleC) + this.lengthY * y;
+        z2 = 0;
 
-        let x3 = this.lengthX + (this.lengthX * x);
-        let y3 = 0;
-        let z3 = 0;
+        x3 = Number(Number(this.lengthX) + (this.lengthX * x)) + xStart;
+        y3 = 0 + this.lengthY * y;
+        z3 = 0;
 
-        let x4 = x1 + x2;
-        let y4 = y1 + y2;
-        let z4 = z1 + z2;
+        console.log(y3);
+        x4 = x1 + x2;
+        y4 = y1 + y2;
+        z4 = z1 + z2;
+        
+        x5 = Number(x1) + Number(x3);
+        y5 = y1 + y3;
+        z5 = z1 + z3;
 
-        let x5 = Number(x1) + Number(x3);
-        let y5 = y1 + y3;
-        let z5 = z1 + z3;
+        x6 = Number(x3) + Number(x2);
+        y6 = y3 + y2;
+        z6 = z3 + z2;
 
-        let x6 = Number(x3) + Number(x2);
-        let y6 = y3 + y2;
-        let z6 = z3 + z2;
-
-        let x7 = Number(x1) + Number(x6);
-        let y7 = y1 + y6;
-        let z7 = z1 + z6;
+        x7 = Number(x1) + Number(x6);
+        y7 = y1 + y6;
+        z7 = z1 + z6;
 
         //create points
-        let bottomFrontLeft = new THREE.Vector3(0,0,0);
+        let bottomFrontLeft = new THREE.Vector3(0 + xStart,0 + this.lengthY * y,0);
         let bottomFrontRight = new THREE.Vector3(x3, y3, z3);
         let topFrontRight = new THREE.Vector3(x5, y5, z5);
         let topFrontLeft = new THREE.Vector3(x1, y1, z1);
@@ -115,6 +119,8 @@ class Specimen{
         
         ++crystalCount;
       }
+      xStart = x1;
+
     }
   }
 
