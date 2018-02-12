@@ -39,40 +39,41 @@ class Specimen{
     let x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, x5, y5, z5, x6, y6, z6, x7, y7, z7;
 
     let xStart = 0;
+    let yOffset = 0;
+    let yDifference = 0;
     
     for (let y = 0; y < this.countY; ++y){
       for (let x = 0; x < this.countX; ++x){
         x1 = this.lengthY * Math.cos(this.angleB) + xStart;
-        y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + this.lengthY * y;
+        y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + yOffset - yDifference;
         z1 = this.lengthY * Math.sin(this.angleB);
 
         x2 = this.lengthZ * Math.cos(this.angleC) + xStart;
-        y2 = this.lengthZ * Math.sin(this.angleC) + this.lengthY * y;
+        y2 = this.lengthZ * Math.sin(this.angleC) + yOffset - yDifference;
         z2 = 0;
 
-        x3 = Number(Number(this.lengthX) + (this.lengthX * x)) + xStart;
-        y3 = 0 + this.lengthY * y;
+        x3 = Number(this.lengthX) + (this.lengthX * x) + xStart;
+        y3 = 0 + yOffset - yDifference; 
         z3 = 0;
 
-        console.log(y3);
-        x4 = x1 + x2;
-        y4 = y1 + y2;
+        x4 = x1 + x2 - xStart;
+        y4 = y1 + y2 - yOffset + yDifference;
         z4 = z1 + z2;
         
-        x5 = Number(x1) + Number(x3);
-        y5 = y1 + y3;
+        x5 = Number(x1) + Number(x3) - xStart;
+        y5 = y1 + y3 - yOffset + yDifference;
         z5 = z1 + z3;
 
-        x6 = Number(x3) + Number(x2);
-        y6 = y3 + y2;
+        x6 = Number(x3) + Number(x2) - xStart;
+        y6 = y3 + y2 - yOffset + yDifference;
         z6 = z3 + z2;
 
-        x7 = Number(x1) + Number(x6);
-        y7 = y1 + y6;
+        x7 = Number(x1) + Number(x6) - xStart;
+        y7 = y1 + y6 - yOffset + yDifference;
         z7 = z1 + z6;
 
         //create points
-        let bottomFrontLeft = new THREE.Vector3(0 + xStart,0 + this.lengthY * y,0);
+        let bottomFrontLeft = new THREE.Vector3(0 + xStart,0 + yOffset - yDifference,0);
         let bottomFrontRight = new THREE.Vector3(x3, y3, z3);
         let topFrontRight = new THREE.Vector3(x5, y5, z5);
         let topFrontLeft = new THREE.Vector3(x1, y1, z1);
@@ -119,7 +120,9 @@ class Specimen{
         
         ++crystalCount;
       }
-      xStart = x1;
+      xStart = this.lengthY * Math.cos(this.angleB) + xStart;
+      yOffset = y4;
+      yDifference =  y1;
 
     }
   }
