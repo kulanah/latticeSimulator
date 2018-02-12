@@ -50,19 +50,18 @@ class Specimen{
     let y4 = y1 + y2;
     let z4 = z1 + z2;
 
-    let x5 = x1 + x3;
+    let x5 = Math.round(x1) + Math.round(x3);
     let y5 = y1 + y3;
     let z5 = z1 + z3;
 
-    let x6 = x3 + x2;
+    let x6 = Math.round(x3) + Math.round(x2);
     let y6 = y3 + y2;
     let z6 = z3 + z2;
 
-    let x7 = x1 + x6;
+    let x7 = Math.round(x1) + Math.round(x6);
     let y7 = y1 + y6;
     let z7 = z1 + z6;
 
-    
     //create points
     let bottomFrontLeft = new THREE.Vector3(0,0,0);
     let bottomFrontRight = new THREE.Vector3(x3, y3, z3);
@@ -119,7 +118,6 @@ class Specimen{
     //   }
     // }
     this.line = new THREE.Line(this.shape, this.material);
-    this.line.name = 'crystalline';
 
     //TODO: MOVE THIS OUT OF THIS FUNCTION
     this.scene.add(this.line); 
@@ -127,6 +125,8 @@ class Specimen{
 
   redrawCrystals(){
     this.scene.remove(this.line);
+    this.shape = [];
+    this.shape = new THREE.Geometry;
     this.createCrystals();
     //delete old crystals
     //call draw crystal function with new vars
@@ -157,12 +157,6 @@ class Specimen{
     this.scene.add(yPole);
     this.scene.add(zPole);
   }
-
-  redrawCrystals(){
-    //1. remove odl crystals
-    //2. redraw new crystals
-  }
-
 
   placeCrystals(){
     // let xOffset = 5;
@@ -222,10 +216,25 @@ class Specimen{
 
 
   changeAngleA(newVal){
-    this.angleA = newVal;
-    console.log(this.angleA);
-
+    this.angleA = newVal * Math.PI / 180;
   }
+  changeAngleB(newVal){
+    this.angleB = newVal * Math.PI / 180;
+  }
+  changeAngleC(newVal){
+    this.angleC = newVal * Math.PI / 180;
+  }
+
+  changeLengthX(newVal){
+    this.lengthX = newVal;
+  }
+  changeLengthY(newVal){
+    this.lengthY = newVal;
+  }
+  changeLengthZ(newVal){
+    this.lengthZ = newVal;
+  }
+
   redrawSpheres(){
     for (let i = 0; i < this.crystals.length; ++i){
       for (let x = 0; x < this.countX; ++x){
