@@ -20,11 +20,16 @@ let init = function(){
   controls = new THREE.TrackballControls(camera, document.getElementById('threeCanvas'));
   controls.addEventListener('change', render);
 
+
+  let xVal = 20;
   camera.position.x = 0;
   // camera.position.y = -100;
-  camera.position.z = 100;
-  camera.lookAt(scene.position);
+  camera.position.z = 200;
+  camera.position.y = 20;
+  // camera.lookAt(scene.position);
+  camera.position.x = xVal;
 
+  controls.target = new THREE.Vector3(xVal, 0, 0);
 
   $('#colorpicker').spectrum({
     color: "#f00",
