@@ -7,15 +7,10 @@ let controls;
 let renderer;
 
 let init = function(){
-  camera.position.set(0,0,0);
+  // camera.position.set(0,0,0);
   // camera.lookAt(new THREE.Vector3(0,0,0));
 
-
-  renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  //change this to be based on the size of the crystals we use
-  renderer.domElement.id = 'threeCanvas';
-  document.body.appendChild(renderer.domElement);
+  rendererInit();
 
   controls = new THREE.TrackballControls(camera, document.getElementById('threeCanvas'));
   controls.addEventListener('change', render);
@@ -36,6 +31,14 @@ let init = function(){
     preferredFormat: "hex",
   });
 
+}
+
+let rendererInit = function(){
+  renderer = new THREE.WebGLRenderer();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+  //change this to be based on the size of the crystals we use
+  renderer.domElement.id = 'threeCanvas';
+  document.body.appendChild(renderer.domElement);
 }
 
 let render = function(){
