@@ -44,16 +44,14 @@ $('#atomremovebutton').on('click', function(){
 });
 
 
-$('#crystalX').on('click', function(){
-  console.log($(this));
-  alert(value);
+$('#controlsboxhide').on('click', function(){
+  $('#controlsbox').hide();
 
+  $('#controlsboxexpand').show();
 });
 
-$('#crystalY').on('click', function(){
+$('#controlsboxexpand').on('click', function(){
+  $('#controlsbox').show();
 
-});
-
-$('#crystalZ').on('click', function(){
-
+  $('#controlsboxexpand').hide();
 });
