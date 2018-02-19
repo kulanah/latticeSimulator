@@ -1,9 +1,10 @@
 class Specimen{
   constructor(shape, countX, countY, countZ, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene){
+    this.latticeColor = 0xff37d8;
     switch(shape){
       case 'square': 
         this.shape = new THREE.Geometry();
-        this.material = new THREE.LineBasicMaterial({color: 0xff37d8});
+        this.material = new THREE.LineBasicMaterial({color: this.latticeColor});
 
         this.lengthX = lengthA;
         this.lengthY = lengthB;
@@ -187,6 +188,15 @@ class Specimen{
     //     scene.add(this.crystals[i].lines);
     //   }
     // }
+  }
+
+  setLatticeColor(rgbVal){
+    delete this.material;
+    this.latticeColor = rgbVal;
+    this.material = new THREE.LineBasicMaterial({color: this.latticeColor});
+    this.redrawCrystals();
+    console.log(this.material);
+
   }
 
   addSphere(crystalX, crystalY, crystalZ, crystalColor, index){
