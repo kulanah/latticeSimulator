@@ -105,51 +105,6 @@ class Specimen{
           let topBackRight = new THREE.Vector3(x7[i], y7[j], z7[k]);
           let topBackLeft = new THREE.Vector3(x4[i], y4[j], z4[k]);
 
-
-          //Drawing spheres at square points
-
-
-          // let sgeometry = new THREE.SphereGeometry(2, 4, 4);
-          // let smaterial = new THREE.MeshBasicMaterial({color: 0xffffff,wireframe: true, transparent: true});
-          // let sphere1= new THREE.Mesh(sgeometry, smaterial);
-
-          // let sgeometry2 = new THREE.SphereGeometry(2, 4, 4);
-          // let smaterial2 = new THREE.MeshBasicMaterial({color: 0xffffff,wireframe: true, transparent: true});
-          // let sphere2= new THREE.Mesh(sgeometry2, smaterial2);
-
-
-
-          // sphere1.translateX(x1[i]);
-          // sphere1.translateY(y1[j]);
-          // sphere1.translateZ(z1[k]);
-          // sphere2.translateX(x2[i]);
-          // sphere2.translateY(y2[j]);
-          // sphere2.translateZ(z2[k]);
-
-          /*
-          sphere.translateX(x3[i]);
-          sphere.translateY(y3[j]);
-          sphere.translateZ(z3[k]);
-
-          sphere.translateX(x4[i]);
-          sphere.translateY(y4[j]);
-          sphere.translateZ(z4[k]);
-          sphere.translateX(x5[i]);
-          sphere.translateY(y5[j]);
-          sphere.translateZ(z5[k]);
-          sphere.translateX(x6[i]);
-          sphere.translateY(y6[j]);
-          sphere.translateZ(z6[k]);
-          sphere.translateX(x7[i]);
-          sphere.translateY(y7[j]);
-          sphere.translateZ(z7[k]);
-
-          */
-          // this.scene.add(sphere1);
-          // this.scene.add(sphere2);
-
-
-
           //creating front facing shape
           this.shape.vertices.push(bottomFrontLeft);
           this.shape.vertices.push(bottomFrontRight);
