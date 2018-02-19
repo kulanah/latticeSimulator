@@ -54,9 +54,9 @@ let animate = function(){
 let lengthX = 10;
 let lengthY = 10;
 let lengthZ = 10;
-let angleA = 60;
-let angleB = 60;
-let angleC = 60;
+let angleA = $('#angleA')[0].value;
+let angleB = $('#angleB')[0].value;
+let angleC = $('#angleC')[0].value;
 
 
 let newSpecimen = new Specimen('square', 4, 2, 1, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene);

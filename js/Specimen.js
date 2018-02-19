@@ -2,7 +2,7 @@ class Specimen{
   constructor(shape, countX, countY, countZ, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene){
     this.latticeColor = 0xff37d8;
     switch(shape){
-      case 'square': 
+      case 'square':
         this.shape = new THREE.Geometry();
         this.material = new THREE.LineBasicMaterial({color: this.latticeColor});
 
@@ -31,100 +31,119 @@ class Specimen{
     this.createCrystals();
     this.placeCrystals();
     this.createPoles();
-    
 
   }
 
   createCrystals(){
     let crystalCount = 0;
-    let x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, x5, y5, z5, x6, y6, z6, x7, y7, z7;
-
     let xStart = 0;
-    let yOffset = 0;
-    let yDifference = 0;
-    
-    for (let y = 0; y < this.countY; ++y){
-      for (let x = 0; x < this.countX; ++x){
-        x1 = this.lengthY * Math.cos(this.angleB) + xStart;
-        y1 = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + yOffset - yDifference;
-        z1 = this.lengthY * Math.sin(this.angleB);
+    let x0 = 0;
+    let y0 = 0;
+    let z0 = 0;
+    let x1 = new Array;
+    let y1 = new Array;
+    let z1 = new Array;
+    let x2 = new Array;
+    let y2 = new Array;
+    let z2 = new Array;
+    let x3 = new Array;
+    let y3 = new Array;
+    let z3 = new Array;
+    let x4 = new Array;
+    let y4 = new Array;
+    let z4 = new Array;
+    let x5 = new Array;
+    let y5 = new Array;
+    let z5 = new Array;
+    let x6 = new Array;
+    let y6 = new Array;
+    let z6 = new Array;
+    let x7 = new Array;
+    let y7 = new Array;
+    let z7 = new Array;
+    for (let i = 0; i < this.countX; ++i){
+      for (let j = 0; j < this.countY; ++j){
+        for(let k = 0; k < this.countZ; ++k){
+          x1[i] = this.lengthY * Math.cos(this.angleB) * (k+1);
+          y1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k+1);
+          z1[k] = this.lengthY * Math.sin(this.angleB) * (k+1);
 
-        x2 = this.lengthZ * Math.cos(this.angleC) + xStart;
-        y2 = this.lengthZ * Math.sin(this.angleC) + yOffset - yDifference;
-        z2 = 0;
+          x2[i] = this.lengthZ * Math.cos(this.angleC) * (j+1);
+          y2[j] = this.lengthZ * Math.sin(this.angleC) * (j+1);
+          z2[k] = 0;
 
-        x3 = Number(this.lengthX) + (this.lengthX * x) + xStart;
-        y3 = 0 + yOffset - yDifference; 
-        z3 = 0;
+          x3[i] = this.lengthX * (i+1);
+          y3[j] = 0;
+          z3[k] = 0;
 
-        x4 = x1 + x2 - xStart;
-        y4 = y1 + y2 - yOffset + yDifference;
-        z4 = z1 + z2;
-        
-        x5 = Number(x1) + Number(x3) - xStart;
-        y5 = y1 + y3 - yOffset + yDifference;
-        z5 = z1 + z3;
+          //console.log(y3[j]);
 
-        x6 = Number(x3) + Number(x2) - xStart;
-        y6 = y3 + y2 - yOffset + yDifference;
-        z6 = z3 + z2;
+          x4[i] = x1[i] + x2[i];
+          y4[j] = y1[j] + y2[j];
+          z4[k] = z1[k] + z2[k];
 
-        x7 = Number(x1) + Number(x6) - xStart;
-        y7 = y1 + y6 - yOffset + yDifference;
-        z7 = z1 + z6;
+          x5[i] = x1[i] + x3[i];
+          y5[j]= y1[j] + y3[j];
+          z5[k] = z1[k] + z3[k];
 
-        //create points
-        let bottomFrontLeft = new THREE.Vector3(0 + xStart,0 + yOffset - yDifference,0);
-        let bottomFrontRight = new THREE.Vector3(x3, y3, z3);
-        let topFrontRight = new THREE.Vector3(x5, y5, z5);
-        let topFrontLeft = new THREE.Vector3(x1, y1, z1);
+          x6[i] = x3[i] + x2[i];
+          y6[j] = y3[j] + y2[j];
+          z6[j] = z3[j] + z2[j];
 
-        let bottomBackLeft = new THREE.Vector3(x2, y2, z2);
-        let bottomBackRight = new THREE.Vector3(x6, y6, z6);
+          x7[i] = x1[i] + x6[i];
+          y7[j] = y1[j] + y6[j];
+          z7[k] = z1[k] + z6[k];
 
-        let topBackRight = new THREE.Vector3(x7, y7, z7);
-        let topBackLeft = new THREE.Vector3(x4, y4, z4);
+          //create points
+          let bottomFrontLeft = new THREE.Vector3(0,0,0);
+          let bottomFrontRight = new THREE.Vector3(x3[i], y3[j], z3[k]);
+          let topFrontRight = new THREE.Vector3(x5[i], y5[j], z5[k]);
+          let topFrontLeft = new THREE.Vector3(x1[i], y1[j], z1[k]);
 
-        //creating front facing shape
-        this.shape.vertices.push(bottomFrontLeft);
-        this.shape.vertices.push(bottomFrontRight);
-        this.shape.vertices.push(topFrontRight);
-        this.shape.vertices.push(topFrontLeft);
-        this.shape.vertices.push(bottomFrontLeft);
-        
-        //setting variables for the bottom of the shape
+          let bottomBackLeft = new THREE.Vector3(x2[i], y2[j], z2[k]);
+          let bottomBackRight = new THREE.Vector3(x6[i], y6[j], z6[k]);
 
-        //creating bottom of shape
-        this.shape.vertices.push(bottomBackLeft);
-        this.shape.vertices.push(bottomBackRight);
-        this.shape.vertices.push(bottomFrontRight);
+          let topBackRight = new THREE.Vector3(x7[i], y7[j], z7[k]);
+          let topBackLeft = new THREE.Vector3(x4[i], y4[j], z4[k]);
 
-        // //creating right side of shape
-        this.shape.vertices.push(topFrontRight);
-        this.shape.vertices.push(topBackRight);
-        this.shape.vertices.push(bottomBackRight);
-        
-        // //creating top of shape
-        this.shape.vertices.push(topBackRight);
-        this.shape.vertices.push(topBackLeft);
-        this.shape.vertices.push(topFrontLeft);
+          //creating front facing shape
+          this.shape.vertices.push(bottomFrontLeft);
+          this.shape.vertices.push(bottomFrontRight);
+          this.shape.vertices.push(topFrontRight);
+          this.shape.vertices.push(topFrontLeft);
+          this.shape.vertices.push(bottomFrontLeft);
 
-        // //finishing off left side
-        this.shape.vertices.push(topBackLeft);
-        this.shape.vertices.push(bottomBackLeft);
+          //setting variables for the bottom of the shape
 
-        this.line = new THREE.Line(this.shape, this.material);
+          //creating bottom of shape
+          this.shape.vertices.push(bottomBackLeft);
+          this.shape.vertices.push(bottomBackRight);
+          this.shape.vertices.push(bottomFrontRight);
 
-        //TODO: MOVE THIS OUT OF THIS FUNCTION
-        this.crystals.push(this.line);
-        this.scene.add(this.crystals[crystalCount]); 
-        
-        ++crystalCount;
+          // //creating right side of shape
+          this.shape.vertices.push(topFrontRight);
+          this.shape.vertices.push(topBackRight);
+          this.shape.vertices.push(bottomBackRight);
+
+          // //creating top of shape
+          this.shape.vertices.push(topBackRight);
+          this.shape.vertices.push(topBackLeft);
+          this.shape.vertices.push(topFrontLeft);
+
+          // //finishing off left side
+          this.shape.vertices.push(topBackLeft);
+          this.shape.vertices.push(bottomBackLeft);
+
+          this.line = new THREE.Line(this.shape, this.material);
+
+          //TODO: MOVE THIS OUT OF THIS FUNCTION
+          this.crystals.push(this.line);
+          this.scene.add(this.crystals[crystalCount]);
+
+          ++crystalCount;
+        }
       }
-      xStart = this.lengthY * Math.cos(this.angleB) + xStart;
-      yOffset = y4;
-      yDifference =  y1;
-
+      xStart = x1 [i];
     }
   }
 
@@ -181,7 +200,7 @@ class Specimen{
     //   xOffset += 10;
     // }
   }
-  
+
   drawShape(scene){
     // for (let i = 0; i < this.countX * this.countY; ++i){
     //   if (this.crystals[i]){
@@ -203,14 +222,14 @@ class Specimen{
     for (let x = 0; x < this.countX; ++x){
       for (let y = 0; y < this.countY; ++y){
         let geometry = new THREE.SphereGeometry(0.25, 4, 4);
-        let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});    
+        let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});
         let sphere = new THREE.Mesh(geometry, material);
         sphere.name = index;
 
         sphere.translateX((crystalX * this.width)+ x * this.width);
         sphere.translateY((crystalY * this.height) + y * this.height);
         sphere.translateZ(crystalZ * this.depth);
-        
+
         this.scene.add(sphere);
         this.sphereInstances.push(sphere);
       }
@@ -266,13 +285,13 @@ class Specimen{
       for (let x = 0; x < this.countX; ++x){
         for (let y = 0; y < this.countY; ++y){
           let geometry = new THREE.SphereGeometry(0.25, 4, 4);
-          let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});    
+          let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});
           let sphere = new THREE.Mesh(geometry, material);
 
           sphere.translateX((this.spheres[i].x * this.width)+ x * this.width);
           sphere.translateY((this.spheres[i].y * this.height) + y * this.height);
           sphere.translateZ(this.spheres[i].z * this.depth);
-          
+
           this.scene.add(sphere);
 
         }
