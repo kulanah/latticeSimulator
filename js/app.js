@@ -66,3 +66,15 @@ let id;
 drawSpecimen();
 init();
 animate();
+
+
+let draggables = ['controlsbox'];
+
+for (let i = 0; i < draggables.length; ++i){
+  $('#' + draggables[i]).draggable({
+    addClasses: true,
+    // cancel: 'map, iframe',
+    // iframeFix: true,
+    cursor: 'move'
+  });
+}
