@@ -63,15 +63,15 @@ class Specimen{
     for (let i = 0; i < this.countX; ++i){
       for (let j = 0; j < this.countY; ++j){
         for(let k = 0; k < this.countZ; ++k){
-          x1[i] = this.lengthZ * Math.cos(this.angleB) * k;
-          y1[j] = this.lengthZ * Math.cos(this.angleA) * Math.sin(this.angleC) * k;
-          z1[k] = this.lengthZ * Math.sin(this.angleB) * k;
+          x1[i] = this.lengthY * Math.cos(this.angleB) * (k+1);
+          y1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k+1);
+          z1[k] = this.lengthY * Math.sin(this.angleB) * (k+1);
 
-          x2[i] = this.lengthY * Math.cos(this.angleC) + j;
-          y2[j] = this.lengthY * Math.sin(this.angleC) + this.lengthY * j;
+          x2[i] = this.lengthZ * Math.cos(this.angleC) * (j+1);
+          y2[j] = this.lengthZ * Math.sin(this.angleC) * (j+1);
           z2[k] = 0;
 
-          x3[i] = this.lengthX * i;
+          x3[i] = this.lengthX * (i+1);
           y3[j] = 0;
           z3[k] = 0;
 
@@ -109,23 +109,22 @@ class Specimen{
           //Drawing spheres at square points
 
 
-          let sgeometry = new THREE.SphereGeometry(2, 4, 4);
-          console.log(x2[i]);
-          let smaterial = new THREE.MeshBasicMaterial({color: 0xffffff,wireframe: true, transparent: true});
-          let sphere1= new THREE.Mesh(sgeometry, smaterial);
+          // let sgeometry = new THREE.SphereGeometry(2, 4, 4);
+          // let smaterial = new THREE.MeshBasicMaterial({color: 0xffffff,wireframe: true, transparent: true});
+          // let sphere1= new THREE.Mesh(sgeometry, smaterial);
 
-          let sgeometry2 = new THREE.SphereGeometry(2, 4, 4);
-          let smaterial2 = new THREE.MeshBasicMaterial({color: 0xffffff,wireframe: true, transparent: true});
-          let sphere2= new THREE.Mesh(sgeometry2, smaterial2);
-
+          // let sgeometry2 = new THREE.SphereGeometry(2, 4, 4);
+          // let smaterial2 = new THREE.MeshBasicMaterial({color: 0xffffff,wireframe: true, transparent: true});
+          // let sphere2= new THREE.Mesh(sgeometry2, smaterial2);
 
 
-          sphere1.translateX(x1[i]);
-          sphere1.translateY(y1[j]);
-          sphere1.translateZ(z1[k]);
-          sphere2.translateX(x2[i]);
-          sphere2.translateY(y2[j]);
-          sphere2.translateZ(z2[k]);
+
+          // sphere1.translateX(x1[i]);
+          // sphere1.translateY(y1[j]);
+          // sphere1.translateZ(z1[k]);
+          // sphere2.translateX(x2[i]);
+          // sphere2.translateY(y2[j]);
+          // sphere2.translateZ(z2[k]);
 
           /*
           sphere.translateX(x3[i]);
