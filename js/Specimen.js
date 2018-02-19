@@ -145,8 +145,8 @@ class Specimen{
           sphere.translateZ(z7[k]);
 
           */
-          this.scene.add(sphere1);
-          this.scene.add(sphere2);
+          // this.scene.add(sphere1);
+          // this.scene.add(sphere2);
 
 
 
