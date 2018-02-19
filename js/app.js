@@ -78,3 +78,5 @@ for (let i = 0; i < draggables.length; ++i){
     cursor: 'move'
   });
 }
+
+$('.hidden').hide();
