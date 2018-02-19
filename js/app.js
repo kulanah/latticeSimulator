@@ -80,3 +80,5 @@ for (let i = 0; i < draggables.length; ++i){
 }
 
 $('.hidden').hide();
+
+$('.latticecolorpicker').spectrum("set", '#ff37d8');
