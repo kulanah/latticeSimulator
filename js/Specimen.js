@@ -195,8 +195,6 @@ class Specimen{
     this.latticeColor = rgbVal;
     this.material = new THREE.LineBasicMaterial({color: this.latticeColor});
     this.redrawCrystals();
-    console.log(this.material);
-
   }
 
   addSphere(crystalX, crystalY, crystalZ, crystalColor, index){
