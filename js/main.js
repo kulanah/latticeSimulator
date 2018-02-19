@@ -1,3 +1,4 @@
+
 let scene, renderer, controls;
 
 var WIDTH  = window.innerWidth;
@@ -48,7 +49,7 @@ var mesh = null;
 function initMesh() {
     var loader = new THREE.JSONLoader();
     loader.load('http://127.0.0.1:8080/json/pump.json', function(geometry, materials) {
-        mesh = new THREE.Mesh(geometry, new THREE.MeshFaceMaterial(materials));
+        mesh = new THREE.Mesh(geometry, materials);
         mesh.scale.x = mesh.scale.y = mesh.scale.z = 0.75;
         mesh.translation = geometry.center();
         scene.add(mesh);
