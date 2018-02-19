@@ -93,3 +93,16 @@ td{
 body{
   overflow: hidden;
 }
+
+#threeCanvas{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#controlsboxexpand{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
