@@ -53,3 +53,15 @@ $('#zcountnumber').on('input', function(){
   newSpecimen.changeZCount($('#zcountnumber')[0].value);
   newSpecimen.redrawCrystals();
 });
+
+
+$('.latticecolorpicker').on('change', function(){
+
+  let colorHex = $('.latticecolorpicker').spectrum("get").toRgbString();
+
+  console.log(colorHex);
+
+  newSpecimen.setLatticeColor(colorHex);
+
+});
+
