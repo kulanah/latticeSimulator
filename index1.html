@@ -17,49 +17,37 @@
 			<div class='controlsboxdiv'>
 				<p>bravias lattice</p>
 				<select name="" id="">
-					<option value="Primitive Cubic">Primitive Cubic</option>
-					<option value="bcc">bcc</option>
-					<option value="fcc">fcc</option>
-					<option value="Tetragonal">Tetragonal</option>
-					<option value="Body centered Tetragonal">Body centered Tetragonal</option>
-					<option value="Orthohombic">Orthohombic</option>
-					<option value="Body Centered Orthohombic">Body Centered Orthohombic</option>
-					<option value="Face Centered Orthohombic">Face Centered Orthohombic</option>
-					<option value="End Centered Orthohombic">End Centered Orthohombic</option>
-					<option value="Hexagonal">Hexagonal</option>
-					<option value="Rhombohedral">Rhombohedral</option>
-					<option value="Monoclinic">Monoclinic</option>
-					<option value="End Centered Monoclinic">End Centered Monoclinic</option>
-					<option value="Triclinic">Triclinic</option>
+					<option value="first">First</option>
+					<option value="second">Second</option>
+					<option value="third">Third</option>
 				</select>
 			</div>
 			<div class='controlsboxdiv'>
 				<p>Units</p>
 				<div id='unitsflex'>
 					<span>
-						a =
-						<input id='lengthX' type="number" value='5.431'>
+						a = 
+						<input id='angleA' type="number" value='60' max='180'>
 					</span>
 					<span>
-						b =
-						<input id='lengthY' type="number" value='5.431'>
+						b = 
+						<input id='angleB' type="number" value='60' max='180'>
 					</span>
 					<span>
-						c =
-						<input id='lengthZ' type="number" value='5.431'>
+						c = 
+						<input id='angleC' type="number" value='60' max='180'>
 					</span>
 					<span>
-						Alpha =
-						<input id='angleA' type="number" value='90' max='180'>
+						X = 
+						<input id='lengthX' type="number" value='10'>
 					</span>
 					<span>
-						Beta =
-						<input id='angleB' type="number" value='90' max='180'>
+						Y = 
+						<input id='lengthY' type="number" value='10'>
 					</span>
 					<span>
-						Gamma =
-						<input id='angleC' type="number" value='90' max='180'>
-					</span>
+						Z = 
+						<input id='lengthZ' type="number" value='10'>
 					</span>
 				</div>
 			</div>
@@ -76,15 +64,15 @@
 					</span>
 					<span>
 						<p>X</p>
-						<input id='xinput' type="number" value='0'>
+						<input id='xinput' type="text">
 					</span>
 					<span>
 						<p>Y</p>
-						<input id='yinput' type="number" value='0'>
+						<input id='yinput' type="text">
 					</span>
 					<span>
 						<p>Z</p>
-						<input id='zinput' type="number" value='0'>
+						<input id='zinput' type="text">
 					</span>
 					<span>
 						<p>Color</p>
@@ -113,7 +101,7 @@
 			<div class='controlsboxdiv' id='tablediv'>
 				<p>Scale # of Unit</p>
 				<div>
-
+		
 					<table>
 						<tr>
 							<td>X</td>
@@ -130,20 +118,27 @@
 
 				</div>
 			</div>
-		</div>
+		</div> 
+
+
 
 		<script src="js/three.js"></script>
 		<script src="js/jquery.js"></script>
 		<script src="js/TrackBallControls.js"></script>
 		<script src="js/spectrum.js"></script>
 
-		<script src="js/Specimen.js"></script>
+
+	<!-- <script src="js/main.js"></script> -->
+		<!-- <script src="./js/blenderImport.js"></script> -->
+		
+
+		<script src="js/Specimen1.js"></script>
 		<script src='js/component.js'></script>
 		<script src='js/column.js'></script>
 		<script src='js/onclick.js'></script>
 		<script src='js/onchange.js'></script>
 		<script src="js/controls.js"></script>
-		<script src='js/app.js'></script>
+		<script src='js/app.js'></script> 
 		<link rel='stylesheet' href='./styles.css'>
 		<link rel='stylesheet' href='./spectrum.css'>
 	</body>

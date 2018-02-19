@@ -5,7 +5,7 @@
         "visible":true,
         "depthTest":true,
         "blending":1,
-        "doubleSided":false,
+        "doubleSided":true,
         "depthWrite":true,
         "transparent":false,
         "DbgColor":15658734,
