@@ -128,3 +128,10 @@ body{
   flex-grow: 1;
   margin: 5px 5px 5px 20px;
 }
+
+#elementinput{
+  height: 50px;
+  width: 50px;
+  background: white;
+  border:  1px #a0a0a0 solid;
+}

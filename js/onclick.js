@@ -55,3 +55,10 @@ $('#controlsboxexpand').on('click', function(){
 
   $('#controlsboxexpand').hide();
 });
+
+
+$('#elementinput').on('click', function(){
+
+  //TODO: make this san onclick
+
+});
