@@ -41,7 +41,7 @@ body{
 
 #buttonflex{
   display: flex;
-  width: 411px;
+  width: 409px;
 }
 
 .buttonrow{
@@ -60,7 +60,7 @@ body{
   justify-content: space-around;
 }
 
-#colorpicker{
+.colorpicker{
   width: 10px;
 }
 
@@ -79,7 +79,7 @@ td{
 
 
 #tablediv td{
-  width: 137px; 
+  width: 130px; 
   vertical-align: middle;
   margin: auto;
   text-align: center;
@@ -87,7 +87,7 @@ td{
 }
 
 #tablediv input{
-  width: 129px;
+  width: 125px;
 }
 
 body{
@@ -105,4 +105,26 @@ body{
   left: 0;
   bottom: 0;
   z-index: 1;
+}
+
+#specimenrow{
+  display:flex;
+  flex-flow: flex-start;
+}
+
+#specimenname{
+  width: 200px;
+  margin-right:80px;
+  margin-bottom: 20px;
+  margin-left: 5px;
+  margin-top: 5px;
+}
+
+#latticecolorpicker{
+  flex-grow: 1;
+}
+
+#controlsboxhide{
+  flex-grow: 1;
+  margin: 5px 5px 5px 20px;
 }

@@ -31,7 +31,13 @@ let init = function(){
 
   controls.target = new THREE.Vector3(xVal, 0, 0);
 
-  $('#colorpicker').spectrum({
+
+  $('#latticecolorpicker').spectrum({
+    color: "#ff37d8",
+    preferredFormat: "hex",
+  });
+
+  $('#atomcolorpicker').spectrum({
     color: "#f00",
     preferredFormat: "hex",
   });
@@ -80,5 +86,3 @@ for (let i = 0; i < draggables.length; ++i){
 }
 
 $('.hidden').hide();
-
-$('.latticecolorpicker').spectrum("set", '#ff37d8');
