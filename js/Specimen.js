@@ -65,47 +65,47 @@ class Specimen{
     let y7 = new Array;
     let z7 = new Array;
     for (let i = 0; i < this.countX; ++i){
-      for (let j = 0; j < this.countY; ++j){
-        for(let k = 0; k < this.countZ; ++k){
-          x1[i] = this.lengthY * Math.cos(this.angleB) * (k+1);
-          y1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k+1);
-          z1[k] = this.lengthY * Math.sin(this.angleB) * (k+1);
+      for (let j = 0; j < this.countZ; ++j){
+        for(let k = 0; k < this.countY; ++k){
+          x1[i] = this.lengthY * (Math.cos(this.angleA) * Math.cos(this.angleC))* (k+1);
+          y1[k] = this.lengthY * Math.sin(this.angleA) * (k+1);
+          z1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k+1);
 
           x2[i] = this.lengthZ * Math.cos(this.angleC) * (j+1);
-          y2[j] = this.lengthZ * Math.sin(this.angleC) * (j+1);
-          z2[k] = 0;
+          z2[j] = this.lengthZ * Math.sin(this.angleC) * (j+1);
+          y2[k] = 0;
 
           x3[i] = this.lengthX * (i+1);
-          y3[j] = 0;
-          z3[k] = 0;
+          y3[k] = 0;
+          z3[j] = 0;
 
           x4[i] = x1[i] + x2[i];
-          y4[j] = y1[j] + y2[j];
-          z4[k] = z1[k] + z2[k];
+          y4[k] = y1[k] + y2[k];
+          z4[j] = z1[j] + z2[j];
 
           x5[i] = x1[i] + x3[i];
-          y5[j]= y1[j] + y3[j];
-          z5[k] = z1[k] + z3[k];
+          y5[k]= y1[k] + y3[k];
+          z5[j] = z1[j] + z3[j];
 
           x6[i] = x3[i] + x2[i];
-          y6[j] = y3[j] + y2[j];
+          y6[k] = y3[k] + y2[k];
           z6[j] = z3[j] + z2[j];
 
           x7[i] = x1[i] + x6[i];
-          y7[j] = y1[j] + y6[j];
-          z7[k] = z1[k] + z6[k];
+          y7[k] = y1[k] + y6[k];
+          z7[j] = z1[j] + z6[j];
 
           //create points
           let bottomFrontLeft = new THREE.Vector3(0,0,0);
-          let bottomFrontRight = new THREE.Vector3(x3[i], y3[j], z3[k]);
-          let topFrontRight = new THREE.Vector3(x5[i], y5[j], z5[k]);
-          let topFrontLeft = new THREE.Vector3(x1[i], y1[j], z1[k]);
+          let bottomFrontRight = new THREE.Vector3(x3[i], y3[k], z3[j]);
+          let topFrontRight = new THREE.Vector3(x5[i], y5[k], z5[j]);
+          let topFrontLeft = new THREE.Vector3(x1[i], y1[k], z1[j]);
 
-          let bottomBackLeft = new THREE.Vector3(x2[i], y2[j], z2[k]);
-          let bottomBackRight = new THREE.Vector3(x6[i], y6[j], z6[k]);
+          let bottomBackLeft = new THREE.Vector3(x2[i], y2[k], z2[j]);
+          let bottomBackRight = new THREE.Vector3(x6[i], y6[k], z6[j]);
 
-          let topBackRight = new THREE.Vector3(x7[i], y7[j], z7[k]);
-          let topBackLeft = new THREE.Vector3(x4[i], y4[j], z4[k]);
+          let topBackRight = new THREE.Vector3(x7[i], y7[k], z7[j]);
+          let topBackLeft = new THREE.Vector3(x4[i], y4[k], z4[j]);
 
           //creating front facing shape
           this.shape.vertices.push(bottomFrontLeft);
@@ -150,38 +150,38 @@ class Specimen{
           this.scene.add(sphere0);
           let sphere1 = new THREE.Mesh(geometry, material);
           sphere1.position.x = x1[i];
-          sphere1.position.y = y1[j];
-          sphere1.position.z = z1[k];
+          sphere1.position.y = y1[k];
+          sphere1.position.z = z1[j];
           this.scene.add(sphere1);
           let sphere2 = new THREE.Mesh(geometry, material);
           sphere2.position.x = x2[i];
-          sphere2.position.y = y2[j];
-          sphere2.position.z = z2[k];
+          sphere2.position.y = y2[k];
+          sphere2.position.z = z2[j];
           this.scene.add(sphere2);
           let sphere3 = new THREE.Mesh(geometry, material);
           sphere3.position.x = x3[i];
-          sphere3.position.y = y3[j];
-          sphere3.position.z = z3[k];
+          sphere3.position.y = y3[k];
+          sphere3.position.z = z3[j];
           this.scene.add(sphere3);
           let sphere4 = new THREE.Mesh(geometry, material);
           sphere4.position.x = x4[i];
-          sphere4.position.y = y4[j];
-          sphere4.position.z = z4[k];
+          sphere4.position.y = y4[k];
+          sphere4.position.z = z4[j];
           this.scene.add(sphere4);
           let sphere5 = new THREE.Mesh(geometry, material);
           sphere5.position.x = x5[i];
-          sphere5.position.y = y5[j];
-          sphere5.position.z = z5[k];
+          sphere5.position.y = y5[k];
+          sphere5.position.z = z5[j];
           this.scene.add(sphere5);
           let sphere6 = new THREE.Mesh(geometry, material);
           sphere6.position.x = x6[i];
-          sphere6.position.y = y6[j];
-          sphere6.position.z = z6[k];
+          sphere6.position.y = y6[k];
+          sphere6.position.z = z6[j];
           this.scene.add(sphere6);
           let sphere7 = new THREE.Mesh(geometry, material);
           sphere7.position.x = x7[i];
-          sphere7.position.y = y7[j];
-          sphere7.position.z = z7[k];
+          sphere7.position.y = y7[k];
+          sphere7.position.z = z7[j];
           this.scene.add(sphere7);
 
           this.spheres.push(sphere0);
