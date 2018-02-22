@@ -27,14 +27,11 @@ class Specimen{
     this.createCrystals = this.createCrystals.bind(this);
     this.crystals = new Array;
     this.spheres = new Array;
+    this.sphereCoords = new Array;
     this.sphereInstances = new Array;
     this.createCrystals();
-    this.placeCrystals();
     this.lineWeight = lineWeight;
-    // this.createPoles();
     console.log(this.lineWeight);
-    
-
   }
 
   createCrystals(){
@@ -202,6 +199,10 @@ class Specimen{
     }
   }
 
+  addAtom(x, y, z, colorhex){
+    this.sphereInstances.push({x: x, y: y, z: z, color: colorhex});
+  }
+
   redrawCrystals(){
     for (let i = 0; i < this.crystals.length; ++i){
       this.scene.remove(this.crystals[i]);
@@ -221,59 +222,11 @@ class Specimen{
   }
 
 
-  createPoles(){
-    let xMaterial = new THREE.LineBasicMaterial({color: 0xff0000});
-    let xShape = new THREE.Geometry();
-    xShape.vertices.push(new THREE.Vector3(-1000, 0, 0));
-    xShape.vertices.push(new THREE.Vector3(1000, 0, 0));
-    let xPole = new THREE.Line(xShape, xMaterial);
-
-    let yMaterial = new THREE.LineBasicMaterial({color: 0x00ff00});
-    let yShape = new THREE.Geometry();
-    yShape.vertices.push(new THREE.Vector3(0, -1000, 0));
-    yShape.vertices.push(new THREE.Vector3(0, 1000, 0));
-    let yPole = new THREE.Line(yShape, yMaterial);
-
-    let zMaterial = new THREE.LineBasicMaterial({color: 0x0000ff});
-    let zShape = new THREE.Geometry();
-    zShape.vertices.push(new THREE.Vector3(0, 0, -1000));
-    zShape.vertices.push(new THREE.Vector3(0, 0, 1000));
-    let zPole = new THREE.Line(zShape, zMaterial);
-
-    this.scene.add(xPole);
-    this.scene.add(yPole);
-    this.scene.add(zPole);
-  }
-
   setLatticeWeight(newWeight){
     delete this.material;
     this.lineWeight = newWeight;
     this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
     this.redrawCrystals();
-  }
-
-  placeCrystals(){
-    // let xOffset = 5;
-    // let yOffset =  5;
-    // let zOffset = 5;
-    // let count = 0;
-    // for (let x = 0; x < this.countX; ++x){
-    //   for (let y = 0; y < this.countY; ++y){
-    //     this.crystals[count].lines.translateX(xOffset);
-    //     this.crystals[count].lines.translateY(yOffset + this.height * y);
-    //     this.crystals[count].lines.translateZ(zOffset);
-    //     ++count;
-    //   }
-    //   xOffset += 10;
-    // }
-  }
-
-  drawShape(scene){
-    // for (let i = 0; i < this.countX * this.countY; ++i){
-    //   if (this.crystals[i]){
-    //     scene.add(this.crystals[i].lines);
-    //   }
-    // }
   }
 
   setLatticeColor(rgbVal){
@@ -364,4 +317,29 @@ class Specimen{
       }
     }
   }
+
+  createPoles(){
+    let xMaterial = new THREE.LineBasicMaterial({color: 0xff0000});
+    let xShape = new THREE.Geometry();
+    xShape.vertices.push(new THREE.Vector3(-1000, 0, 0));
+    xShape.vertices.push(new THREE.Vector3(1000, 0, 0));
+    let xPole = new THREE.Line(xShape, xMaterial);
+
+    let yMaterial = new THREE.LineBasicMaterial({color: 0x00ff00});
+    let yShape = new THREE.Geometry();
+    yShape.vertices.push(new THREE.Vector3(0, -1000, 0));
+    yShape.vertices.push(new THREE.Vector3(0, 1000, 0));
+    let yPole = new THREE.Line(yShape, yMaterial);
+
+    let zMaterial = new THREE.LineBasicMaterial({color: 0x0000ff});
+    let zShape = new THREE.Geometry();
+    zShape.vertices.push(new THREE.Vector3(0, 0, -1000));
+    zShape.vertices.push(new THREE.Vector3(0, 0, 1000));
+    let zPole = new THREE.Line(zShape, zMaterial);
+
+    this.scene.add(xPole);
+    this.scene.add(yPole);
+    this.scene.add(zPole);
+  }
+
 }
