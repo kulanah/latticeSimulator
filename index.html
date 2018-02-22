@@ -9,18 +9,17 @@
 		</style>
 	</head>
 	<body>
-		<div id='controlsbox' class='hidden'>
+		<div id='controlsbox'> <!--class='hidden'>-->
 			<div class='controlsboxdiv'>
 				<p>specimen name</p>
 				<div id='specimenrow'>
 					<input id='specimenname' type="text">
-					<input type="text" id='latticecolorpicker' class='colorpicker'>
 					<button id='controlsboxhide'>Hide</button>
 				</div>
 			</div>
-			<div class='controlsboxdiv'>
-				<p>bravias lattice</p>
-				<select name="" id="">
+			<div class='controlsboxdiv' id='latticeoptions'>
+				<p id='latticetitle'>bravias lattice</p>
+				<select name="" id="latticeselector">
 					<option value="Primitive Cubic">Primitive Cubic</option>
 					<option value="bcc">bcc</option>
 					<option value="fcc">fcc</option>
@@ -36,6 +35,8 @@
 					<option value="End Centered Monoclinic">End Centered Monoclinic</option>
 					<option value="Triclinic">Triclinic</option>
 				</select>
+				<input type='number' id='latticeweight' value='4' max='7' min='1'>
+				<input type="text" id='latticecolorpicker' class='colorpicker'>
 			</div>
 			<div class='controlsboxdiv'>
 				<p>Units</p>
@@ -125,8 +126,8 @@
 							<td>Z</td>
 						</tr>
 						<tr>
-							<td><input id='xcountnumber' type='number' value='4' max='4'></td>
-							<td><input id='ycountnumber' type='number' value='2' max='4'></td>
+							<td><input id='xcountnumber' type='number' value='1' max='4'></td>
+							<td><input id='ycountnumber' type='number' value='1' max='4'></td>
 							<td><input id='zcountnumber' type='number' value='1' max='4'></td>
 
 						</tr>
@@ -370,8 +371,8 @@
 		<script src='js/onchange.js'></script>
 		<script src="js/controls.js"></script>
 		<script src='js/app.js'></script>
+		<link rel='stylesheet' href='./css/spectrum.css'>
 		<link rel='stylesheet' href='./css/styles.css'>
 		<link rel='stylesheet' href='./css/periodictable.css'>
-		<link rel='stylesheet' href='./css/spectrum.css'>
 	</body>
 </html>
