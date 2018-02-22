@@ -35,6 +35,9 @@ class Specimen{
   }
 
   createCrystals(){
+    let geometry = new THREE.SphereGeometry(0.25, 4, 4);
+    let material = new THREE.MeshBasicMaterial({color: '#fff', wireframe: false, transparent: true});
+    let sphere;
     let crystalCount = 0;
     let xStart = 0;
     let x0 = 0;
@@ -75,8 +78,6 @@ class Specimen{
           x3[i] = this.lengthX * (i+1);
           y3[j] = 0;
           z3[k] = 0;
-
-          //console.log(y3[j]);
 
           x4[i] = x1[i] + x2[i];
           y4[j] = y1[j] + y2[j];
@@ -141,6 +142,57 @@ class Specimen{
           this.scene.add(this.crystals[crystalCount]);
 
           ++crystalCount;
+
+          let sphere0 = new THREE.Mesh(geometry, material);
+          sphere0.position.x = x0;
+          sphere0.position.y = y0;
+          sphere0.position.z = z0;
+          this.scene.add(sphere0);
+          let sphere1 = new THREE.Mesh(geometry, material);
+          sphere1.position.x = x1[i];
+          sphere1.position.y = y1[j];
+          sphere1.position.z = z1[k];
+          this.scene.add(sphere1);
+          let sphere2 = new THREE.Mesh(geometry, material);
+          sphere2.position.x = x2[i];
+          sphere2.position.y = y2[j];
+          sphere2.position.z = z2[k];
+          this.scene.add(sphere2);
+          let sphere3 = new THREE.Mesh(geometry, material);
+          sphere3.position.x = x3[i];
+          sphere3.position.y = y3[j];
+          sphere3.position.z = z3[k];
+          this.scene.add(sphere3);
+          let sphere4 = new THREE.Mesh(geometry, material);
+          sphere4.position.x = x4[i];
+          sphere4.position.y = y4[j];
+          sphere4.position.z = z4[k];
+          this.scene.add(sphere4);
+          let sphere5 = new THREE.Mesh(geometry, material);
+          sphere5.position.x = x5[i];
+          sphere5.position.y = y5[j];
+          sphere5.position.z = z5[k];
+          this.scene.add(sphere5);
+          let sphere6 = new THREE.Mesh(geometry, material);
+          sphere6.position.x = x6[i];
+          sphere6.position.y = y6[j];
+          sphere6.position.z = z6[k];
+          this.scene.add(sphere6);
+          let sphere7 = new THREE.Mesh(geometry, material);
+          sphere7.position.x = x7[i];
+          sphere7.position.y = y7[j];
+          sphere7.position.z = z7[k];
+          this.scene.add(sphere7);
+
+          this.spheres.push(sphere0);
+          this.spheres.push(sphere1);
+          this.spheres.push(sphere2);
+          this.spheres.push(sphere3);
+          this.spheres.push(sphere4);
+          this.spheres.push(sphere5);
+          this.spheres.push(sphere6);
+          this.spheres.push(sphere7);
+
         }
       }
       xStart = x1 [i];
@@ -151,10 +203,15 @@ class Specimen{
     for (let i = 0; i < this.crystals.length; ++i){
       this.scene.remove(this.crystals[i]);
     }
+    for (let i = 0; i < this.spheres.length; ++i){
+      this.scene.remove(this.spheres[i]);
+    }
+    this.spheres = [];
     this.crystals = [];
     this.shape = [];
     this.shape = new THREE.Geometry;
     this.createCrystals();
+
     //delete old crystals
     //call draw crystal function with new vars
     render();
