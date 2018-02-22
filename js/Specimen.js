@@ -223,15 +223,17 @@ class Specimen{
 
 
   setLatticeWeight(newWeight){
-    delete this.material;
     this.lineWeight = newWeight;
-    this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
-    this.redrawCrystals();
+    this.updateMaterials();
   }
 
   setLatticeColor(rgbVal){
-    delete this.material;
     this.latticeColor = rgbVal;
+    this.updateMaterials();
+  }
+
+  updateMaterial(){
+    delete this.material;
     this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
     this.redrawCrystals();
   }
