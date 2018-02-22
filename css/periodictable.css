@@ -37,7 +37,7 @@
 
 #row7gutter{
   grid-row: 7/8;
-  grid-column: 5/7;
+  grid-column: 5/35;
 }
 
 #row8gutter{
@@ -60,5 +60,10 @@
   vertical-align: center;
   padding-top: 1px;
   padding-bottom: 1px;
+
+}
+
+.element:hover{
+  cursor: pointer;
 
 }

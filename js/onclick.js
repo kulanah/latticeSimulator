@@ -58,7 +58,7 @@ $('#controlsboxexpand').on('click', function(){
 
 
 $('#elementinput').on('click', function(){
+  $('#periodictable').show();
 
-  //TODO: make this san onclick
 
 });

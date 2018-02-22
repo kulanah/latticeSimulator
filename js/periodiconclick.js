@@ -355,3 +355,8 @@ $('#Lr').on('click', function(){
 $('#At').on('click', function(){
   $('#elementinput').text(this.id);
 });
+
+$('.element').on('click', function(){
+  $('#periodictable').hide();
+
+});
