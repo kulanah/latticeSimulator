@@ -55,9 +55,9 @@ $('#zcountnumber').on('input', function(){
 });
 
 
-$('.latticecolorpicker').on('change', function(){
+$('#latticecolorpicker').on('change', function(){
 
-  let colorHex = $('.latticecolorpicker').spectrum("get").toRgbString();
+  let colorHex = $('#latticecolorpicker').spectrum("get").toRgbString();
 
   newSpecimen.setLatticeColor(colorHex);
 });
