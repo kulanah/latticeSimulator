@@ -1,0 +1,64 @@
+#periodictable{
+  position: absolute;
+  left:  0;
+  bottom: 0;
+  width: 600px;
+  height: 400px;
+  background: #ECE9D8;
+  z-index: 2;
+  border: #2744AA 2px solid;
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-rows:  repeat(10 10%);
+  grid-template-columns: repeat(18, 0.5% 5%);
+  padding-top: 5px;
+}
+
+#row1gutter{
+  grid-row: 1/2;
+  grid-column: 3/35;
+}
+
+#row2gutter{
+  grid-row: 2/3;
+  grid-column: 5/25;
+}
+
+#row3gutter{
+  grid-row: 3/4;
+  grid-column: 5/25;
+}
+
+#row6gutter{
+  grid-row: 6/7;
+  grid-column: 5/7;
+}
+
+#row7gutter{
+  grid-row: 7/8;
+  grid-column: 5/7;
+}
+
+#row8gutter{
+  grid-row: 8/9;
+  grid-column: 1/7;
+}
+
+#row9gutter{
+  grid-row: 9/10;
+  grid-column: 1/7;
+}
+
+.element{
+  background: white;
+  border: 1px grey solid;
+  width: 20px;
+  height: 20px;
+
+  text-align: center;
+  vertical-align: center;
+  padding-top: 1px;
+  padding-bottom: 1px;
+
+}

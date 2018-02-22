@@ -130,8 +130,10 @@ body{
 }
 
 #elementinput{
-  height: 50px;
+  height: 35px;
   width: 50px;
   background: white;
   border:  1px #a0a0a0 solid;
+  text-align: center;
+  padding-top: 15px;
 }
