@@ -4,7 +4,7 @@ class Specimen{
     switch(shape){
       case 'square':
         this.shape = new THREE.Geometry();
-        this.material = new THREE.LineBasicMaterial({color: this.latticeColor});
+        this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: 4});
 
         this.lengthX = lengthA;
         this.lengthY = lengthB;
