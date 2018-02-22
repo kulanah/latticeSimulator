@@ -1,10 +1,10 @@
 class Specimen{
-  constructor(shape, countX, countY, countZ, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene){
+  constructor(shape, countX, countY, countZ, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene, lineWeight){
     this.latticeColor = 0xff37d8;
     switch(shape){
       case 'square':
         this.shape = new THREE.Geometry();
-        this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: 4});
+        this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: lineWeight});
 
         this.lengthX = lengthA;
         this.lengthY = lengthB;
@@ -30,7 +30,10 @@ class Specimen{
     this.sphereInstances = new Array;
     this.createCrystals();
     this.placeCrystals();
-    this.createPoles();
+    this.lineWeight = lineWeight;
+    // this.createPoles();
+    console.log(this.lineWeight);
+    
 
   }
 
@@ -64,10 +67,10 @@ class Specimen{
     let x7 = new Array;
     let y7 = new Array;
     let z7 = new Array;
-    for (let i = 0; i < this.countX; ++i){
-      for (let j = 0; j < this.countZ; ++j){
-        for(let k = 0; k < this.countY; ++k){
-          x1[i] = this.lengthY * (Math.cos(this.angleA) * Math.cos(this.angleC))* (k+1);
+    for (let i = -this.countX - 1; i < this.countX; ++i){
+      for (let j = -this.countZ - 1; j < this.countZ; ++j){
+        for(let k = -this.countY - 1; k < this.countY; ++k){
+          x1[i] = this.lengthY * Math.cos(this.angleB) * (k+1);
           y1[k] = this.lengthY * Math.sin(this.angleA) * (k+1);
           z1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k+1);
 
@@ -242,6 +245,13 @@ class Specimen{
     this.scene.add(zPole);
   }
 
+  setLatticeWeight(newWeight){
+    delete this.material;
+    this.lineWeight = newWeight;
+    this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
+    this.redrawCrystals();
+  }
+
   placeCrystals(){
     // let xOffset = 5;
     // let yOffset =  5;
@@ -269,7 +279,7 @@ class Specimen{
   setLatticeColor(rgbVal){
     delete this.material;
     this.latticeColor = rgbVal;
-    this.material = new THREE.LineBasicMaterial({color: this.latticeColor});
+    this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
     this.redrawCrystals();
   }
 

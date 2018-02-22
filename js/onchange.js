@@ -62,3 +62,7 @@ $('#latticecolorpicker').on('change', function(){
   newSpecimen.setLatticeColor(colorHex);
 });
 
+
+$('#latticeweight').on('input', function(){
+  newSpecimen.setLatticeWeight(this.value);
+});
