@@ -57,9 +57,9 @@ let animate = function(){
   controls.update();
 }
 
-let lengthX = 10;
-let lengthY = 10;
-let lengthZ = 10;
+let lengthX = $('#lengthX')[0].value;
+let lengthY = $('#lengthY')[0].value;
+let lengthZ = $('#lengthZ')[0].value;
 let angleA = $('#angleA')[0].value;
 let angleB = $('#angleB')[0].value;
 let angleC = $('#angleC')[0].value;
