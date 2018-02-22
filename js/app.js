@@ -63,9 +63,13 @@ let lengthZ = $('#lengthZ')[0].value;
 let angleA = $('#angleA')[0].value;
 let angleB = $('#angleB')[0].value;
 let angleC = $('#angleC')[0].value;
+let countX = $('#xcountnumber')[0].value;
+let countY = $('#ycountnumber')[0].value;
+let countZ = $('#zcountnumber')[0].value;
+let lineweight = $('#latticeweight')[0].value;
 
 
-let newSpecimen = new Specimen('square', 4, 2, 1, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene);
+let newSpecimen = new Specimen('square', countX, countY, countZ, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene, lineweight);
 
 let selected;
 let id;
