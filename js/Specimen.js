@@ -293,15 +293,14 @@ class Specimen{
         let sphere = new THREE.Mesh(geometry, material);
         sphere.name = index;
 
-        sphere.translateX((crystalX * this.width)+ x * this.width);
-        sphere.translateY((crystalY * this.height) + y * this.height);
-        sphere.translateZ(crystalZ * this.depth);
+        sphere.translateX((crystalX * this.lengthX)+ x * this.lengthX);
+        sphere.translateY((crystalY * this.lengthY) + y * this.lengthY);
+        sphere.translateZ(crystalZ * this.lengthZ);
 
         this.scene.add(sphere);
         this.sphereInstances.push(sphere);
       }
     }
-    console.log(this.sphereInstances);
   }
 
   remove(index){
