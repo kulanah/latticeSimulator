@@ -16,7 +16,7 @@ $('#atomaddbutton').on('click', function(){
   let x = $('#xinput')[0].value;
   let y = $('#yinput')[0].value;
   let z = $('#zinput')[0].value;
-  let colorHex = $('#colorpicker').spectrum("get").toHexString();
+  let colorHex = $('#atomcolorpicker').spectrum("get").toHexString();
 
   index = Date.now();
   let tableRow = "<tr class=\"crystalrow\" index=\"" + index + "\"><td>" + x + "</td><td>" + y + "</td><td>" + z + "</td><td style=\"background:" + colorHex + ";\"></td></tr>";
