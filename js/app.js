@@ -1,7 +1,5 @@
+
 let scene = new THREE.Scene();
-let angleX = 0.1;
-let angleY = 0.1;
-let angleZ = 0;
 let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
 let controls;
 let renderer;
@@ -33,28 +31,28 @@ let init = function(){
 
 
   $('#latticecolorpicker').spectrum({
-    color: "#ff37d8",
-    preferredFormat: "hex",
+    color: '#ff37d8',
+    preferredFormat: 'hex',
   });
 
   $('#atomcolorpicker').spectrum({
-    color: "#f00",
-    preferredFormat: "hex",
+    color: '#f00',
+    preferredFormat: 'hex',
   });
 
-}
+};
 
 let render = function(){
   renderer.render(scene, camera);
-}
+};
 
 let drawSpecimen = function(){
-}
+};
 
 let animate = function(){
   requestAnimationFrame(animate);
   controls.update();
-}
+};
 
 let lengthX = $('#lengthX')[0].value;
 let lengthY = $('#lengthY')[0].value;
@@ -69,18 +67,16 @@ let lineweight = $('#latticeweight')[0].value;
 
 
 let newSpecimen = new Specimen('square', countX, countY, countZ, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene, lineweight);
-// newSpecimen.addAtom(0, 0, 0, "#fff");
-// newSpecimen.addAtom(0, 0, 1, "#fff");
-// newSpecimen.addAtom(0, 1, 0, "#fff");
-// newSpecimen.addAtom(0, 1, 1, "#fff");
-// newSpecimen.addAtom(1, 0, 0, "#fff");
-// newSpecimen.addAtom(1, 0, 1, "#fff");
-// newSpecimen.addAtom(1, 1, 0, "#fff");
-// newSpecimen.addAtom(1, 1, 1, "#fff");
-newSpecimen.addAtom(0.5, 0.5, 0.5, "#fff");
+// newSpecimen.addAtom(0, 0, 0, '#fff');
+// newSpecimen.addAtom(0, 0, 1, '#fff');
+// newSpecimen.addAtom(0, 1, 0, '#fff');
+// newSpecimen.addAtom(0, 1, 1, '#fff');
+// newSpecimen.addAtom(1, 0, 0, '#fff');
+// newSpecimen.addAtom(1, 0, 1, '#fff');
+// newSpecimen.addAtom(1, 1, 0, '#fff');
+// newSpecimen.addAtom(1, 1, 1, '#fff');
+newSpecimen.addAtom(0.5, 0.5, 0.5, '#fff');
 
-let selected;
-let id;
 drawSpecimen();
 init();
 animate();
@@ -107,4 +103,4 @@ let addAtomToList = function(x, y, z, colorhex){
 
   // newSpecimen.addSphere
 
-}
+};
