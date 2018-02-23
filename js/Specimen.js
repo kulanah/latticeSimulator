@@ -31,7 +31,8 @@ class Specimen{
     this.sphereInstances = new Array;
     this.createCrystals();
     this.lineWeight = lineWeight;
-    console.log(this.lineWeight);
+
+    this.zero = 0;
   }
 
   createCrystals(){
@@ -68,6 +69,7 @@ class Specimen{
       for (let j = -this.countZ - 1; j < this.countZ; ++j){
         for(let k = -this.countY - 1; k < this.countY; ++k){
           x1[i] = this.lengthY * Math.cos(this.angleB) * (k+1);
+          console.log(x1[i]);
           y1[k] = this.lengthY * Math.sin(this.angleA) * (k+1);
           z1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k+1);
 
@@ -143,6 +145,8 @@ class Specimen{
 
           ++crystalCount;
 
+
+          /*
           let sphere0 = new THREE.Mesh(geometry, material);
           sphere0.position.x = x0;
           sphere0.position.y = y0;
@@ -192,15 +196,17 @@ class Specimen{
           this.spheres.push(sphere5);
           this.spheres.push(sphere6);
           this.spheres.push(sphere7);
+          */
 
         }
       }
       xStart = x1 [i];
-    }
-  }
 
-  addAtom(x, y, z, colorhex){
-    this.sphereInstances.push({x: x, y: y, z: z, color: colorhex});
+    }
+}
+
+addAtom(x, y, z, colorhex){
+    this.sphereCoords.push({x: x, y: y, z: z, color: colorhex});
   }
 
   redrawCrystals(){
@@ -215,6 +221,7 @@ class Specimen{
     this.shape = [];
     this.shape = new THREE.Geometry;
     this.createCrystals();
+    this.drawSpheres();
 
     //delete old crystals
     //call draw crystal function with new vars
@@ -232,30 +239,10 @@ class Specimen{
     this.updateMaterials();
   }
 
-  updateMaterial(){
+  updateMaterials(){ 
     delete this.material;
     this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
     this.redrawCrystals();
-  }
-
-  addSphere(crystalX, crystalY, crystalZ, crystalColor, index){
-    this.spheres.push({x: crystalX, y: crystalY, z: crystalZ, color: crystalColor, index: index});
-    let instances = new Array;
-    for (let x = 0; x < this.countX; ++x){
-      for (let y = 0; y < this.countY; ++y){
-        let geometry = new THREE.SphereGeometry(0.25, 4, 4);
-        let material = new THREE.MeshBasicMaterial({color: crystalColor,wireframe: true, transparent: true});
-        let sphere = new THREE.Mesh(geometry, material);
-        sphere.name = index;
-
-        sphere.translateX((crystalX * this.lengthX)+ x * this.lengthX);
-        sphere.translateY((crystalY * this.lengthY) + y * this.lengthY);
-        sphere.translateZ(crystalZ * this.lengthZ);
-
-        this.scene.add(sphere);
-        this.sphereInstances.push(sphere);
-      }
-    }
   }
 
   remove(index){
@@ -301,6 +288,28 @@ class Specimen{
   changeZCount(newVal){
     this.countZ = newVal
   }
+
+  drawSpheres(){
+    let xVal, yVal, zVal;
+    for (let i = 0; i < this.sphereCoords.length; ++i){
+      xVal = this.sphereCoords[i].x * this.lengthY * Math.cos(this.angleB) + this.zero;
+      yVal = this.sphereCoords[i].y * this.lengthY * Math.sin(this.angleA) + this.zero;
+      zVal = this.sphereCoords[i].z * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + this.zero;
+
+      let geometry = new THREE.SphereGeometry(0.25, 4, 4);
+      let material = new THREE.MeshBasicMaterial({color: this.sphereCoords[i].color, wireframe: true})
+      let sphere = new THREE.Mesh(geometry, material);
+
+      sphere.position.x = xVal;
+      sphere.position.y = yVal;
+      sphere.position.z = zVal;
+
+      console.log('x: ' + xVal + ' y: ' + yVal + ' z: ' + zVal);
+
+      this.scene.add(sphere);
+    }
+  }
+
   redrawSpheres(){
     for (let i = 0; i < this.crystals.length; ++i){
       for (let x = 0; x < this.countX; ++x){
@@ -312,6 +321,7 @@ class Specimen{
           sphere.translateX((this.spheres[i].x * this.width)+ x * this.width);
           sphere.translateY((this.spheres[i].y * this.height) + y * this.height);
           sphere.translateZ(this.spheres[i].z * this.depth);
+
 
           this.scene.add(sphere);
 
