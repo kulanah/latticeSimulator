@@ -49,7 +49,6 @@ let render = function(){
 }
 
 let drawSpecimen = function(){
-  newSpecimen.drawShape(scene);
 }
 
 let animate = function(){
@@ -70,12 +69,22 @@ let lineweight = $('#latticeweight')[0].value;
 
 
 let newSpecimen = new Specimen('square', countX, countY, countZ, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene, lineweight);
+// newSpecimen.addAtom(0, 0, 0, "#fff");
+// newSpecimen.addAtom(0, 0, 1, "#fff");
+// newSpecimen.addAtom(0, 1, 0, "#fff");
+// newSpecimen.addAtom(0, 1, 1, "#fff");
+// newSpecimen.addAtom(1, 0, 0, "#fff");
+// newSpecimen.addAtom(1, 0, 1, "#fff");
+// newSpecimen.addAtom(1, 1, 0, "#fff");
+// newSpecimen.addAtom(1, 1, 1, "#fff");
+newSpecimen.addAtom(0.5, 0.5, 0.5, "#fff");
 
 let selected;
 let id;
 drawSpecimen();
 init();
 animate();
+newSpecimen.drawSpheres();
 
 
 let draggables = ['controlsbox'];
@@ -90,3 +99,12 @@ for (let i = 0; i < draggables.length; ++i){
 }
 
 $('.hidden').hide();
+
+
+let addAtomToList = function(x, y, z, colorhex){
+  newSpecimen.addAtom(x, y, z, colorhex);
+  //TODO: Add item to the list
+
+  // newSpecimen.addSphere
+
+}
