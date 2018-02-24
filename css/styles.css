@@ -7,7 +7,7 @@ body{
   bottom: 0;
   left: 0;
   width: 411px;
-  height: 570px;
+  height: 625px;
   background: #ECE9D8;
   z-index: 1;
   border: #2744AA 2px solid;
@@ -162,4 +162,23 @@ body{
 #latticeweight{
   grid-row: 3/5;
   grid-column: 7/8;
+}
+
+
+#camerasnapbox{
+  display:grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.cameratitle{
+  margin-left: 5px;
+}
+.camerainput{
+  grid-row: 2/3;
+  width: 125px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+
 }
