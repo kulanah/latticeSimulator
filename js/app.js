@@ -3,6 +3,7 @@ let angleX = 0.1;
 let angleY = 0.1;
 let angleZ = 0;
 let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
+// let camera = new THREE.OrthographicCamera(window.innerWidth / sizemult, window.innerWidth / sizemult, window.innerHeight / sizemult, window.innerHeight / sizemult, 1, 101000);
 let controls;
 let renderer;
 
