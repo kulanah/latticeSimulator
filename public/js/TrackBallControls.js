@@ -520,6 +520,8 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 		}
 
+		updateCameraInputs();
+
 		_this.dispatchEvent( startEvent );
 		_this.dispatchEvent( endEvent );
 
