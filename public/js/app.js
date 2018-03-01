@@ -109,3 +109,5 @@ let addAtomToList = function(x, y, z, colorhex){
   // newSpecimen.addSphere
 
 };
+
+newSpecimen.updateMaterials();
