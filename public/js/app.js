@@ -1,11 +1,11 @@
 
-// let sizeMult = 40;
-// let width = window.innerWidth;
-// let height = window.innerHeight;
-//let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
+let sizeMult = 40;
+let width = window.innerWidth;
+let height = window.innerHeight;
+let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
 
 let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
+// let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
 let controls;
 let renderer;
 

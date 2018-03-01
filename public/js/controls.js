@@ -3,11 +3,11 @@ let startY = 0;
 
 let setStartX = function(){
   startX = event.clientX;
-}
+};
 
 let setStartY = function(){
   startY = event.clientY;
-}
+};
 
 let crystalRotateHorizontal = function(event){
   let delta = handleDrag(event)[0];
@@ -28,7 +28,7 @@ let cancelCrystalRotate = function(event){
 };
 
 let handleDrag = function(event){
-  returns = [event.clientX - startX, event.clientY - startY];
+  let returns = [event.clientX - startX, event.clientY - startY];
   return returns;
 };
 
