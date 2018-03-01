@@ -14,8 +14,11 @@ No setup is required.  Simply navigate to the home directory and open index.html
 
 ##### Exporting models from Blender
 TODO: Update this with actual steps
+
 https://www.jonathan-petitcolas.com/2015/07/27/importing-blender-modelized-mesh-in-threejs.html
+
 alternatively
+
 https://www.youtube.com/watch?v=NtRrYUAd8rs
 
 ##### Converting models from Blender
