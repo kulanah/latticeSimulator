@@ -171,7 +171,6 @@ class Specimen{
             newSphere.position.x = xPos;
             newSphere.position.y = yPos;
             newSphere.position.z = zPos;
-            console.log('x: ' + xPos + ' y: ' + yPos + ' z: ' + zPos);
 
             this.spheres.push(newSphere);
             scene.add(newSphere);
