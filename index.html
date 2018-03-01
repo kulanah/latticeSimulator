@@ -13,57 +13,57 @@
 			<div class='controlsboxdiv'>
 				<p>specimen name</p>
 				<div id='specimenrow'>
-					<input id='specimenname' type="text">
+					<input id='specimenname' type='text'>
 					<button id='controlsboxhide'>Hide</button>
 				</div>
 			</div>
 			<div class='controlsboxdiv' id='latticeoptions'>
 				<p id='latticetitle'>bravias lattice</p>
-				<select name="" id="latticeselector">
-					<option value="Primitive Cubic">Primitive Cubic</option>
-					<option value="bcc">bcc</option>
-					<option value="fcc">fcc</option>
-					<option value="Tetragonal">Tetragonal</option>
-					<option value="Body centered Tetragonal">Body centered Tetragonal</option>
-					<option value="Orthohombic">Orthohombic</option>
-					<option value="Body Centered Orthohombic">Body Centered Orthohombic</option>
-					<option value="Face Centered Orthohombic">Face Centered Orthohombic</option>
-					<option value="End Centered Orthohombic">End Centered Orthohombic</option>
-					<option value="Hexagonal">Hexagonal</option>
-					<option value="Rhombohedral">Rhombohedral</option>
-					<option value="Monoclinic">Monoclinic</option>
-					<option value="End Centered Monoclinic">End Centered Monoclinic</option>
-					<option value="Triclinic">Triclinic</option>
+				<select name='' id='latticeselector'>
+					<option value='Primitive Cubic'>Primitive Cubic</option>
+					<option value='bcc'>bcc</option>
+					<option value='fcc'>fcc</option>
+					<option value='Tetragonal'>Tetragonal</option>
+					<option value='Body centered Tetragonal'>Body centered Tetragonal</option>
+					<option value='Orthohombic'>Orthohombic</option>
+					<option value='Body Centered Orthohombic'>Body Centered Orthohombic</option>
+					<option value='Face Centered Orthohombic'>Face Centered Orthohombic</option>
+					<option value='End Centered Orthohombic'>End Centered Orthohombic</option>
+					<option value='Hexagonal'>Hexagonal</option>
+					<option value='Rhombohedral'>Rhombohedral</option>
+					<option value='Monoclinic'>Monoclinic</option>
+					<option value='End Centered Monoclinic'>End Centered Monoclinic</option>
+					<option value='Triclinic'>Triclinic</option>
 				</select>
 				<input type='number' id='latticeweight' value='4' max='7' min='1'>
-				<input type="text" id='latticecolorpicker' class='colorpicker'>
+				<input type='text' id='latticecolorpicker' class='colorpicker'>
 			</div>
 			<div class='controlsboxdiv'>
 				<p>Units</p>
 				<div id='unitsflex'>
 					<span>
 						a =
-						<input id='lengthX' type="number" value='5.431'>
+						<input id='lengthX' type='number' value='5.431'>
 					</span>
 					<span>
 						b =
-						<input id='lengthY' type="number" value='5.431'>
+						<input id='lengthY' type='number' value='5.431'>
 					</span>
 					<span>
 						c =
-						<input id='lengthZ' type="number" value='5.431'>
+						<input id='lengthZ' type='number' value='5.431'>
 					</span>
 					<span>
 						Alpha =
-						<input id='angleA' type="number" min='-180' value='90' max='180'>
+						<input id='angleA' type='number' min='-180' value='90' max='180'>
 					</span>
 					<span>
 						Beta =
-						<input id='angleB' type="number" min='-180' value='90' max='180'>
+						<input id='angleB' type='number' min='-180' value='90' max='180'>
 					</span>
 					<span>
 						Gamma =
-						<input id='angleC' type="number" min='-180' value='90' max='180'>
+						<input id='angleC' type='number' min='-180' value='90' max='180'>
 					</span>
 					</span>
 				</div>
@@ -73,7 +73,7 @@
 				<div id='atomsflex'>
 					<span>
 						<p>atoms</p>
-						<input id='atominput' type="text">
+						<input id='atominput' type='text'>
 					</span>
 					<span>
 						<p>element</p>
@@ -81,19 +81,19 @@
 					</span>
 					<span>
 						<p>X</p>
-						<input id='xinput' type="number" value='0'>
+						<input id='xinput' type='number' value='0'>
 					</span>
 					<span>
 						<p>Y</p>
-						<input id='yinput' type="number" value='0'>
+						<input id='yinput' type='number' value='0'>
 					</span>
 					<span>
 						<p>Z</p>
-						<input id='zinput' type="number" value='0'>
+						<input id='zinput' type='number' value='0'>
 					</span>
 					<span>
 						<p>Color</p>
-						<input type="text" class='colorpicker' id='atomcolorpicker'>
+						<input type='text' class='colorpicker' id='atomcolorpicker'>
 					</span>
 
 				</div>
@@ -366,22 +366,22 @@
 			</div>
 		</div>
 
-		<script src="js/three.js"></script>
-		<script src="js/jquery.js"></script>
-		<script src="js/jquery-ui.min.js"></script>
-		<script src="js/TrackBallControls.js"></script>
-		<script src="js/spectrum.js"></script>
+		<script src='./public/js/three.js'></script>
+		<script src='./public/js/jquery.js'></script>
+		<script src='./public/js/jquery-ui.min.js'></script>
+		<script src='./public/js/TrackBallControls.js'></script>
+		<script src='./public/js/spectrum.js'></script>
 
-		<script src="js/periodiconclick.js"></script>
-		<script src="js/Specimen.js"></script>
-		<script src='js/component.js'></script>
-		<script src='js/column.js'></script>
-		<script src='js/onclick.js'></script>
-		<script src='js/onchange.js'></script>
-		<script src="js/controls.js"></script>
-		<script src='js/app.js'></script>
-		<link rel='stylesheet' href='./css/spectrum.css'>
-		<link rel='stylesheet' href='./css/styles.css'>
-		<link rel='stylesheet' href='./css/periodictable.css'>
+		<script src='./public/js/periodiconclick.js'></script>
+		<script src='./public/js/Specimen.js'></script>
+		<script src='./public/js/component.js'></script>
+		<script src='./public/js/column.js'></script>
+		<script src='./public/js/onclick.js'></script>
+		<script src='./public/js/onchange.js'></script>
+		<script src='./public/js/controls.js'></script>
+		<script src='./public/js/app.js'></script>
+		<link rel='stylesheet' href='./public/css/spectrum.css'>
+		<link rel='stylesheet' href='./public/css/styles.css'>
+		<link rel='stylesheet' href='./public/css/periodictable.css'>
 	</body>
 </html>
