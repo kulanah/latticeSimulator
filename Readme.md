@@ -13,10 +13,16 @@ No setup is required.  Simply navigate to the home directory and open index.html
 ### Blender Model Viewer
 
 ##### Exporting models from Blender
-
+TODO: Update this with actual steps
+https://www.jonathan-petitcolas.com/2015/07/27/importing-blender-modelized-mesh-in-threejs.html
+alternatively
+https://www.youtube.com/watch?v=NtRrYUAd8rs
 
 ##### Converting models from Blender
-
+There's a command line tool that comes with the three.js source file.  Using it is simple and fairly foolproof, though you get less control over what exactly is exported.
+1. Navigate to threejs root folder.
+2. Dig into /utils/converters/
+3. Run the command line tool with the following:  node obj2three.js model.obj
 
 ##### Setting up model viewer
 This mode requires you to run the HTTP server from the home directory.  To do so:
