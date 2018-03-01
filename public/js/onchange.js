@@ -66,3 +66,13 @@ $('#latticecolorpicker').on('change', function(){
 $('#latticeweight').on('input', function(){
   newSpecimen.setLatticeWeight(this.value);
 });
+
+$('#cameraposx').on('input', function(){
+  camera.position.x = this.value;
+});
+$('#cameraposy').on('input', function(){
+  camera.position.y = this.value;
+});
+$('#cameraposz').on('input', function(){
+  camera.position.z = this.value;
+});
