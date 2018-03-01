@@ -36,7 +36,7 @@ class Specimen{
   }
 
   createCrystals(){
-    let geometry = new THREE.SphereGeometry(0.25, 4, 4);
+    let geometry = new THREE.SphereGeometry(0.25, 8, 8);
     let material = new THREE.MeshBasicMaterial({color: '#fff',transparent: true});
     let sphere;
     let crystalCount = 0;
@@ -144,8 +144,8 @@ class Specimen{
 
           ++crystalCount;
 
-          let newSphere = new THREE.Mesh(geometry, material);
           for (let i = 0; i < this.sphereCoords.length; ++i){
+            let newSphere = new THREE.Mesh(geometry, material);
 
             let xMult = this.sphereCoords[i].x;
             let yMult = this.sphereCoords[i].y;
@@ -169,10 +169,11 @@ class Specimen{
             (j - 1) * this.lengthZ * Math.sin(this.angleC);
 
             newSphere.position.x = xPos;
-            console.log(xPos);
             newSphere.position.y = yPos;
             newSphere.position.z = zPos;
+            console.log('x: ' + xPos + ' y: ' + yPos + ' z: ' + zPos);
 
+            this.spheres.push(newSphere);
             scene.add(newSphere);
           }
           /*
@@ -273,10 +274,12 @@ class Specimen{
     this.shape = [];
     this.shape = new THREE.Geometry;
     this.createCrystals();
-    this.drawSpheres();
+
+    // this.drawSpheres();
 
     //delete old crystals
     //call draw crystal function with new vars
+    
     render();
   }
 
