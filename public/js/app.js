@@ -1,8 +1,8 @@
+let selected;
 
 let sizeMult = 40;
 let width = window.innerWidth;
 let height = window.innerHeight;
-let selected;
 // let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
 
 let scene = new THREE.Scene();
@@ -62,17 +62,14 @@ let animate = function(){
   controls.update();
 };
 
-let addAtomToList = function(x, y, z, colorHex){
+let addAtom = function(x, y, z, colorHex){
   index = Date.now();
   let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'background:' + colorHex + ';\'></td></tr>';
   $('#atomslisttable').append(tableRow);
   addRowOnClick();
+  newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
-let addAtom = function(x, y, z, colorHex){
-  addAtomToList(x, y, z, colorHex);
-  newSpecimen.addAtom(x, y, z, colorHex);
-}
 let lengthX = $('#lengthX')[0].value;
 let lengthY = $('#lengthY')[0].value;
 let lengthZ = $('#lengthZ')[0].value;
@@ -86,15 +83,10 @@ let lineweight = $('#latticeweight')[0].value;
 
 
 let newSpecimen = new Specimen('square', countX, countY, countZ, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene, lineweight);
-// newSpecimen.addAtom(0, 0, 0, '#fff');
-// newSpecimen.addAtom(0, 0, 1, '#fff');
-// newSpecimen.addAtom(0, 1, 0, '#fff');
-// newSpecimen.addAtom(0, 1, 1, '#fff');
-// newSpecimen.addAtom(1, 0, 0, '#fff');
-// newSpecimen.addAtom(1, 0, 1, '#fff');
-// newSpecimen.addAtom(1, 1, 0, '#fff');
 addAtom(1, 1, 1, '#ff0000');
-addAtom(0.5, 0.5, 0.5, '#ff0000');
+addAtom(0.5, 0.5, 0.5, '#0000ff');
+addAtom(0, 0, 0, '#00ff00');
+
 
 drawSpecimen();
 init();
