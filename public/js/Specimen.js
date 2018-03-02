@@ -38,13 +38,8 @@ class Specimen{
 
   createCrystals(){
     let geometry = new THREE.SphereGeometry(0.25, 8, 8);
-    let sphere;
     let material;
     let crystalCount = 0;
-    let xStart = 0;
-    let x0 = 0;
-    let y0 = 0;
-    let z0 = 0;
     let x1 = new Array;
     let y1 = new Array;
     let z1 = new Array;
@@ -194,67 +189,9 @@ class Specimen{
           Zi.val * this.lengthY * cosAlpha * sinGamma + 
           Zi.val * this.lengthZ * sinGamma + 
           (j - 1) * this.lengthZ * sinGamma
-
-
           */
-
-
-          /*
-          let sphere0 = new THREE.Mesh(geometry, material);
-          sphere0.position.x = x0;
-          sphere0.position.y = y0;
-          sphere0.position.z = z0;
-          this.scene.add(sphere0);
-          let sphere1 = new THREE.Mesh(geometry, material);
-          sphere1.position.x = x1[i];
-          sphere1.position.y = y1[k];
-          sphere1.position.z = z1[j];
-          this.scene.add(sphere1);
-          let sphere2 = new THREE.Mesh(geometry, material);
-          sphere2.position.x = x2[i];
-          sphere2.position.y = y2[k];
-          sphere2.position.z = z2[j];
-          this.scene.add(sphere2);
-          let sphere3 = new THREE.Mesh(geometry, material);
-          sphere3.position.x = x3[i];
-          sphere3.position.y = y3[k];
-          sphere3.position.z = z3[j];
-          this.scene.add(sphere3);
-          let sphere4 = new THREE.Mesh(geometry, material);
-          sphere4.position.x = x4[i];
-          sphere4.position.y = y4[k];
-          sphere4.position.z = z4[j];
-          this.scene.add(sphere4);
-          let sphere5 = new THREE.Mesh(geometry, material);
-          sphere5.position.x = x5[i];
-          sphere5.position.y = y5[k];
-          sphere5.position.z = z5[j];
-          this.scene.add(sphere5);
-          let sphere6 = new THREE.Mesh(geometry, material);
-          sphere6.position.x = x6[i];
-          sphere6.position.y = y6[k];
-          sphere6.position.z = z6[j];
-          this.scene.add(sphere6);
-          let sphere7 = new THREE.Mesh(geometry, material);
-          sphere7.position.x = x7[i];
-          sphere7.position.y = y7[k];
-          sphere7.position.z = z7[j];
-          this.scene.add(sphere7);
-
-          this.spheres.push(sphere0);
-          this.spheres.push(sphere1);
-          this.spheres.push(sphere2);
-          this.spheres.push(sphere3);
-          this.spheres.push(sphere4);
-          this.spheres.push(sphere5);
-          this.spheres.push(sphere6);
-          this.spheres.push(sphere7);
-          */
-
         }
       }
-      xStart = x1 [i];
-
     }
   }
 
