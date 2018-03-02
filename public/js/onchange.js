@@ -69,10 +69,16 @@ $('#latticeweight').on('input', function(){
 
 $('#cameraposx').on('input', function(){
   camera.position.x = this.value;
+  $('#cameraposy').val(camera.position.y);
+  $('#cameraposz').val(camera.position.z);
 });
 $('#cameraposy').on('input', function(){
   camera.position.y = this.value;
+  $('#cameraposx').val(camera.position.x);
+  $('#cameraposz').val(camera.position.z);
 });
 $('#cameraposz').on('input', function(){
   camera.position.z = this.value;
+  $('#cameraposx').val(camera.position.x);
+  $('#cameraposy').val(camera.position.y);
 });
