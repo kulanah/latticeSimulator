@@ -26,7 +26,7 @@ $('#atomaddbutton').on('click', function(){
   addRowOnClick();
 
   $('#atominput')[0].value = '';
-  $('#elementinput')[0].value = '';
+  $('#elementinput').text('');
   $('#xinput')[0].value = '';
   $('#yinput')[0].value = '';
   $('#zinput')[0].value = '';
@@ -34,7 +34,6 @@ $('#atomaddbutton').on('click', function(){
 
 
 $('#atomremovebutton').on('click', function(){
-  console.log('in remove');
   if (selected){
     selected.remove();
     selected = null;
