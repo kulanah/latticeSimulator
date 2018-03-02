@@ -1,3 +1,5 @@
+let selected;
+
 let addRowOnClick = function(){
   $('.crystalrow').on('click', function(){
     if (selected){

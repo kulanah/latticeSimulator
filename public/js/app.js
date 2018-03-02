@@ -1,4 +1,3 @@
-let selected;
 
 let sizeMult = 40;
 let width = window.innerWidth;
