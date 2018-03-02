@@ -64,7 +64,7 @@ let animate = function(){
 
 let addAtom = function(x, y, z, colorHex){
   index = Date.now();
-  let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'background:' + colorHex + ';\'></td></tr>';
+  let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'border: 1px black solid; background:' + colorHex + ';\'></td></tr>';
   $('#atomslisttable').append(tableRow);
   addRowOnClick();
   newSpecimen.addAtom(x, y, z, colorHex, index);
