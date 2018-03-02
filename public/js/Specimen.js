@@ -11,18 +11,14 @@ class Specimen{
       this.lengthZ = lengthC;
       break;
     }
-
     this.countX = countX;
     this.countY = countY;
     this.countZ = countZ;
-
 
     //this is all for the rewrite to angles and lengths
     this.angleA = angleA * Math.PI / 180;
     this.angleB = angleB * Math.PI / 180;
     this.angleC = angleC * Math.PI / 180;
-
-    this.scene = scene;
 
     this.createCrystals = this.createCrystals.bind(this);
     this.crystals = new Array;
@@ -136,7 +132,7 @@ class Specimen{
 
           //TODO: MOVE THIS OUT OF THIS FUNCTION
           this.crystals.push(this.line);
-          this.scene.add(this.crystals[crystalCount]);
+          scene.add(this.crystals[crystalCount]);
 
           ++crystalCount;
 
@@ -208,10 +204,10 @@ class Specimen{
 
   redrawCrystals(){
     for (let i = 0; i < this.crystals.length; ++i){
-      this.scene.remove(this.crystals[i]);
+      scene.remove(this.crystals[i]);
     }
     for (let i = 0; i < this.spheres.length; ++i){
-      this.scene.remove(this.spheres[i]);
+      scene.remove(this.spheres[i]);
     }
     this.spheres = [];
     this.crystals = [];
@@ -303,7 +299,7 @@ class Specimen{
     //   sphere.position.y = yVal;
     //   sphere.position.z = zVal;
   
-    //   this.scene.add(sphere);
+    //   scene.add(sphere);
     // }
   }
 
@@ -320,7 +316,7 @@ class Specimen{
           sphere.translateZ(this.spheres[i].z * this.depth);
 
 
-          this.scene.add(sphere);
+          scene.add(sphere);
 
         }
       }
@@ -346,9 +342,9 @@ class Specimen{
     zShape.vertices.push(new THREE.Vector3(0, 0, 1000));
     let zPole = new THREE.Line(zShape, zMaterial);
 
-    this.scene.add(xPole);
-    this.scene.add(yPole);
-    this.scene.add(zPole);
+    scene.add(xPole);
+    scene.add(yPole);
+    scene.add(zPole);
   }
 
 }
