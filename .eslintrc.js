@@ -9,6 +9,7 @@ module.exports = {
         "Specimen": true, 
         "render": true,
         "scene": true,
+        "Specimen": true,
         "specimen": true,
         "newSpecimen": true
     },
