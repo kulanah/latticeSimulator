@@ -19,12 +19,9 @@ $('#atomaddbutton').on('click', function(){
   let colorHex = $('#atomcolorpicker').spectrum('get').toHexString();
 
   index = Date.now();
-  let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'background:' + colorHex + ';\'></td></tr>';
-  $('#atomslisttable').append(tableRow);
-  addRowOnClick();
-  newSpecimen.addSphere(x, y, z, colorHex, index);
+  addAtom(x, y, z, colorHex);
 
-  render();
+  addRowOnClick();
 
   $('#atominput')[0].value = '';
   $('#elementinput')[0].value = '';
@@ -35,10 +32,11 @@ $('#atomaddbutton').on('click', function(){
 
 
 $('#atomremovebutton').on('click', function(){
+  console.log('in remove');
   if (selected){
     selected.remove();
     selected = null;
-    newSpecimen.remove(id);
+    newSpecimen.removeAtom(id);
     render();
   }
 });
