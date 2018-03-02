@@ -283,8 +283,6 @@ class Specimen{
     this.createCrystals();
 
     if (this.loadCount < 4){
-      //TODO: Fix this.  It's hitting this function 3 times before we acutally display the whole thing
-      //this is massively inefficient
       setTimeout(render, 1000);
       ++this.loadCount;
     } else {
