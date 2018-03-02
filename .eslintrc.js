@@ -6,7 +6,11 @@ module.exports = {
     },
     "globals": {
         "THREE": true, 
-        "Specimen": true
+        "Specimen": true, 
+        "render": true,
+        "scene": true,
+        "specimen": true,
+        "newSpecimen": true
     },
     "extends": "eslint:recommended",
     "rules": {
