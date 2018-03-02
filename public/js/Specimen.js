@@ -31,8 +31,8 @@ class Specimen{
     this.sphereInstances = new Array;
     this.createCrystals();
     this.lineWeight = lineWeight;
-
     this.loadCount = 0;
+
     this.zero = 0;
   }
 
@@ -265,11 +265,7 @@ class Specimen{
 
 
   removeAtom(id){
-    console.log('before');
-    console.log(this.sphereCoords);
     this.sphereCoords = this.sphereCoords.filter(item => item.index != id);
-    console.log('after');
-    console.log(this.sphereCoords);
     this.redrawCrystals();
   }
 
