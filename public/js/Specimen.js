@@ -32,6 +32,7 @@ class Specimen{
     this.createCrystals();
     this.lineWeight = lineWeight;
 
+    this.loadCount = 0;
     this.zero = 0;
   }
 
@@ -285,7 +286,14 @@ class Specimen{
     this.shape = new THREE.Geometry;
     this.createCrystals();
 
-    setTimeout(render, 1000);
+    if (this.loadCount < 4){
+      //TODO: Fix this.  It's hitting this function 3 times before we acutally display the whole thing
+      //this is massively inefficient
+      setTimeout(render, 1000);
+      ++this.loadCount;
+    } else {
+      render();
+    }
   }
 
 
