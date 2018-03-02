@@ -1,7 +1,7 @@
 
-let sizeMult = 40;
-let width = window.innerWidth;
-let height = window.innerHeight;
+// let sizeMult = 40;
+// let width = window.innerWidth;
+// let height = window.innerHeight;
 // let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
 
 let scene = new THREE.Scene();
@@ -62,7 +62,7 @@ let animate = function(){
 };
 
 let addAtom = function(x, y, z, colorHex){
-  index = Date.now();
+  let index = Date.now();
   let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'border: 1px black solid; background:' + colorHex + ';\'></td></tr>';
   $('#atomslisttable').append(tableRow);
   addRowOnClick();
