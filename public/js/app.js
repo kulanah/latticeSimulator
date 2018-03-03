@@ -24,10 +24,10 @@ let init = function(){
   controls.addEventListener('change', render);
 
 
-  let xVal = 20;
+  let xVal = -3;
   camera.position.x = 0;
   // camera.position.y = -100;
-  camera.position.z = 200;
+  camera.position.z = 100;
   camera.position.y = 20;
   // camera.lookAt(scene.position);
   camera.position.x = xVal;
