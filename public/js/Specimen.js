@@ -28,6 +28,7 @@ class Specimen{
     this.createCrystals();
     this.lineWeight = lineWeight;
     this.loadCount = 0;
+    this.crystalCount = 0;
 
     this.zero = 0;
   }
@@ -35,7 +36,7 @@ class Specimen{
   createCrystals(){
     let geometry = new THREE.SphereGeometry(0.25, 8, 8);
     let material;
-    let crystalCount = 0;
+    this.crystalCount = 0;
     let x1 = new Array;
     let y1 = new Array;
     let z1 = new Array;
@@ -132,41 +133,43 @@ class Specimen{
 
           //TODO: MOVE THIS OUT OF THIS FUNCTION
           this.crystals.push(this.line);
-          scene.add(this.crystals[crystalCount]);
+          scene.add(this.crystals[this.crystalCount]);
 
-          ++crystalCount;
+          ++this.crystalCount;
 
-          for (let i = 0; i < this.sphereCoords.length; ++i){
-            material = new THREE.MeshBasicMaterial({color: this.sphereCoords[i].color, transparent: true});
-            let newSphere = new THREE.Mesh(geometry, material);
+          for (let a = 0; a < this.sphereCoords.length; ++a){
+            if (i !=  -this.countX - 1 && k != -this.countY - 1 && j != -this.countZ - 1){
+              material = new THREE.MeshBasicMaterial({color: this.sphereCoords[a].color, transparent: true});
+              let newSphere = new THREE.Mesh(geometry, material);
 
-            let xMult = this.sphereCoords[i].x;
-            let yMult = this.sphereCoords[i].y;
-            let zMult = this.sphereCoords[i].z;
+              let xMult = this.sphereCoords[a].x;
+              let yMult = this.sphereCoords[a].y;
+              let zMult = this.sphereCoords[a].z;
 
-            let xPos = 
-            xMult * this.lengthX +
-            yMult * this.lengthY * Math.cos(this.angleB) + 
-            zMult * this.lengthZ * Math.cos(this.angleC) + 
-            (i - 1) * this.lengthX + 
-            (k - 1) * this.lengthY * Math.cos(this.angleB) + 
-            (j - 1) * this.lengthZ * Math.cos(this.angleC);
+              let xPos = 
+              xMult * this.lengthX +
+              yMult * this.lengthY * Math.cos(this.angleB) + 
+              zMult * this.lengthZ * Math.cos(this.angleC) + 
+              (i) * this.lengthX + 
+              (k) * this.lengthY * Math.cos(this.angleB) + 
+              (j) * this.lengthZ * Math.cos(this.angleC);
 
-            let yPos = 
-            yMult * this.lengthY * Math.sin(this.angleA) + 
-            (k - 1) * this.lengthY * Math.sin(this.angleA);
+              let yPos = 
+              yMult * this.lengthY * Math.sin(this.angleA)+ 
+              (k) * this.lengthY * Math.sin(this.angleA);
 
-            let zPos = 
-            zMult * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + 
-            zMult * this.lengthZ * Math.sin(this.angleC) + 
-            (j - 1) * this.lengthZ * Math.sin(this.angleC);
+              let zPos = 
+              zMult * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + 
+              zMult * this.lengthZ * Math.sin(this.angleC) +
+              (j) * this.lengthZ * Math.sin(this.angleC);
 
-            newSphere.position.x = xPos;
-            newSphere.position.y = yPos;
-            newSphere.position.z = zPos;
+              newSphere.position.x = xPos;
+              newSphere.position.y = yPos;
+              newSphere.position.z = zPos;
 
-            this.spheres.push(newSphere);
-            scene.add(newSphere);
+              this.spheres.push(newSphere);
+              scene.add(newSphere);
+            }
           }
           /*
           xi = 
