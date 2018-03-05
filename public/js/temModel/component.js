@@ -18,13 +18,13 @@ class component {
       this.xOffset = centerPoint * 2;
     }
 
-    this.material = new THREE.LineBasicMaterial({color: 0xff37d8})
-  };
+    this.material = new THREE.LineBasicMaterial({color: 0xff37d8});
+  }
 
 
   createLens(){
-    console.log('x: ' + this.xOffset)
-    console.log('y: ' + this.y)
+    console.log('x: ' + this.xOffset);
+    console.log('y: ' + this.y);
     //TODO: create lens stuff
     this.shape.vertices.push(new THREE.Vector3(10,15));
     this.shape.vertices.push(new THREE.Vector3(-10,15));
