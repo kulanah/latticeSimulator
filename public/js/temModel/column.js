@@ -3,7 +3,11 @@ class column{
     this.components = new Array();
     //radius top, radius bottom, height, radial segments, height segments, open ended, theta start, theta length
     this.cMaterial = new THREE.CylinderGeometry(10, 10, 40, 20, 1, true, 1.4, 3.14);
-    this.cGeometry = new THREE.MeshPhongMaterial({side:  THREE.DoubleSide, wireframe: true, color: 0xaaaaaa});
+    this.cGeometry = new THREE.MeshPhongMaterial({
+      side:  THREE.DoubleSide, 
+      wireframe: false, 
+      color: 0xaaaaaa
+    });
     this.cMesh = new THREE.Mesh(this.cMaterial, this.cGeometry);
 
     this.init = this.init.bind(this);
