@@ -24,6 +24,8 @@ let init = function(){
   controls.target = new THREE.Vector3(xVal, 0, 0);
   initLights();
 
+  createLenses();
+
 };
 
 
@@ -57,6 +59,11 @@ let animate = function(){
   requestAnimationFrame(animate);
   controls.update();
 };
+
+let createLenses = function(){
+  // temColumn.addLens()
+
+}
 
 
 let temColumn = new column();
