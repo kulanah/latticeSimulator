@@ -27,24 +27,22 @@ let init = function(){
 };
 
 
-function initLights() {
-  var keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(122, 100%, 100%)'), 1);
+let initLights = function() {
+  let keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(122, 100%, 100%)'), 1);
   keyLight.position.set(20, 0, 5);
   
-  var fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(285, 100%, 100%)'), 1);
+  let fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(285, 100%, 100%)'), 1);
   fillLight.position.set(-10, 0, 5);
   
-  var backLight = new THREE.DirectionalLight(new THREE.Color('hsl(58, 100%, 100%)'), 1);
+  let backLight = new THREE.DirectionalLight(new THREE.Color('hsl(58, 100%, 100%)'), 1);
   backLight.position.set(10, 0, -5).normalize();
   
-  var topLight = new THREE.DirectionalLight(new THREE.Color('hsl(338, 100%, 100%)'), 1);
+  let topLight = new THREE.DirectionalLight(new THREE.Color('hsl(338, 100%, 100%)'), 1);
   backLight.position.set(0, 10, 0).normalize();
 
   scene.add(keyLight);
   scene.add(fillLight);
-  // scene.add(backLight);
-  // scene.add(topLight);
-}
+};
 
 let render = function(){
   renderer.render(scene, camera);
