@@ -2,6 +2,7 @@ let scene = new THREE.Scene();
 let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
 let controls;
 let renderer;
+let columnHeight = -45;
 
 let init = function(){
   renderer = new THREE.WebGLRenderer();
@@ -18,10 +19,10 @@ let init = function(){
   // camera.positon.set(new THREE.Vector3(0,0,0));
   camera.position.x = 0;
   camera.position.z = 200;
-  camera.position.y = 20;
+  camera.position.y = 0;
   camera.position.x = xVal;
 
-  controls.target = new THREE.Vector3(xVal, 0, 0);
+  controls.target = new THREE.Vector3(xVal, columnHeight / 2, 0);
   initLights();
 
   createLenses();
@@ -30,20 +31,35 @@ let init = function(){
 
 
 let initLights = function() {
-  let keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(122, 100%, 100%)'), 1);
-  keyLight.position.set(20, 0, 5);
+  let xVal = 0;
+  let yVal = 0;
+  let zVal = -140;
+
+  let geo = new THREE.SphereGeometry(.25, 3, 3);
+  let mat = new THREE.MeshBasicMaterial({wireframe: true, color: 0xff69b4});
+  let sphere = new THREE.Mesh(geo, mat);
+  sphere.position.x = 0;
+  sphere.position.y = -45;
+  sphere.position.z = 0;
+
+  scene.add(sphere);
+
+  // let keyLight = new THREE.DirectionalLight(new THREE.Color('hsl(0, 100%, 100%)'), 1);
+  let keyLight = new THREE.PointLight(new THREE.Color('hsl(0, 100%, 100%)'), 1.4);
+  keyLight.position.set(xVal, yVal, zVal);
+  // keyLight.target.position.set = (0,-10,0);
   
   let fillLight = new THREE.DirectionalLight(new THREE.Color('hsl(285, 100%, 100%)'), 1);
   fillLight.position.set(-10, 0, 5);
   
   let backLight = new THREE.DirectionalLight(new THREE.Color('hsl(58, 100%, 100%)'), 1);
-  backLight.position.set(10, 0, -5).normalize();
+  backLight.position.set(0,0,50);
   
   let topLight = new THREE.DirectionalLight(new THREE.Color('hsl(338, 100%, 100%)'), 1);
-  backLight.position.set(0, 10, 0).normalize();
+  topLight.position.set(0, 10, 0).normalize();
 
   scene.add(keyLight);
-  scene.add(fillLight);
+  // scene.add(backLight);
 };
 
 let render = function(){
@@ -61,12 +77,14 @@ let animate = function(){
 };
 
 let createLenses = function(){
-  // temColumn.addLens()
-
-}
+  temColumn.addLens(2.5, 0);
 
 
-let temColumn = new column();
+
+};
+
+
+let temColumn = new column(columnHeight);
 
 
 let draggables = [];
