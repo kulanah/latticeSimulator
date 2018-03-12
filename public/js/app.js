@@ -60,48 +60,6 @@ let animate = function(){
   requestAnimationFrame(animate);
   controls.update();
 };
-let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
-let controls;
-let renderer;
-
-let init = function(){
-  camera.position.set(0,0,0);
-  // camera.lookAt(new THREE.Vector3(0,0,0));
-
-
-  renderer = new THREE.WebGLRenderer();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  //change this to be based on the size of the crystals we use
-  renderer.domElement.id = 'threeCanvas';
-  document.body.appendChild(renderer.domElement);
-
-  controls = new THREE.TrackballControls(camera, document.getElementById('threeCanvas'));
-  controls.addEventListener('change', render);
-
-
-  let xVal = -3;
-  camera.position.x = 0;
-  // camera.position.y = -100;
-  camera.position.z = 100;
-  camera.position.y = 20;
-  // camera.lookAt(scene.position);
-  camera.position.x = xVal;
-
-  controls.target = new THREE.Vector3(xVal, 0, 0);
-
-
-  $('#latticecolorpicker').spectrum({
-    color: '#ff37d8',
-    preferredFormat: 'hex',
-  });
-
-  $('#atomcolorpicker').spectrum({
-    color: '#f00',
-    preferredFormat: 'hex',
-  });
-
-};
 
 
 
