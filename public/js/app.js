@@ -61,6 +61,8 @@ let animate = function(){
   controls.update();
 };
 
+
+
 let addAtom = function(x, y, z, colorHex){
   let index = Date.now();
   let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'border: 1px black solid; background:' + colorHex + ';\'></td></tr>';
