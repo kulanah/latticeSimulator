@@ -61,11 +61,11 @@ class Specimen{
     for (let i = -this.countX - 1; i < this.countX; ++i){
       for (let j = -this.countZ - 1; j < this.countZ; ++j){
         for(let k = -this.countY - 1; k < this.countY; ++k){
-          let s1 = Math.sqrt(Math.pow(Math.cos(this.angleA), 2) - 2 * Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC) + Math.pow(Math.cos(this.angleB), 2));
-          let s2 = Math.pow(Math.cos(this.angleA), 2)- Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC);
-          let s3 = s2 / s1;
+
+          let s11 = (Math.pow(Math.sin(this.angleB), 2) - Math.pow(Math.sin(this.angleA), 2) + Math.pow((Math.cos(this.angleA) * Math.sin(this.angleC)), 2) )/(2 * Math.cos(this.angleA) * Math.sin(this.angleC))
+
           x1[i] = this.lengthY * Math.cos(this.angleB) * (k + 1);
-          y1[k] = this.lengthY * Math.sqrt(Math.pow(Math.sin(this.angleB), 2) - Math.pow(s3, 2)) * (k + 1);
+          y1[k] = this.lengthY * Math.sqrt(Math.pow(Math.sin(this.angleB), 2) - Math.pow(s11, 2)) * (k + 1);
           z1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k + 1);
 
           x2[i] = this.lengthZ * Math.cos(this.angleC) * (j + 1);
@@ -149,20 +149,20 @@ class Specimen{
               let yMult = this.sphereCoords[a].y;
               let zMult = this.sphereCoords[a].z;
 
-              let xPos =
+              let xPos = 
               xMult * this.lengthX +
-              yMult * this.lengthY * Math.cos(this.angleB) +
-              zMult * this.lengthZ * Math.cos(this.angleC) +
-              (i) * this.lengthX +
-              (k) * this.lengthY * Math.cos(this.angleB) +
+              yMult * this.lengthY * Math.cos(this.angleB) + 
+              zMult * this.lengthZ * Math.cos(this.angleC) + 
+              (i) * this.lengthX + 
+              (k) * this.lengthY * Math.cos(this.angleB) + 
               (j) * this.lengthZ * Math.cos(this.angleC);
 
-              let yPos =
-              yMult * this.lengthY * Math.sin(this.angleA)+
+              let yPos = 
+              yMult * this.lengthY * Math.sin(this.angleA)+ 
               (k) * this.lengthY * Math.sin(this.angleA);
 
-              let zPos =
-              zMult * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) +
+              let zPos = 
+              zMult * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + 
               zMult * this.lengthZ * Math.sin(this.angleC) +
               (j) * this.lengthZ * Math.sin(this.angleC);
 
@@ -175,21 +175,21 @@ class Specimen{
             }
           }
           /*
-          xi =
-          Xi.val * this.lengthX +
-          Yi.val * this.lengthY * cosBeta +
-          Zi.val * this.lengthZ * cosGamma +
-          (i - 1) * this.lengthX +
-          (k - 1) * this.lengthY * cosBeta +
+          xi = 
+          Xi.val * this.lengthX + 
+          Yi.val * this.lengthY * cosBeta + 
+          Zi.val * this.lengthZ * cosGamma + 
+          (i - 1) * this.lengthX + 
+          (k - 1) * this.lengthY * cosBeta + 
           (j - 1) * this.lengthZ * cosGamma
 
-          yi =
-          Yi.val * this.lengthY * sinAlpha +
+          yi = 
+          Yi.val * this.lengthY * sinAlpha + 
           (k - 1) * this.lengthY * sinAlpha
 
-          zi =
-          Zi.val * this.lengthY * cosAlpha * sinGamma +
-          Zi.val * this.lengthZ * sinGamma +
+          zi = 
+          Zi.val * this.lengthY * cosAlpha * sinGamma + 
+          Zi.val * this.lengthZ * sinGamma + 
           (j - 1) * this.lengthZ * sinGamma
           */
         }
@@ -240,7 +240,7 @@ class Specimen{
     this.updateMaterials();
   }
 
-  updateMaterials(){
+  updateMaterials(){ 
     delete this.material;
     this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
     this.redrawCrystals();
@@ -296,15 +296,15 @@ class Specimen{
     //   xVal = this.sphereCoords[i].x * this.lengthY * Math.cos(this.angleB) + this.zero;
     //   yVal = this.sphereCoords[i].y * this.lengthY * Math.sin(this.angleA) + this.zero;
     //   zVal = this.sphereCoords[i].z * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + this.zero;
-
+  
     //   let geometry = new THREE.SphereGeometry(0.25, 4, 4);
     //   let material = new THREE.MeshBasicMaterial({color: this.sphereCoords[i].color, wireframe: true});
     //   let sphere = new THREE.Mesh(geometry, material);
-
+  
     //   sphere.position.x = xVal;
     //   sphere.position.y = yVal;
     //   sphere.position.z = zVal;
-
+  
     //   scene.add(sphere);
     // }
   }
