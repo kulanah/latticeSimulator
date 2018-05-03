@@ -203,7 +203,6 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 
 	this.zoomCamera = function () {
-
 		var factor;
 
 		if ( _state === STATE.TOUCH_ZOOM_PAN ) {
@@ -496,6 +495,11 @@ THREE.TrackballControls = function ( object, domElement ) {
 	}
 
 	function mousewheel( event ) {
+		if (event.deltaY > 0){
+			newSpecimen.updateMag(-0.1);
+		} else {
+			newSpecimen.updateMag(0.1);
+		}
 
 		if ( _this.enabled === false ) return;
 
