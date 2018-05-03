@@ -1,11 +1,11 @@
-
-// let sizeMult = 40;
-// let width = window.innerWidth;
-// let height = window.innerHeight;
-// let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
+let sizeMult = 40;
+let width = window.innerWidth;
+let height = window.innerHeight;
+let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
+let mag = 1;
 
 let scene = new THREE.Scene();
-let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
+// let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
 let controls;
 let renderer;
 
@@ -44,7 +44,8 @@ let init = function(){
     color: '#f00',
     preferredFormat: 'hex',
   });
-
+  
+  createUserDefinedCrystals();
 };
 
 
@@ -69,6 +70,21 @@ let addAtom = function(x, y, z, colorHex){
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
+let createUserDefinedCrystals = function(){
+  addAtom(1, 1, 1, '#00ff00');
+  addAtom(1, 1, 0, '#00ff00');
+  addAtom(1, 0, 1, '#00ff00');
+  addAtom(1, 0, 0, '#00ff00');
+  addAtom(0, 1, 1, '#00ff00');
+  addAtom(0, 1, 0, '#00ff00');
+  addAtom(0, 0, 1, '#00ff00');
+  addAtom(0, 0, 0, '#00ff00');
+  // addAtom(0, .25, .25, '#ffff00');
+  // addAtom(.25, 0, .25, '#ffff00');
+  // addAtom(.25, .25, 0, '#ffff00');
+}
+
+
 let lengthX = $('#lengthX')[0].value;
 let lengthY = $('#lengthY')[0].value;
 let lengthZ = $('#lengthZ')[0].value;
@@ -80,18 +96,13 @@ let countY = $('#ycountnumber')[0].value;
 let countZ = $('#zcountnumber')[0].value;
 let lineweight = $('#latticeweight')[0].value;
 
-
 let newSpecimen = new Specimen('square', countX, countY, countZ, lengthX, lengthY, lengthZ, angleA, angleB, angleC, scene, lineweight);
-addAtom(1, 1, 1, '#ff0000');
-addAtom(0.5, 0.5, 0.5, '#0000ff');
-addAtom(0, 0, 0, '#00ff00');
 
 
-drawSpecimen();
 init();
+drawSpecimen();
 animate();
 newSpecimen.drawSpheres();
-
 
 let draggables = ['controlsbox'];
 

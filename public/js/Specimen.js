@@ -5,10 +5,10 @@ class Specimen{
     case 'square':
       this.shape = new THREE.Geometry();
       this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: lineWeight});
-
-      this.lengthX = lengthA;
-      this.lengthY = lengthB;
-      this.lengthZ = lengthC;
+      
+      this.lengthX = Number(lengthA);
+      this.lengthY = Number(lengthB);
+      this.lengthZ = Number(lengthC);
       break;
     }
     this.countX = countX;
@@ -31,39 +31,44 @@ class Specimen{
     this.crystalCount = 0;
 
     this.zero = 0;
+    this.mag = 1.0;
   }
 
   createCrystals(){
     let geometry = new THREE.SphereGeometry(0.25, 8, 8);
     let material;
     this.crystalCount = 0;
-    let x1 = new Array;
-    let y1 = new Array;
-    let z1 = new Array;
-    let x2 = new Array;
-    let y2 = new Array;
-    let z2 = new Array;
-    let x3 = new Array;
-    let y3 = new Array;
-    let z3 = new Array;
-    let x4 = new Array;
-    let y4 = new Array;
-    let z4 = new Array;
-    let x5 = new Array;
-    let y5 = new Array;
-    let z5 = new Array;
-    let x6 = new Array;
-    let y6 = new Array;
-    let z6 = new Array;
-    let x7 = new Array;
-    let y7 = new Array;
-    let z7 = new Array;
+    let x1 = [];
+    let y1 = [];
+    let z1 = [];
+    let x2 = [];
+    let y2 = [];
+    let z2 = [];
+    let x3 = [];
+    let y3 = [];
+    let z3 = [];
+    let x4 = [];
+    let y4 = [];
+    let z4 = [];
+    let x5 = [];
+    let y5 = [];
+    let z5 = [];
+    let x6 = [];
+    let y6 = [];
+    let z6 = [];
+    let x7 = [];
+    let y7 = [];
+    let z7 = [];
     for (let i = -this.countX - 1; i < this.countX; ++i){
       for (let j = -this.countZ - 1; j < this.countZ; ++j){
         for(let k = -this.countY - 1; k < this.countY; ++k){
-          x1[i] = this.lengthY * Math.cos(this.angleB) * (k + 1);
-          y1[k] = this.lengthY * Math.sin(this.angleA) * (k + 1);
-          z1[j] = this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) * (k + 1);
+          //let s1 = Math.sqrt(Math.pow(Math.cos(this.angleA), 2) - 2 * Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC) + Math.pow(Math.cos(this.angleB), 2));
+          //let s2 = Math.pow(Math.cos(this.angleA), 2)- Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC);
+          //let s3 = s2 / s1;
+          let s3 = (Math.cos(this.angleA) - Math.cos(this.angleB) * Math.cos(this.angleC))/(Math.sin(this.angleB) * Math.sin(this.angleC));
+          x1[i] = this.lengthY * Math.cos(this.angleB)  * (k + 1);
+          y1[k] = this.lengthY * Math.sin(this.angleB) * Math.sqrt(1 - s3 * s3) * (k + 1);
+          z1[j] = this.lengthY * Math.sin(this.angleB) * s3 * (k + 1);
 
           x2[i] = this.lengthZ * Math.cos(this.angleC) * (j + 1);
           z2[j] = this.lengthZ * Math.sin(this.angleC) * (j + 1);
@@ -136,32 +141,28 @@ class Specimen{
           scene.add(this.crystals[this.crystalCount]);
 
           ++this.crystalCount;
-
+          
+          // use the direction vector to plot the position of atoms.
           for (let a = 0; a < this.sphereCoords.length; ++a){
             if (i !=  -this.countX - 1 && k != -this.countY - 1 && j != -this.countZ - 1){
               material = new THREE.MeshBasicMaterial({color: this.sphereCoords[a].color, transparent: true});
               let newSphere = new THREE.Mesh(geometry, material);
 
-              let xMult = this.sphereCoords[a].x;
-              let yMult = this.sphereCoords[a].y;
-              let zMult = this.sphereCoords[a].z;
+              let xMult = Number(this.sphereCoords[a].x);
+              let yMult = Number(this.sphereCoords[a].y);
+              let zMult = Number(this.sphereCoords[a].z);
 
-              let xPos = 
-              xMult * this.lengthX +
-              yMult * this.lengthY * Math.cos(this.angleB) + 
-              zMult * this.lengthZ * Math.cos(this.angleC) + 
-              (i) * this.lengthX + 
-              (k) * this.lengthY * Math.cos(this.angleB) + 
-              (j) * this.lengthZ * Math.cos(this.angleC);
+              let xPos =
+              (xMult + Number(i)) * this.lengthX +
+              (yMult + Number(k)) * this.lengthY * Math.cos(this.angleB) +
+              (zMult + Number(j)) * this.lengthZ * Math.cos(this.angleC);
+              
+              let yPos =
+              (yMult + Number(k)) * this.lengthY * Math.sin(this.angleB) * Math.sqrt(1 - s3 * s3);
 
-              let yPos = 
-              yMult * this.lengthY * Math.sin(this.angleA)+ 
-              (k) * this.lengthY * Math.sin(this.angleA);
-
-              let zPos = 
-              zMult * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + 
-              zMult * this.lengthZ * Math.sin(this.angleC) +
-              (j) * this.lengthZ * Math.sin(this.angleC);
+              let zPos =
+              (yMult + Number(k)) * this.lengthY * Math.sin(this.angleB) * s3 +
+              (zMult + Number(j)) * this.lengthZ * Math.sin(this.angleC);
 
               newSphere.position.x = xPos;
               newSphere.position.y = yPos;
@@ -171,24 +172,6 @@ class Specimen{
               scene.add(newSphere);
             }
           }
-          /*
-          xi = 
-          Xi.val * this.lengthX + 
-          Yi.val * this.lengthY * cosBeta + 
-          Zi.val * this.lengthZ * cosGamma + 
-          (i - 1) * this.lengthX + 
-          (k - 1) * this.lengthY * cosBeta + 
-          (j - 1) * this.lengthZ * cosGamma
-
-          yi = 
-          Yi.val * this.lengthY * sinAlpha + 
-          (k - 1) * this.lengthY * sinAlpha
-
-          zi = 
-          Zi.val * this.lengthY * cosAlpha * sinGamma + 
-          Zi.val * this.lengthZ * sinGamma + 
-          (j - 1) * this.lengthZ * sinGamma
-          */
         }
       }
     }
@@ -198,7 +181,6 @@ class Specimen{
     this.sphereCoords.push({x: x, y: y, z: z, color: colorhex, index: index});
     this.redrawCrystals();
   }
-
 
   removeAtom(id){
     this.sphereCoords = this.sphereCoords.filter(item => item.index != id);
@@ -218,12 +200,12 @@ class Specimen{
     this.shape = new THREE.Geometry;
     this.createCrystals();
 
-    if (this.loadCount < 4){
-      setTimeout(render, 1000);
-      ++this.loadCount;
-    } else {
+    // if (this.loadCount < 4){
+    //   setTimeout(render, 3000);
+    //   ++this.loadCount;
+    // } else {
       render();
-    }
+    // }
   }
 
 
@@ -237,7 +219,7 @@ class Specimen{
     this.updateMaterials();
   }
 
-  updateMaterials(){ 
+  updateMaterials(){
     delete this.material;
     this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: this.lineWeight});
     this.redrawCrystals();
@@ -266,13 +248,16 @@ class Specimen{
   }
 
   changeLengthX(newVal){
-    this.lengthX = newVal;
+    this.lengthX = newVal * this.mag;
+    console.log(newVal);
   }
   changeLengthY(newVal){
-    this.lengthY = newVal;
+    this.lengthY = newVal * this.mag;
+    console.log(newVal);
   }
   changeLengthZ(newVal){
-    this.lengthZ = newVal;
+    this.lengthZ = newVal * this.mag;
+    console.log(newVal);
   }
 
   changeXCount(newVal){
@@ -293,15 +278,15 @@ class Specimen{
     //   xVal = this.sphereCoords[i].x * this.lengthY * Math.cos(this.angleB) + this.zero;
     //   yVal = this.sphereCoords[i].y * this.lengthY * Math.sin(this.angleA) + this.zero;
     //   zVal = this.sphereCoords[i].z * this.lengthY * Math.cos(this.angleA) * Math.sin(this.angleC) + this.zero;
-  
+
     //   let geometry = new THREE.SphereGeometry(0.25, 4, 4);
     //   let material = new THREE.MeshBasicMaterial({color: this.sphereCoords[i].color, wireframe: true});
     //   let sphere = new THREE.Mesh(geometry, material);
-  
+
     //   sphere.position.x = xVal;
     //   sphere.position.y = yVal;
     //   sphere.position.z = zVal;
-  
+
     //   scene.add(sphere);
     // }
   }
@@ -348,6 +333,17 @@ class Specimen{
     scene.add(xPole);
     scene.add(yPole);
     scene.add(zPole);
+  }
+
+  updateMag(magDelta){
+    this.mag += magDelta;
+
+    this.lengthX += this.lengthX * magDelta; 
+    this.lengthY += this.lengthY * magDelta; 
+    this.lengthZ += this.lengthZ * magDelta; 
+
+    this.redrawCrystals();
+    this.redrawSpheres();
   }
 
 }
