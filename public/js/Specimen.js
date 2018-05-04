@@ -65,10 +65,10 @@ class Specimen{
           //let s1 = Math.sqrt(Math.pow(Math.cos(this.angleA), 2) - 2 * Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC) + Math.pow(Math.cos(this.angleB), 2));
           //let s2 = Math.pow(Math.cos(this.angleA), 2)- Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC);
           //let s3 = s2 / s1;
-          let s3 = (Math.cos(this.angleA) - Math.cos(this.angleB) * Math.cos(this.angleC))/(Math.sin(this.angleB) * Math.sin(this.angleC));
+          this.s3 = (Math.cos(this.angleA) - Math.cos(this.angleB) * Math.cos(this.angleC))/(Math.sin(this.angleB) * Math.sin(this.angleC));
           x1[i] = this.lengthY * Math.cos(this.angleB)  * (k + 1);
-          y1[k] = this.lengthY * Math.sin(this.angleB) * Math.sqrt(1 - s3 * s3) * (k + 1);
-          z1[j] = this.lengthY * Math.sin(this.angleB) * s3 * (k + 1);
+          y1[k] = this.lengthY * Math.sin(this.angleB) * Math.sqrt(1 - this.s3 * this.s3) * (k + 1);
+          z1[j] = this.lengthY * Math.sin(this.angleB) * this.s3 * (k + 1);
 
           x2[i] = this.lengthZ * Math.cos(this.angleC) * (j + 1);
           z2[j] = this.lengthZ * Math.sin(this.angleC) * (j + 1);
@@ -158,10 +158,10 @@ class Specimen{
               (zMult + Number(j)) * this.lengthZ * Math.cos(this.angleC);
               
               let yPos =
-              (yMult + Number(k)) * this.lengthY * Math.sin(this.angleB) * Math.sqrt(1 - s3 * s3);
+              (yMult + Number(k)) * this.lengthY * Math.sin(this.angleB) * Math.sqrt(1 - this.s3 * this.s3);
 
               let zPos =
-              (yMult + Number(k)) * this.lengthY * Math.sin(this.angleB) * s3 +
+              (yMult + Number(k)) * this.lengthY * Math.sin(this.angleB) * this.s3 +
               (zMult + Number(j)) * this.lengthZ * Math.sin(this.angleC);
 
               newSphere.position.x = xPos;
@@ -346,4 +346,15 @@ class Specimen{
     this.redrawSpheres();
   }
 
+  calculateCameraX(u, v, w){
+    return u * this.lengthX * Math.cos(this.angleB) + v * this.lengthY * Math.cos(this.angleB) + w * this.lengthZ * Math.cos(this.angleC);
+  }
+
+  calculateCameraY(u, v, w){
+    return v * this.lengthY * Math.sin(this.angleB) * Math.sqrt(1-this.s3 * this.s3);
+  }
+
+  calculateCameraZ(u, v, w){
+    return v * this.lengthY * Math.sin(this.angleB) * this.s3 + w * this.lengthZ * Math.sin(this.angleC);
+  }
 }

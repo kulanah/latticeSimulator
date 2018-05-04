@@ -67,18 +67,19 @@ $('#latticeweight').on('input', function(){
   newSpecimen.setLatticeWeight(this.value);
 });
 
-$('#cameraposx').on('input', function(){
-  camera.position.x = this.value;
-  $('#cameraposy').val(camera.position.y);
-  $('#cameraposz').val(camera.position.z);
-});
-$('#cameraposy').on('input', function(){
-  camera.position.y = this.value;
-  $('#cameraposx').val(camera.position.x);
-  $('#cameraposz').val(camera.position.z);
-});
-$('#cameraposz').on('input', function(){
-  camera.position.z = this.value;
-  $('#cameraposx').val(camera.position.x);
-  $('#cameraposy').val(camera.position.y);
+$('.camerainput').on('input', function(){
+  let u = $('#cameraposx').val();
+  let v = $('#cameraposy').val();
+  let w = $('#cameraposz').val();
+  let newCameraX = newSpecimen.calculateCameraX(u, v, w);
+  let newCameraY = newSpecimen.calculateCameraY(u, v, w);
+  let newCameraZ = newSpecimen.calculateCameraZ(u, v, w);
+
+  console.log("new camera x: " + newCameraX);
+  console.log("new camera y: " + newCameraY);  
+  console.log("new camera z: " + newCameraZ);
+
+  camera.position.set(newCameraX, newCameraY, newCameraZ);
+
+  render();
 });
