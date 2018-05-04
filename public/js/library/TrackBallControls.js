@@ -472,8 +472,6 @@ THREE.TrackballControls = function ( object, domElement ) {
 			_panEnd.copy( getMouseOnScreen( event.pageX, event.pageY ) );
 
 		}
-
-		updateCameraInputs();
 	}
 
 	this.mouseup = function( event ) {
@@ -524,8 +522,6 @@ THREE.TrackballControls = function ( object, domElement ) {
 				break;
 
 		}
-
-		updateCameraInputs();
 
 		_this.dispatchEvent( startEvent );
 		_this.dispatchEvent( endEvent );

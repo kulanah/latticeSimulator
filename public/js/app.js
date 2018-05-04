@@ -121,9 +121,3 @@ $('.hidden').hide();
 
 
 newSpecimen.updateMaterials();
-
-let updateCameraInputs = function(){
-  $('#cameraposx').val(camera.position.x);
-  $('#cameraposy').val(camera.position.y);
-  $('#cameraposz').val(camera.position.z);
-};
