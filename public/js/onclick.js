@@ -15,14 +15,14 @@ let addRowOnClick = function(){
 $('#atomaddbutton').on('click', function(event){
   event.preventDefault();
   let atom = $('#atominput')[0].value;
-  let element = $('#elementinput')[0].value;
+  let element = $('#elementinput').text();
   let x = $('#xinput')[0].value;
   let y = $('#yinput')[0].value;
   let z = $('#zinput')[0].value;
   let colorHex = $('#atomcolorpicker').spectrum('get').toHexString();
 
   index = Date.now();
-  addAtom(x, y, z, colorHex);
+  addAtom(x, y, z, colorHex, element);
 
   addRowOnClick();
 

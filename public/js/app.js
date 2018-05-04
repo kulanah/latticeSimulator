@@ -64,23 +64,23 @@ let animate = function(){
 
 
 
-let addAtom = function(x, y, z, colorHex){
+let addAtom = function(x, y, z, colorHex, element){
   let index = Date.now();
-  let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'border: 1px black solid; background:' + colorHex + ';\'></td></tr>';
+  let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + element + '</td><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'border: 1px black solid; background:' + colorHex + ';\'></td></tr>';
   $('#atomslisttable').append(tableRow);
   addRowOnClick();
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
 let createUserDefinedCrystals = function(){
-  addAtom(1, 1, 1, '#00ff00');
-  addAtom(1, 1, 0, '#00ff00');
-  addAtom(1, 0, 1, '#00ff00');
-  addAtom(1, 0, 0, '#00ff00');
-  addAtom(0, 1, 1, '#00ff00');
-  addAtom(0, 1, 0, '#00ff00');
-  addAtom(0, 0, 1, '#00ff00');
-  addAtom(0, 0, 0, '#00ff00');
+  addAtom(1, 1, 1, '#00ff00', 'H');
+  addAtom(1, 1, 0, '#00ff00', 'O');
+  addAtom(1, 0, 1, '#00ff00', 'Tn');
+  addAtom(1, 0, 0, '#00ff00', 'Au');
+  addAtom(0, 1, 1, '#00ff00', 'Al');
+  addAtom(0, 1, 0, '#00ff00', 'H');
+  addAtom(0, 0, 1, '#00ff00', 'Mg');
+  addAtom(0, 0, 0, '#00ff00', 'H');
   // addAtom(0, .25, .25, '#ffff00');
   // addAtom(.25, 0, .25, '#ffff00');
   // addAtom(.25, .25, 0, '#ffff00');
