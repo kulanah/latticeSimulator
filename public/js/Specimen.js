@@ -249,15 +249,14 @@ class Specimen{
 
   changeLengthX(newVal){
     this.lengthX = newVal * this.mag;
-    console.log(newVal);
   }
+
   changeLengthY(newVal){
     this.lengthY = newVal * this.mag;
-    console.log(newVal);
   }
+  
   changeLengthZ(newVal){
     this.lengthZ = newVal * this.mag;
-    console.log(newVal);
   }
 
   changeXCount(newVal){
