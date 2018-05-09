@@ -105,3 +105,9 @@ let atomOnMouseup = function(e){
     document.removeEventListener('mouseup', atomOnMouseup);
   } 
 };
+
+
+let atomNewColorOnchange = function(event){
+  let colorHex = $('#atomnewcolor').spectrum('get').toRgbString();
+  $('#' + cellId).css('background', colorHex);
+}
