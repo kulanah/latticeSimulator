@@ -44,6 +44,12 @@ let init = function(){
     color: '#f00',
     preferredFormat: 'hex',
   });
+
+  $('#atomnewcolor').spectrum({
+    color: '#0f0',
+    preferredFormat: 'hex',
+    flat: true,
+  });
   
   createUserDefinedCrystals();
 };
@@ -62,28 +68,52 @@ let animate = function(){
   controls.update();
 };
 
+let openAtomColorPicker = function(event, id){
+  let div = $('#atomnewcolordiv');
 
+  if (div.css('display') == 'none'){
+    closeWhenOffClickDiv = div;
+    div.show();
+    div.css('top', event.clientY);
+    div.css('left', event.clientX);
+  }
+
+  document.addEventListener('mouseup', (atomOnMouseup));
+};
 
 let addAtom = function(x, y, z, colorHex, element){
   let index = Date.now();
-  let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + element + '</td><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'border: 1px black solid; background:' + colorHex + ';\'></td></tr>';
+  let tableRow = 
+    '<tr class=\'crystalrow\'>' + 
+      '<td>' + element + '</td>' + 
+      '<td>' + x + '</td>' + 
+      '<td>' + y + '</td>' + 
+      '<td>' + z + '</td>' + 
+      // '<td><input class=\'atomcolor\' type=\'color\'/></td></tr>';
+      '<td ' + 
+        'class=\'atomcolor\'' +  
+        'id=\'' + index + '\'' +  
+        'onClick="openAtomColorPicker(event, ' + index + ')"' + 
+        'style=\'border: 1px black solid; background:' + colorHex + ';\'>' + 
+      '</td>' + 
+    '</tr>';
+
+   
+  
   $('#atomslisttable').append(tableRow);
   addRowOnClick();
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
 let createUserDefinedCrystals = function(){
-  addAtom(1, 1, 1, '#00ff00', 'H');
-  addAtom(1, 1, 0, '#00ff00', 'O');
-  addAtom(1, 0, 1, '#00ff00', 'Tn');
-  addAtom(1, 0, 0, '#00ff00', 'Au');
-  addAtom(0, 1, 1, '#00ff00', 'Al');
-  addAtom(0, 1, 0, '#00ff00', 'H');
-  addAtom(0, 0, 1, '#00ff00', 'Mg');
-  addAtom(0, 0, 0, '#00ff00', 'H');
-  // addAtom(0, .25, .25, '#ffff00');
-  // addAtom(.25, 0, .25, '#ffff00');
-  // addAtom(.25, .25, 0, '#ffff00');
+  addAtom(1, 1, 1, '#00ff00', 'Si');
+  addAtom(1, 1, 0, '#00ff00', 'Si');
+  addAtom(1, 0, 1, '#00ff00', 'Si');
+  addAtom(1, 0, 0, '#00ff00', 'Si');
+  addAtom(0, 1, 1, '#00ff00', 'Si');
+  addAtom(0, 1, 0, '#00ff00', 'Si');
+  addAtom(0, 0, 1, '#00ff00', 'Si');
+  addAtom(0, 0, 0, '#00ff00', 'Si');
 }
 
 
@@ -118,6 +148,8 @@ for (let i = 0; i < draggables.length; ++i){
 }
 
 $('.hidden').hide();
+
+let closeWhenOffClickDiv;
 
 
 newSpecimen.updateMaterials();
