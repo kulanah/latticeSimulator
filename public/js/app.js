@@ -3,6 +3,7 @@ let width = window.innerWidth;
 let height = window.innerHeight;
 let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
 let mag = 1;
+let cellId = 0;
 
 let scene = new THREE.Scene();
 // let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
@@ -71,14 +72,24 @@ let animate = function(){
 let openAtomColorPicker = function(event, id){
   let div = $('#atomnewcolordiv');
 
+  setupAtomColorLiveChange(id);
+
   if (div.css('display') == 'none'){
     closeWhenOffClickDiv = div;
     div.show();
     div.css('top', event.clientY);
-    div.css('left', event.clientX);
+    div.css('left', event.clientX + 10);
   }
 
   document.addEventListener('mouseup', (atomOnMouseup));
+};
+
+
+let setupAtomColorLiveChange = function (id){
+  cellId = id;
+  // document.getElementById('atomnewcolor').addEventListener('change', atomNewColorOnchange;
+  $('#atomnewcolor').on('change', atomNewColorOnchange);
+  $('#atomnewcolor').spectrum('set', $('#' + id).css('background'));
 };
 
 let addAtom = function(x, y, z, colorHex, element){
