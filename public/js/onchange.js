@@ -108,6 +108,10 @@ let atomOnMouseup = function(e){
 
 
 let atomNewColorOnchange = function(event){
-  let colorHex = $('#atomnewcolor').spectrum('get').toRgbString();
+  let colorHex = $('#atomnewcolor').spectrum('get').toHexString();
   $('#' + cellId).css('background', colorHex);
+
+  newSpecimen.updateAtomColor(cellId, colorHex);
+  //update atom in specimen
+
 }
