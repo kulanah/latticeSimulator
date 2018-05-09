@@ -96,6 +96,7 @@ let addAtom = function(x, y, z, colorHex, element){
   let index = Date.now();
   let tableRow = 
     '<tr class=\'crystalrow\'>' + 
+      '<td>' + $('#atomslisttable tr').length + '</td>' + 
       '<td>' + element + '</td>' + 
       '<td>' + x + '</td>' + 
       '<td>' + y + '</td>' + 
@@ -157,6 +158,18 @@ for (let i = 0; i < draggables.length; ++i){
     cursor: 'move'
   });
 }
+
+let resetCounts = function(){
+  let table = $('#atomslisttable');
+  let children = table.children()[0].children;
+  for (let i = 1; i < children.length; ++i){
+    // children[i]
+    children[i].children[0].innerText = i;
+    // console.log(i);
+  }
+  // }
+}
+
 
 $('.hidden').hide();
 
