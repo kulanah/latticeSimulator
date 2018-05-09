@@ -62,6 +62,13 @@ $('#latticecolorpicker').on('change', function(){
   newSpecimen.setLatticeColor(colorHex);
 });
 
+$('#atomnewcolor').on('change', function(event){
+  // console.log(closeWhenOffClickDiv);
+
+  let colorHex = $('#atomcolorpicker').spectrum("get").toRgbString();
+  // console.log(colorHex);
+});
+
 
 $('#latticeweight').on('input', function(){
   newSpecimen.setLatticeWeight(this.value);
@@ -79,3 +86,22 @@ $('.camerainput').on('input', function(){
 
   render();
 });
+
+
+let atomOnMouseup = function(e){
+  let $container = closeWhenOffClickDiv;
+  let className = $(e.target).attr('class');
+  let parentElement = '';
+  if (className == 'sp-picker-container'){
+    parentElement = e.target.parentElement.parentElement;
+  } else if (className == 'sp-dragger'){
+    parentElement = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+  } else if (className == 'sp-slider'){
+    parentElement = e.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement;
+  }
+  if ($container && ($container[0] !== parentElement)){
+    $container.hide();
+    closeWhenOffClickDiv = '';
+    document.removeEventListener('mouseup', atomOnMouseup);
+  } 
+};
