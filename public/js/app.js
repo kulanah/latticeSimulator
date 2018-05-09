@@ -3,6 +3,7 @@ let width = window.innerWidth;
 let height = window.innerHeight;
 let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
 let mag = 1;
+let cellId = 0;
 
 let scene = new THREE.Scene();
 // let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
@@ -44,6 +45,12 @@ let init = function(){
     color: '#f00',
     preferredFormat: 'hex',
   });
+
+  $('#atomnewcolor').spectrum({
+    color: '#0f0',
+    preferredFormat: 'hex',
+    flat: true,
+  });
   
   createUserDefinedCrystals();
 };
@@ -62,28 +69,63 @@ let animate = function(){
   controls.update();
 };
 
+let openAtomColorPicker = function(event, id){
+  let div = $('#atomnewcolordiv');
 
+  setupAtomColorLiveChange(id);
+
+  if (div.css('display') == 'none'){
+    closeWhenOffClickDiv = div;
+    div.show();
+    div.css('top', event.clientY);
+    div.css('left', event.clientX + 10);
+  }
+
+  document.addEventListener('mouseup', (atomOnMouseup));
+};
+
+
+let setupAtomColorLiveChange = function (id){
+  cellId = id;
+  // document.getElementById('atomnewcolor').addEventListener('change', atomNewColorOnchange;
+  $('#atomnewcolor').on('change', atomNewColorOnchange);
+  $('#atomnewcolor').spectrum('set', $('#' + id).css('background'));
+};
 
 let addAtom = function(x, y, z, colorHex, element){
   let index = Date.now();
-  let tableRow = '<tr class=\'crystalrow\' index=\'' + index + '\'><td>' + element + '</td><td>' + x + '</td><td>' + y + '</td><td>' + z + '</td><td style=\'border: 1px black solid; background:' + colorHex + ';\'></td></tr>';
+  let tableRow = 
+    '<tr class=\'crystalrow\'>' + 
+      '<td>' + $('#atomslisttable tr').length + '</td>' + 
+      '<td>' + element + '</td>' + 
+      '<td>' + x + '</td>' + 
+      '<td>' + y + '</td>' + 
+      '<td>' + z + '</td>' + 
+      // '<td><input class=\'atomcolor\' type=\'color\'/></td></tr>';
+      '<td ' + 
+        'class=\'atomcolor\'' +  
+        'id=\'' + index + '\'' +  
+        'onClick="openAtomColorPicker(event, ' + index + ')"' + 
+        'style=\'border: 1px black solid; background:' + colorHex + ';\'>' + 
+      '</td>' + 
+    '</tr>';
+
+   
+  
   $('#atomslisttable').append(tableRow);
   addRowOnClick();
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
 let createUserDefinedCrystals = function(){
-  addAtom(1, 1, 1, '#00ff00', 'H');
-  addAtom(1, 1, 0, '#00ff00', 'O');
-  addAtom(1, 0, 1, '#00ff00', 'Tn');
-  addAtom(1, 0, 0, '#00ff00', 'Au');
-  addAtom(0, 1, 1, '#00ff00', 'Al');
-  addAtom(0, 1, 0, '#00ff00', 'H');
-  addAtom(0, 0, 1, '#00ff00', 'Mg');
-  addAtom(0, 0, 0, '#00ff00', 'H');
-  // addAtom(0, .25, .25, '#ffff00');
-  // addAtom(.25, 0, .25, '#ffff00');
-  // addAtom(.25, .25, 0, '#ffff00');
+  addAtom(1, 1, 1, '#00ff00', 'Si');
+  addAtom(1, 1, 0, '#00ff00', 'Si');
+  addAtom(1, 0, 1, '#00ff00', 'Si');
+  addAtom(1, 0, 0, '#00ff00', 'Si');
+  addAtom(0, 1, 1, '#00ff00', 'Si');
+  addAtom(0, 1, 0, '#00ff00', 'Si');
+  addAtom(0, 0, 1, '#00ff00', 'Si');
+  addAtom(0, 0, 0, '#00ff00', 'Si');
 }
 
 
@@ -117,7 +159,21 @@ for (let i = 0; i < draggables.length; ++i){
   });
 }
 
+let resetCounts = function(){
+  let table = $('#atomslisttable');
+  let children = table.children()[0].children;
+  for (let i = 1; i < children.length; ++i){
+    // children[i]
+    children[i].children[0].innerText = i;
+    // console.log(i);
+  }
+  // }
+}
+
+
 $('.hidden').hide();
+
+let closeWhenOffClickDiv;
 
 
 newSpecimen.updateMaterials();

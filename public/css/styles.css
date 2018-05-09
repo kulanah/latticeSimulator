@@ -2,6 +2,11 @@ body{
   overflow: hidden;
 }
 
+#atomnewcolordiv{
+  position: absolute;
+  z-index: 1;
+}
+
 #controlsbox{
   display: grid;
   bottom: 0;

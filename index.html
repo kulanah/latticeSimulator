@@ -8,8 +8,8 @@
 			canvas { width: 100%; height: 100% }
 		</style>
 	</head>
-	<body>
-		<div id='controlsbox'> <!--class='hidden'>-->
+	<body id='docbody'>
+		<div id='controlsbox'> 
 			<div class='controlsboxdiv'>
 				<p>specimen name</p>
 				<div id='specimenrow'>
@@ -109,6 +109,7 @@
 			<div class='controlsboxdiv' id='atomslist'>
 				<table id='atomslisttable'>
 					<tr class='listheader'>
+						<td>Number</td>
 						<td>Element</td>
 						<td>X</td>
 						<td>Y</td>
@@ -371,6 +372,11 @@
 				<span class='gutter'></span>
 			</div>
 		</div>
+
+		<div id='atomnewcolordiv' class='hidden'>
+			<input type='text' class='colorpicker' id='atomnewcolor'>
+		</div>
+
 
 		<script src='./public/js/library/three.min.js'></script>
 		<script src='./public/js/library/jquery.js'></script>
