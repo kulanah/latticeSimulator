@@ -187,6 +187,17 @@ class Specimen{
     this.redrawCrystals();
   }
 
+  updateAtomColor(id, hex){
+    for (let sphere in this.sphereCoords){
+      let sphereInst = this.sphereCoords[sphere];
+      if (sphereInst.index == cellId){
+        sphereInst.color = hex;
+      }
+    }
+
+    this.redrawCrystals();
+  }
+
   redrawCrystals(){
     for (let i = 0; i < this.crystals.length; ++i){
       scene.remove(this.crystals[i]);
