@@ -5,10 +5,10 @@ let addRowOnClick = function(){
     if (selected){
       $(selected).css('background', '#ffffff');
     }
-
-    id = $(this).attr('index');
+     
+    id = $(this).children()[5].id;
     selected = this;
-    $(this).css('background', '#ff0000');
+    $(this).css('background', '#aaa');
   });
 };
 
@@ -41,6 +41,8 @@ $('#atomremovebutton').on('click', function(){
     newSpecimen.removeAtom(id);
     render();
   }
+
+  resetCounts();
 });
 
 
