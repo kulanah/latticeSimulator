@@ -10,12 +10,12 @@
 	</head>
 	<body id='docbody'>
 		<div id='controlsbox'> 
-			<div class='controlsboxdiv'>
-				<p>specimen name</p>
-				<div id='specimenrow'>
-					<input id='specimenname' type='text'>
-					<button id='controlsboxhide'>Hide</button>
-				</div>
+			<div class='controlsboxdiv' id='controlsboxheader'>
+				<p id='controlsboxtitle'>specimen name</p>
+				<input id='specimenname' type='text'>
+				<button id='exportbutton'>Export Atoms</button>
+				<button id='importbutton'>Import Atoms</button>
+				<img src='./public/img/mini.svg' id='controlsboxhide'/>
 			</div>
 			<div class='controlsboxdiv' id='latticeoptions'>
 				<p id='latticetitle'>bravias lattice</p>
@@ -38,37 +38,36 @@
 				<input type='number' id='latticeweight' value='4' max='7' min='1'>
 				<input type='text' id='latticecolorpicker' class='colorpicker'>
 			</div>
-			<div class='controlsboxdiv'>
+			<div class='controlsboxdiv' id='latticeunits'>
 				<p>Units</p>
 				<div id='unitsflex'>
-					<span>
-						a =
+					<span class='unitsheader'>
+						a
 						<input id='lengthX' type='number' value='5.431'>
 					</span>
-					<span>
-						b =
+					<span class='unitsheader'>
+						b
 						<input id='lengthY' type='number' value='5.431'>
 					</span>
-					<span>
-						c =
+					<span class='unitsheader'>
+						c
 						<input id='lengthZ' type='number' value='5.431'>
 					</span>
-					<span>
-						Alpha =
+					<span class='unitsheader'>
+						Alpha
 						<input id='angleA' type='number' min='-180' value='90' max='180'>
 					</span>
-					<span>
-						Beta =
+					<span class='unitsheader'>
+						Beta
 						<input id='angleB' type='number' min='-180' value='90' max='180'>
 					</span>
-					<span>
-						Gamma =
+					<span class='unitsheader'>
+						Gamma
 						<input id='angleC' type='number' min='-180' value='90' max='180'>
-					</span>
 					</span>
 				</div>
 			</div>
-			<div class='controlsboxdiv'>
+			<div class='controlsboxdiv' id='atomform'>
 				<form>
 				<p>Coordinates of Atoms</p>
 				<div id='atomsflex'>

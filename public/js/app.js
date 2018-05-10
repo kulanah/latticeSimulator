@@ -117,6 +117,21 @@ let addAtom = function(x, y, z, colorHex, element){
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
+let exportAtoms = function(){
+
+  let exportObj = {};
+
+  let table = $('#atomslisttable');
+  for (let i = 1; i < table.lenght; ++i){
+    // exportObj.i = {
+    //   element: table[i].element,
+
+
+    // }
+
+  }
+};
+
 let createUserDefinedCrystals = function(){
   addAtom(1, 1, 1, '#00ff00', 'Si');
   addAtom(1, 1, 0, '#00ff00', 'Si');
@@ -126,7 +141,7 @@ let createUserDefinedCrystals = function(){
   addAtom(0, 1, 0, '#00ff00', 'Si');
   addAtom(0, 0, 1, '#00ff00', 'Si');
   addAtom(0, 0, 0, '#00ff00', 'Si');
-}
+};
 
 
 let lengthX = $('#lengthX')[0].value;
