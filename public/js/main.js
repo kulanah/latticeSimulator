@@ -69,4 +69,3 @@ let animate = function(){
 init();
 render();
 animate();
-// mesh.rotation.x =  50;
