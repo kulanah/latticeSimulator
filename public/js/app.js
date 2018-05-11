@@ -92,6 +92,90 @@ let loadJSONAtoms = function(object){
 };
 
 
+let exportAtoms = function(){
+  let fileName = promptForFileName();
+};
+
+let promptForFileName = function(){
+  let framingDiv = 
+    '<div ' + 
+      'id="filenameprompt" ' + 
+      'style="background:rgba(255,255,255,0.5); height:100%;width:100%;' + 
+      'position:absolute;top:0;left:0;z-index:2">';
+
+  let divEnd = '</div>';
+
+  let inputBoxStyle = 
+    'background:#EBE8D7;' + 
+    'border:solid 1px #A9A9A9;' + 
+    'border-radius:5px;' + 
+    'position:absolute;' + 
+    'top:45%;' + 
+    'left:45%;' + 
+    'width:10%;'+ 
+    'height:10%;' + 
+    'padding:1%'; 
+
+
+  let inputBox = 
+    '<div style="' + inputBoxStyle + '">' + 
+      '<form>' + 
+        '<div>' + 
+          '<label for="atomconfigfilename">Filename: </label>'  +
+          '<input type="text" id="atomconfigfilename">' + 
+        '</div>' +
+        '<div style="margin-top:5%;">' + 
+          '<button id="filenamesubmit" type="submit">Save File</button>' + 
+        '</div>' + 
+      '</form>' + 
+    '</div>';
+
+
+  let newWindow = framingDiv + inputBox + divEnd;
+
+  console.log(newWindow);
+  $("body").append(newWindow);
+
+  $('#filenamesubmit').on('click', submitFileName);
+};
+
+let submitFileName = function(event){
+  event.preventDefault();
+  let filename = $('#atomconfigfilename')[0].value + '.json';
+
+  let object = createDownloadJson();
+  downloadAtomsFile(object, filename);
+
+  $('#filenameprompt').hide();
+};
+
+let createDownloadJson = function(){
+  let exportObj = [];
+
+  let table = $('#atomslisttable').children().children();
+  for (let i = 1; i < table.length; ++i){
+    let row = table[i].children;
+    exportObj[i - 1] = {
+      element: row[1].innerText,
+      x: row[2].innerText,
+      y: row[3].innerText,
+      z: row[4].innerText,
+      color: convertRGBToHex(row[5].style.backgroundColor),
+    };
+  }
+
+  let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
+  return dataStr;
+};
+
+
+let downloadAtomsFile = function(object, filename){
+  let dlAnchorElem = document.getElementById('downloadAnchorElem');
+  dlAnchorElem.setAttribute('href', object);
+  dlAnchorElem.setAttribute('download', filename); 
+  dlAnchorElem.click();
+};
+
 let setupAtomColorLiveChange = function (id){
   cellId = id;
   // document.getElementById('atomnewcolor').addEventListener('change', atomNewColorOnchange;
