@@ -84,6 +84,14 @@ let openAtomColorPicker = function(event, id){
   document.addEventListener('mouseup', (atomOnMouseup));
 };
 
+let loadJSONAtoms = function(object){
+  for (let i = 0; i < object.length; ++i){
+    console.log(object[i]);
+    addAtom(object[i].x, object[i].y, object[i].z, object[i].color, object[i].element);
+  }
+  addRowOnClick();
+};
+
 
 let setupAtomColorLiveChange = function (id){
   cellId = id;
@@ -113,24 +121,30 @@ let addAtom = function(x, y, z, colorHex, element){
    
   
   $('#atomslisttable').append(tableRow);
-  addRowOnClick();
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
-let exportAtoms = function(){
 
-  let exportObj = {};
+let clearAtomList = function(){
+  //Get list of atoms from table rows.  Specifically need IDs.
+  let rows = $('#atomslisttable').children().children(); //children.children goes from table to TR
 
-  let table = $('#atomslisttable');
-  for (let i = 1; i < table.lenght; ++i){
-    // exportObj.i = {
-    //   element: table[i].element,
-
-
-    // }
-
+  //call remove atom on the given row
+  for (let i = 1; i < rows.length; ++i){
+    rows[i].click();
+    $('#atomremovebutton').click();
   }
 };
+
+
+let convertRGBToHex = function(rgb) {
+  rgb = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+  function hex(x) {
+    return ('0' + parseInt(x).toString(16)).slice(-2);
+  }
+  return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+}
+
 
 let createUserDefinedCrystals = function(){
   addAtom(1, 1, 1, '#00ff00', 'Si');
@@ -192,3 +206,4 @@ let closeWhenOffClickDiv;
 
 
 newSpecimen.updateMaterials();
+addRowOnClick();
