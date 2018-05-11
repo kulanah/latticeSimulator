@@ -61,6 +61,30 @@ $('#controlsboxexpand').on('click', function(){
 
 $('#elementinput').on('click', function(){
   $('#periodictable').show();
+});
 
+$('#atomclearbutton').on('click', function(){
+  clearAtomList();
+});
 
+$('#exportbutton').on('click', function(){
+  let exportObj = [];
+
+  let table = $('#atomslisttable').children().children();
+  for (let i = 1; i < table.length; ++i){
+    let row = table[i].children;
+    exportObj[i - 1] = {
+      element: row[1].innerText,
+      x: row[2].innerText,
+      y: row[3].innerText,
+      z: row[4].innerText,
+      color: convertRGBToHex(row[5].style.backgroundColor),
+    };
+  }
+
+  let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
+  let dlAnchorElem = document.getElementById('downloadAnchorElem');
+  dlAnchorElem.setAttribute('href', dataStr);
+  dlAnchorElem.setAttribute('download', 'scene.json');
+  dlAnchorElem.click();
 });

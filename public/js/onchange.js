@@ -87,6 +87,17 @@ $('.camerainput').on('input', function(){
   render();
 });
 
+$('#importbutton').on('change', function(event){
+  let reader = new FileReader();
+  reader.onload = onReaderLoad;
+  reader.readAsText(event.target.files[0]);
+});
+
+let onReaderLoad = function(event){
+  let obj = JSON.parse(event.target.result);
+  clearAtomList();
+  loadJSONAtoms(obj);
+};
 
 let atomOnMouseup = function(e){
   let $container = closeWhenOffClickDiv;

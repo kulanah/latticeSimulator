@@ -24,6 +24,64 @@ body{
 .controlsboxdiv{
   border: #aaa 1px solid;
   width: 408px;
+  height: 70px;
+}
+
+#controlsboxtitle{
+  grid-row: 4/14;
+  grid-column: 1/6;
+}
+
+#specimenname{
+  grid-row: 6/14;
+  grid-column: 5/10;
+}
+
+#exportbutton{
+  grid-row: 4/10;
+  grid-column: 11/16;
+}
+
+#importbutton{
+  grid-row: 12/18;
+  grid-column: 11/21;
+}
+
+#controlsboxhide{
+  border: 1px solid #A5A5A5;
+  border-radius: 1px;
+  background: linear-gradient(#F5F5F5, #DCDCDC);
+  grid-row: 2/5; 
+  grid-column: 20/21;
+}
+
+#latticeunits{
+  display: grid;
+  padding-top: 5px;
+  height: 65px;
+  grid-template-columns: 1fr 9fr;
+  grid-template-rows: 1fr;
+}
+
+#atomform{
+  height: 110px;
+}
+.unitsheader{
+  width: 16%;
+}
+
+#controlsboxheader{
+
+  display: grid;
+  grid-template: repeat(20, 1fr) / repeat(20, 1fr);
+}
+
+
+#controlsboxexpand{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 #unitsflex input{
@@ -34,7 +92,7 @@ body{
 
 #unitsflex{
   display:flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 #atomsflex input{
@@ -46,6 +104,7 @@ body{
 #buttonflex{
   display: flex;
   width: 409px;
+  height: 25px;
 }
 
 .buttonrow{
@@ -76,12 +135,16 @@ td{
   width:102.75px;
   text-align: center;
 }
+
+
 .crystalrow:hover{
   background: grey;
   border: 1px grey solid;
 }
 
-
+#tablediv{
+  height: 80px;
+}
 #tablediv td{
   width: 130px; 
   vertical-align: middle;
@@ -103,31 +166,11 @@ body{
   left: 0;
   top: 0;
 }
-
-#controlsboxexpand{
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 1;
-}
-
 #specimenrow{
   display:flex;
   flex-flow: flex-start;
 }
 
-#specimenname{
-  width: 200px;
-  margin-right:80px;
-  margin-bottom: 20px;
-  margin-left: 5px;
-  margin-top: 5px;
-}
-
-#controlsboxhide{
-  flex-grow: 1;
-  margin: 5px 5px 5px 20px;
-}
 
 #elementinput{
   height: 35px;
@@ -144,7 +187,7 @@ body{
 
 #latticeoptions{
   display:grid;
-  
+  height: 53px; 
   grid-template-rows: repeat(6, 10px);
   grid-template-columns: repeat(10, 10%);
 }
@@ -170,6 +213,7 @@ body{
 }
 
 #camerasnapbox{
+  height: 50px;
   display:grid;
   grid-template-rows: 50% 50%;
   grid-template-columns: 33% 33% 33%;
