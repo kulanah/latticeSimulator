@@ -86,12 +86,49 @@ let openAtomColorPicker = function(event, id){
 
 let loadJSONAtoms = function(object){
   for (let i = 0; i < object.length; ++i){
-    console.log(object[i]);
     addAtom(object[i].x, object[i].y, object[i].z, object[i].color, object[i].element);
   }
   addRowOnClick();
 };
 
+
+let exportAtoms = function(){
+  let filename = $('#specimenname')[0].value + '.json';
+  if (filename == '.json'){ 
+    filename = 'atomconfig.json';
+  }
+
+  let object = createDownloadJson();
+  downloadAtomsFile(object, filename);
+  $('#specimenname')[0].value = '';
+};
+
+let createDownloadJson = function(){
+  let exportObj = [];
+
+  let table = $('#atomslisttable').children().children();
+  for (let i = 1; i < table.length; ++i){
+    let row = table[i].children;
+    exportObj[i - 1] = {
+      element: row[1].innerText,
+      x: row[2].innerText,
+      y: row[3].innerText,
+      z: row[4].innerText,
+      color: convertRGBToHex(row[5].style.backgroundColor),
+    };
+  }
+
+  let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
+  return dataStr;
+};
+
+
+let downloadAtomsFile = function(object, filename){
+  let dlAnchorElem = document.getElementById('downloadAnchorElem');
+  dlAnchorElem.setAttribute('href', object);
+  dlAnchorElem.setAttribute('download', filename); 
+  dlAnchorElem.click();
+};
 
 let setupAtomColorLiveChange = function (id){
   cellId = id;
