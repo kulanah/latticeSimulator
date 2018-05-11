@@ -86,7 +86,6 @@ let openAtomColorPicker = function(event, id){
 
 let loadJSONAtoms = function(object){
   for (let i = 0; i < object.length; ++i){
-    console.log(object[i]);
     addAtom(object[i].x, object[i].y, object[i].z, object[i].color, object[i].element);
   }
   addRowOnClick();
