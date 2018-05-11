@@ -57,18 +57,10 @@ $('#zcountnumber').on('input', function(){
 
 $('#latticecolorpicker').on('change', function(){
 
-  let colorHex = $('#latticecolorpicker').spectrum("get").toRgbString();
+  let colorHex = $('#latticecolorpicker').spectrum('get').toRgbString();
 
   newSpecimen.setLatticeColor(colorHex);
 });
-
-$('#atomnewcolor').on('change', function(event){
-  // console.log(closeWhenOffClickDiv);
-
-  let colorHex = $('#atomcolorpicker').spectrum("get").toRgbString();
-  // console.log(colorHex);
-});
-
 
 $('#latticeweight').on('input', function(){
   newSpecimen.setLatticeWeight(this.value);
@@ -119,11 +111,9 @@ let atomOnMouseup = function(e){
 };
 
 
-let atomNewColorOnchange = function(event){
+let atomNewColorOnchange = function(){
   let colorHex = $('#atomnewcolor').spectrum('get').toHexString();
   $('#' + cellId).css('background', colorHex);
 
   newSpecimen.updateAtomColor(cellId, colorHex);
-  //update atom in specimen
-
-}
+};

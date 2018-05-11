@@ -146,7 +146,6 @@ let addAtom = function(x, y, z, colorHex, element){
       '<td>' + x + '</td>' + 
       '<td>' + y + '</td>' + 
       '<td>' + z + '</td>' + 
-      // '<td><input class=\'atomcolor\' type=\'color\'/></td></tr>';
       '<td ' + 
         'class=\'atomcolor\'' +  
         'id=\'' + index + '\'' +  
@@ -154,8 +153,6 @@ let addAtom = function(x, y, z, colorHex, element){
         'style=\'border: 1px black solid; background:' + colorHex + ';\'>' + 
       '</td>' + 
     '</tr>';
-
-   
   
   $('#atomslisttable').append(tableRow);
   newSpecimen.addAtom(x, y, z, colorHex, index);
@@ -180,7 +177,7 @@ let convertRGBToHex = function(rgb) {
     return ('0' + parseInt(x).toString(16)).slice(-2);
   }
   return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
-}
+};
 
 
 let createUserDefinedCrystals = function(){
@@ -234,7 +231,7 @@ let resetCounts = function(){
     // console.log(i);
   }
   // }
-}
+};
 
 
 $('.hidden').hide();

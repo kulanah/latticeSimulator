@@ -211,12 +211,7 @@ class Specimen{
     this.shape = new THREE.Geometry;
     this.createCrystals();
 
-    // if (this.loadCount < 4){
-    //   setTimeout(render, 3000);
-    //   ++this.loadCount;
-    // } else {
-      render();
-    // }
+    render();
   }
 
 
@@ -360,7 +355,7 @@ class Specimen{
     return u * this.lengthX * Math.cos(this.angleB) + v * this.lengthY * Math.cos(this.angleB) + w * this.lengthZ * Math.cos(this.angleC);
   }
 
-  calculateCameraY(u, v, w){
+  calculateCameraY(u, v){
     return v * this.lengthY * Math.sin(this.angleB) * Math.sqrt(1-this.s3 * this.s3);
   }
 
