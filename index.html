@@ -14,7 +14,7 @@
 				<p id='controlsboxtitle'>specimen name</p>
 				<input id='specimenname' type='text'>
 				<button id='exportbutton'>Export Atoms</button>
-				<button id='importbutton'>Import Atoms</button>
+				<input id='importbutton' type='file'>
 				<img src='./public/img/mini.svg' id='controlsboxhide'/>
 			</div>
 			<div class='controlsboxdiv' id='latticeoptions'>
@@ -102,7 +102,7 @@
 				<input type='submit' value='Add' id='atomaddbutton' class='buttonrow'>
 				</form>
 				<button id='atomremovebutton' class='buttonrow'>Remove</button>
-				<button class='buttonrow'>Clear</button>
+				<button id='atomclearbutton' class='buttonrow'>Clear</button>
 				<button class='buttonrow'>View</button>
 			</div>
 			<div class='controlsboxdiv' id='atomslist'>
@@ -375,6 +375,8 @@
 		<div id='atomnewcolordiv' class='hidden'>
 			<input type='text' class='colorpicker' id='atomnewcolor'>
 		</div>
+
+		<a id='downloadAnchorElem' class='hidden'></a>
 
 
 		<script src='./public/js/library/three.min.js'></script>
