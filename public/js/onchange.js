@@ -97,7 +97,6 @@ let onReaderLoad = function(event){
   let obj = JSON.parse(event.target.result);
   clearAtomList();
   loadJSONAtoms(obj);
-  // console.log($('#importbutton'));
   $('#importbutton')[0].value = null;
 };
 
