@@ -148,7 +148,7 @@ let addAtom = function(x, y, z, colorHex, element){
   let tableRow = 
     '<tr class=\'crystalrow\'>' + 
       '<td>' + $('#atomslisttable tr').length + '</td>' + 
-      '<td>' + element + '</td>' + 
+      '<td onClick="openPeriodicTable(event, ' + index + ')">' + element + '</td>' + 
       '<td>' + x + '</td>' + 
       '<td>' + y + '</td>' + 
       '<td>' + z + '</td>' + 
@@ -164,6 +164,10 @@ let addAtom = function(x, y, z, colorHex, element){
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
 
+let openPeriodicTable = function(event, index){
+  $('#periodictable').show();
+  elementTarget = $('#' + index).parent().children()[1];
+};
 
 let clearAtomList = function(){
   //Get list of atoms from table rows.  Specifically need IDs.

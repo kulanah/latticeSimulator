@@ -1,4 +1,6 @@
 let selected;
+let elementTarget = $('#elementinput')[0];
+console.log(elementTarget);
 
 let addRowOnClick = function(){
   $('.crystalrow').on('click', function(){
@@ -61,6 +63,7 @@ $('#controlsboxexpand').on('click', function(){
 
 $('#elementinput').on('click', function(){
   $('#periodictable').show();
+  elementTarget = $('#elementinput')[0];
 });
 
 $('#atomclearbutton').on('click', function(){
@@ -69,4 +72,11 @@ $('#atomclearbutton').on('click', function(){
 
 $('#exportbutton').on('click', function(){
   exportAtoms();
+});
+
+$('.element').on('click',  function(){
+  console.log(elementTarget);
+  elementTarget.innerText = this.id;
+  $('#periodictable').hide();
+  elementTarget = $('#elementinput');
 });
