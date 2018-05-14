@@ -6,13 +6,11 @@ let mag = 1;
 let cellId = 0;
 
 let scene = new THREE.Scene();
-// let camera = new THREE.PerspectiveCamera(15, window.innerWidth / window.innerHeight, 0.1, 1500);
 let controls;
 let renderer;
 
 let init = function(){
   camera.position.set(0,0,0);
-  // camera.lookAt(new THREE.Vector3(0,0,0));
 
 
   renderer = new THREE.WebGLRenderer();
@@ -27,10 +25,8 @@ let init = function(){
 
   let xVal = -3;
   camera.position.x = 0;
-  // camera.position.y = -100;
   camera.position.z = 100;
   camera.position.y = 20;
-  // camera.lookAt(scene.position);
   camera.position.x = xVal;
 
   controls.target = new THREE.Vector3(xVal, 0, 0);
@@ -104,12 +100,14 @@ let exportAtoms = function(){
 };
 
 let createDownloadJson = function(){
-  let exportObj = [];
+  let exportObj = {};
+  exportObj.atoms = [];
 
   let table = $('#atomslisttable').children().children();
   for (let i = 1; i < table.length; ++i){
     let row = table[i].children;
-    exportObj[i - 1] = {
+    
+    exportObj.atoms[i - 1] = {
       element: row[1].innerText,
       x: row[2].innerText,
       y: row[3].innerText,
@@ -117,6 +115,15 @@ let createDownloadJson = function(){
       color: convertRGBToHex(row[5].style.backgroundColor),
     };
   }
+  
+  exportObj.crystal = {
+    x: $('#lengthX').val(),
+    y: $('#lengthY').val(),
+    z: $('#lengthZ').val(),
+    a: $('#angleA').val(),
+    b: $('#angleB').val(),
+    c: $('#angleC').val(),
+  };
 
   let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
   return dataStr;
@@ -132,7 +139,6 @@ let downloadAtomsFile = function(object, filename){
 
 let setupAtomColorLiveChange = function (id){
   cellId = id;
-  // document.getElementById('atomnewcolor').addEventListener('change', atomNewColorOnchange;
   $('#atomnewcolor').on('change', atomNewColorOnchange);
   $('#atomnewcolor').spectrum('set', $('#' + id).css('background'));
 };
@@ -179,6 +185,24 @@ let convertRGBToHex = function(rgb) {
   return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
 };
 
+let setCrystalParams = function(obj){
+  $('#lengthX').val(obj.x);
+  $('#lengthY').val(obj.y);
+  $('#lengthZ').val(obj.z);
+  $('#angleA').val(obj.a);
+  $('#angleB').val(obj.b);
+  $('#angleC').val(obj.c);
+
+  newSpecimen.changeLengthX($('#lengthX')[0].value);
+  newSpecimen.changeLengthY($('#lengthY')[0].value);
+  newSpecimen.changeLengthZ($('#lengthZ')[0].value);
+
+  newSpecimen.changeAngleA($('#angleA')[0].value);
+  newSpecimen.changeAngleB($('#angleB')[0].value);
+  newSpecimen.changeAngleC($('#angleC')[0].value);
+  newSpecimen.redrawCrystals();
+};
+
 
 let createUserDefinedCrystals = function(){
   addAtom(1, 1, 1, '#00ff00', 'Si');
@@ -216,8 +240,6 @@ let draggables = ['controlsbox'];
 for (let i = 0; i < draggables.length; ++i){
   $('#' + draggables[i]).draggable({
     addClasses: true,
-    // cancel: 'map, iframe',
-    // iframeFix: true,
     cursor: 'move'
   });
 }
@@ -226,11 +248,8 @@ let resetCounts = function(){
   let table = $('#atomslisttable');
   let children = table.children()[0].children;
   for (let i = 1; i < children.length; ++i){
-    // children[i]
     children[i].children[0].innerText = i;
-    // console.log(i);
   }
-  // }
 };
 
 

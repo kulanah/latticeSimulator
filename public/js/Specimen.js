@@ -62,9 +62,6 @@ class Specimen{
     for (let i = -this.countX - 1; i < this.countX; ++i){
       for (let j = -this.countZ - 1; j < this.countZ; ++j){
         for(let k = -this.countY - 1; k < this.countY; ++k){
-          //let s1 = Math.sqrt(Math.pow(Math.cos(this.angleA), 2) - 2 * Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC) + Math.pow(Math.cos(this.angleB), 2));
-          //let s2 = Math.pow(Math.cos(this.angleA), 2)- Math.cos(this.angleA) * Math.cos(this.angleB) * Math.cos(this.angleC);
-          //let s3 = s2 / s1;
           this.s3 = (Math.cos(this.angleA) - Math.cos(this.angleB) * Math.cos(this.angleC))/(Math.sin(this.angleB) * Math.sin(this.angleC));
           x1[i] = this.lengthY * Math.cos(this.angleB)  * (k + 1);
           y1[k] = this.lengthY * Math.sin(this.angleB) * Math.sqrt(1 - this.s3 * this.s3) * (k + 1);
