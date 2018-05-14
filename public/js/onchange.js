@@ -88,7 +88,8 @@ $('#importbutton').on('change', function(event){
 let onReaderLoad = function(event){
   let obj = JSON.parse(event.target.result);
   clearAtomList();
-  loadJSONAtoms(obj);
+  loadJSONAtoms(obj.atoms);
+  setCrystalParams(obj.crystal);
   $('#importbutton')[0].value = null;
 };
 

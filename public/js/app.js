@@ -100,12 +100,14 @@ let exportAtoms = function(){
 };
 
 let createDownloadJson = function(){
-  let exportObj = [];
+  let exportObj = {};
+  exportObj.atoms = [];
 
   let table = $('#atomslisttable').children().children();
   for (let i = 1; i < table.length; ++i){
     let row = table[i].children;
-    exportObj[i - 1] = {
+    
+    exportObj.atoms[i - 1] = {
       element: row[1].innerText,
       x: row[2].innerText,
       y: row[3].innerText,
@@ -113,6 +115,15 @@ let createDownloadJson = function(){
       color: convertRGBToHex(row[5].style.backgroundColor),
     };
   }
+  
+  exportObj.crystal = {
+    x: $('#lengthX').val(),
+    y: $('#lengthY').val(),
+    z: $('#lengthZ').val(),
+    a: $('#angleA').val(),
+    b: $('#angleB').val(),
+    c: $('#angleC').val(),
+  };
 
   let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
   return dataStr;
@@ -172,6 +183,24 @@ let convertRGBToHex = function(rgb) {
     return ('0' + parseInt(x).toString(16)).slice(-2);
   }
   return '#' + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+};
+
+let setCrystalParams = function(obj){
+  $('#lengthX').val(obj.x);
+  $('#lengthY').val(obj.y);
+  $('#lengthZ').val(obj.z);
+  $('#angleA').val(obj.a);
+  $('#angleB').val(obj.b);
+  $('#angleC').val(obj.c);
+
+  newSpecimen.changeLengthX($('#lengthX')[0].value);
+  newSpecimen.changeLengthY($('#lengthY')[0].value);
+  newSpecimen.changeLengthZ($('#lengthZ')[0].value);
+
+  newSpecimen.changeAngleA($('#angleA')[0].value);
+  newSpecimen.changeAngleB($('#angleB')[0].value);
+  newSpecimen.changeAngleC($('#angleC')[0].value);
+  newSpecimen.redrawCrystals();
 };
 
 
