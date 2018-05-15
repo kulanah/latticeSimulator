@@ -1,7 +1,7 @@
 let sizeMult = 40;
 let width = window.innerWidth;
 let height = window.innerHeight;
-let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 1, 2000);
+let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 0, 2000);
 let mag = 1;
 let cellId = 0;
 
@@ -123,6 +123,7 @@ let createDownloadJson = function(){
     a: $('#angleA').val(),
     b: $('#angleB').val(),
     c: $('#angleC').val(),
+    type: $('#latticeselector')[0].selectedIndex,
   };
 
   let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
@@ -204,6 +205,8 @@ let setCrystalParams = function(obj){
   newSpecimen.changeAngleA($('#angleA')[0].value);
   newSpecimen.changeAngleB($('#angleB')[0].value);
   newSpecimen.changeAngleC($('#angleC')[0].value);
+
+  $('#latticeselector')[0].selectedIndex = obj.type;
   newSpecimen.redrawCrystals();
 };
 
