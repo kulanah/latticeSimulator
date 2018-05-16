@@ -131,6 +131,10 @@ div p{
   margin: 0.25em;
 }
 
+div label{
+  margin: 0.25em;
+}
+
 td{
   width:102.75px;
   text-align: center;
