@@ -75,7 +75,6 @@ $('#exportbutton').on('click', function(){
 });
 
 $('.element').on('click',  function(){
-  console.log(elementTarget);
   elementTarget.innerText = this.id;
   $('#periodictable').hide();
   elementTarget = $('#elementinput');

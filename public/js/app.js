@@ -16,10 +16,10 @@ let init = function(){
   renderer = new THREE.WebGLRenderer();
   renderer.setSize(window.innerWidth, window.innerHeight);
   //change this to be based on the size of the crystals we use
-  renderer.domElement.id = 'threeCanvas';
+  renderer.domElement.id = 'latticeSimCanvas';
   document.body.appendChild(renderer.domElement);
 
-  controls = new THREE.TrackballControls(camera, document.getElementById('threeCanvas'));
+  controls = new THREE.TrackballControls(camera, document.getElementById('latticeSimCanvas'));
   controls.addEventListener('change', render);
 
 
@@ -258,7 +258,6 @@ let resetCounts = function(){
     children[i].children[0].innerText = i;
   }
 };
-
 
 $('.hidden').hide();
 

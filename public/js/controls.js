@@ -32,7 +32,7 @@ let handleDrag = function(event){
   return returns;
 };
 
-$('#threeCanvas').on('mousedown', function(event){
+$('#latticeSimCanvas').on('mousedown', function(event){
   if (event.ctrlKey){
     setStartX();
     $('body')[0].addEventListener('mousemove', crystalRotateHorizontal);
