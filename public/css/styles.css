@@ -161,7 +161,7 @@ body{
   overflow: hidden;
 }
 
-#threeCanvas{
+#latticeSimCanvas{
   position: absolute;
   left: 0;
   top: 0;
