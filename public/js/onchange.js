@@ -119,3 +119,8 @@ let atomNewColorOnchange = function(){
 
   newSpecimen.updateAtomColor(cellId, colorHex);
 };
+
+$('#backgroundcolorpicker').on('change', function(){
+  let colorHex = $('#backgroundcolorpicker').spectrum('get').toHexString();
+  updateBackgroundColor(colorHex);
+});

@@ -263,6 +263,12 @@ let resetCounts = function(){
   }
 };
 
+let updateBackgroundColor = function(hex){
+  scene.background = null;
+  scene.background = new THREE.Color(hex);
+  render();
+};
+
 $('.hidden').hide();
 
 let closeWhenOffClickDiv;
