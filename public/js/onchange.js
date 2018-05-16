@@ -67,15 +67,15 @@ $('#latticeweight').on('input', function(){
 });
 
 $('.camerainput').on('input', function(){
-  let u = $('#cameraposx').val();
-  let v = $('#cameraposy').val();
-  let w = $('#cameraposz').val();
+  let u = $('#cameraposx').val() * 20;
+  let v = $('#cameraposy').val() * 20;
+  let w = $('#cameraposz').val() * 20;
   let newCameraX = newSpecimen.calculateCameraX(u, v, w);
   let newCameraY = newSpecimen.calculateCameraY(u, v, w);
   let newCameraZ = newSpecimen.calculateCameraZ(u, v, w);
-
+  
   camera.position.set(newCameraX, newCameraY, newCameraZ);
-
+  
   render();
 });
 
@@ -92,6 +92,7 @@ let onReaderLoad = function(event){
   setCrystalParams(obj.crystal);
   $('#importbutton')[0].value = null;
 };
+
 
 let atomOnMouseup = function(e){
   let $container = closeWhenOffClickDiv;
