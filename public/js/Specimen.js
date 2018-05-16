@@ -349,7 +349,7 @@ class Specimen{
   }
 
   calculateCameraX(u, v, w){
-    return u * this.lengthX * Math.cos(this.angleB) + v * this.lengthY * Math.cos(this.angleB) + w * this.lengthZ * Math.cos(this.angleC);
+    return u * this.lengthX + v * this.lengthY * Math.cos(this.angleB) + w * this.lengthZ * Math.cos(this.angleC);
   }
 
   calculateCameraY(u, v){
