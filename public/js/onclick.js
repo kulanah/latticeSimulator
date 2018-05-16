@@ -70,7 +70,7 @@ $('#atomclearbutton').on('click', function(){
   clearAtomList();
 });
 
-$('#exportbutton').on('click', function(){
+$('#exportlocallybutton').on('click', function(){
   exportAtoms();
 });
 

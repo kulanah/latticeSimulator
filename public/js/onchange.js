@@ -79,7 +79,7 @@ $('.camerainput').on('input', function(){
   render();
 });
 
-$('#importbutton').on('change', function(event){
+$('#importlocallybutton').on('change', function(event){
   let reader = new FileReader();
   reader.onload = onReaderLoad;
   reader.readAsText(event.target.files[0]);
@@ -90,7 +90,7 @@ let onReaderLoad = function(event){
   clearAtomList();
   loadJSONAtoms(obj.atoms);
   setCrystalParams(obj.crystal);
-  $('#importbutton')[0].value = null;
+  $('#importlocallybutton')[0].value = null;
 };
 
 

@@ -48,6 +48,10 @@ let init = function(){
     flat: true,
   });
   
+  $('#backgroundcolorpicker').spectrum({
+    color: '#000',
+  });
+  
   createUserDefinedCrystals();
 };
 
