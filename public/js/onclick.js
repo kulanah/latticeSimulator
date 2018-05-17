@@ -74,10 +74,6 @@ $('#exportlocallybutton').on('click', function(){
   exportAtoms('local');
 });
 
-$('#exportdatabasebutton').on('click', function(){
-  exportAtoms('database');
-});
-
 $('.element').on('click',  function(){
   elementTarget.innerText = this.id;
   $('#periodictable').hide();
