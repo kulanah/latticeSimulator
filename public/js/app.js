@@ -177,6 +177,7 @@ let addAtom = function(x, y, z, colorHex, element){
         'onClick="openAtomColorPicker(event, ' + index + ')"' + 
         'style=\'border: 1px black solid; background:' + colorHex + ';\'>' + 
       '</td>' + 
+      '<input type="hidden" name="element' + index + '" value="' + element + ',' + x + ',' + y + ',' + z + ',' + colorHex + '">' +
     '</tr>';
   
   $('#atomslisttable').append(tableRow);
