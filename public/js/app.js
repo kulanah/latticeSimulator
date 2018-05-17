@@ -99,7 +99,7 @@ let exportAtoms = function(destination){
   }
 
   let object = createDownloadJson();
-  if(destination = 'database'){
+  if(destination === 'database'){
     uploadAtomsFile(object, filename);
   } else {
     downloadAtomsFile(object, filename);
@@ -135,11 +135,18 @@ let createDownloadJson = function(){
   };
 
   let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
+  console.log(dataStr)
   return dataStr;
 };
 
 let uploadAtomsFile = function(object, filename){
-  
+  $.ajax({
+    url: 'https://www.e-microscopy.org/public/html/latticeSimulator/index.html',
+    type: 'POST',
+    contentType: 'application/json',
+    data: object,
+    dataType: 'json'
+  });
 };
 
 let downloadAtomsFile = function(object, filename){
