@@ -71,7 +71,11 @@ $('#atomclearbutton').on('click', function(){
 });
 
 $('#exportlocallybutton').on('click', function(){
-  exportAtoms();
+  exportAtoms('local');
+});
+
+$('#exportdatabasebutton').on('click', function(){
+  exportAtoms('database');
 });
 
 $('.element').on('click',  function(){

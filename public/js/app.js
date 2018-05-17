@@ -92,14 +92,18 @@ let loadJSONAtoms = function(object){
 };
 
 
-let exportAtoms = function(){
+let exportAtoms = function(destination){
   let filename = $('#specimenname')[0].value + '.json';
   if (filename == '.json'){ 
     filename = 'atomconfig.json';
   }
 
   let object = createDownloadJson();
-  downloadAtomsFile(object, filename);
+  if(destination = 'database'){
+    uploadAtomsFile(object, filename);
+  } else {
+    downloadAtomsFile(object, filename);
+  }
   $('#specimenname')[0].value = '';
 };
 
@@ -134,6 +138,9 @@ let createDownloadJson = function(){
   return dataStr;
 };
 
+let uploadAtomsFile = function(object, filename){
+  
+};
 
 let downloadAtomsFile = function(object, filename){
   let dlAnchorElem = document.getElementById('downloadAnchorElem');
