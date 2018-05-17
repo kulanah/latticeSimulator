@@ -10,158 +10,156 @@
 	</head>
 	<body id='docbody'>
 		<div id='controlsdiv'>
-			<form method='post' onsubmit='alert("Thank you for submitting a specimen to the database."); return false'>
-				<div id='controlsbox'> 
-					<div class='controlsboxdiv' id='controlsboxheader'>
-						<label id='controlsboxtitle' for='specimenname'>Specimen name</label>
-						<input id='specimenname' type='text'>
-						<img src='./public/img/mini.svg' id='controlsboxhide'/>
+			<div id='controlsbox'> 
+				<div class='controlsboxdiv' id='controlsboxheader'>
+					<label id='controlsboxtitle' for='specimenname'>Specimen name</label>
+					<input id='specimenname' type='text'>
+					<img src='./public/img/mini.svg' id='controlsboxhide'/>
+				</div>
+				<div class='controlsboxdiv' id='latticeoptions'>
+					<label id='latticetitle' for='latticeselector'>Bravias lattice</label>
+					<select name='' id='latticeselector'>
+						<option value='Primitive Cubic'>Primitive Cubic</option>
+						<option value='bcc'>bcc</option>
+						<option value='fcc'>fcc</option>
+						<option value='Tetragonal'>Tetragonal</option>
+						<option value='Body centered Tetragonal'>Body centered Tetragonal</option>
+						<option value='Orthohombic'>Orthohombic</option>
+						<option value='Body Centered Orthohombic'>Body Centered Orthohombic</option>
+						<option value='Face Centered Orthohombic'>Face Centered Orthohombic</option>
+						<option value='End Centered Orthohombic'>End Centered Orthohombic</option>
+						<option value='Hexagonal'>Hexagonal</option>
+						<option value='Rhombohedral'>Rhombohedral</option>
+						<option value='Monoclinic'>Monoclinic</option>
+						<option value='End Centered Monoclinic'>End Centered Monoclinic</option>
+						<option value='Triclinic'>Triclinic</option>
+					</select>
+					<input type='number' id='latticeweight' value='4' max='7' min='1'>
+					<input type='text' id='latticecolorpicker' class='colorpicker'>
+				</div>
+				<div class='controlsboxdiv' id='latticeunits'>
+					<p>Units</p>
+					<div id='unitsflex'>
+						<span class='unitsheader'>
+							a
+							<input id='lengthX' type='number' value='5.431'>
+						</span>
+						<span class='unitsheader'>
+							b
+							<input id='lengthY' type='number' value='5.431'>
+						</span>
+						<span class='unitsheader'>
+							c
+							<input id='lengthZ' type='number' value='5.431'>
+						</span>
+						<span class='unitsheader'>
+							Alpha
+							<input id='angleA' type='number' min='-180' value='90' max='180'>
+						</span>
+						<span class='unitsheader'>
+							Beta
+							<input id='angleB' type='number' min='-180' value='90' max='180'>
+						</span>
+						<span class='unitsheader'>
+							Gamma
+							<input id='angleC' type='number' min='-180' value='90' max='180'>
+						</span>
 					</div>
-					<div class='controlsboxdiv' id='latticeoptions'>
-						<label id='latticetitle' for='latticeselector'>Bravias lattice</label>
-						<select name='' id='latticeselector'>
-							<option value='Primitive Cubic'>Primitive Cubic</option>
-							<option value='bcc'>bcc</option>
-							<option value='fcc'>fcc</option>
-							<option value='Tetragonal'>Tetragonal</option>
-							<option value='Body centered Tetragonal'>Body centered Tetragonal</option>
-							<option value='Orthohombic'>Orthohombic</option>
-							<option value='Body Centered Orthohombic'>Body Centered Orthohombic</option>
-							<option value='Face Centered Orthohombic'>Face Centered Orthohombic</option>
-							<option value='End Centered Orthohombic'>End Centered Orthohombic</option>
-							<option value='Hexagonal'>Hexagonal</option>
-							<option value='Rhombohedral'>Rhombohedral</option>
-							<option value='Monoclinic'>Monoclinic</option>
-							<option value='End Centered Monoclinic'>End Centered Monoclinic</option>
-							<option value='Triclinic'>Triclinic</option>
-						</select>
-						<input type='number' id='latticeweight' value='4' max='7' min='1'>
-						<input type='text' id='latticecolorpicker' class='colorpicker'>
-					</div>
-					<div class='controlsboxdiv' id='latticeunits'>
-						<p>Units</p>
-						<div id='unitsflex'>
-							<span class='unitsheader'>
-								a
-								<input id='lengthX' type='number' value='5.431'>
-							</span>
-							<span class='unitsheader'>
-								b
-								<input id='lengthY' type='number' value='5.431'>
-							</span>
-							<span class='unitsheader'>
-								c
-								<input id='lengthZ' type='number' value='5.431'>
-							</span>
-							<span class='unitsheader'>
-								Alpha
-								<input id='angleA' type='number' min='-180' value='90' max='180'>
-							</span>
-							<span class='unitsheader'>
-								Beta
-								<input id='angleB' type='number' min='-180' value='90' max='180'>
-							</span>
-							<span class='unitsheader'>
-								Gamma
-								<input id='angleC' type='number' min='-180' value='90' max='180'>
-							</span>
-						</div>
-					</div>
-					<div class='controlsboxdiv' id='atomform'>
-						<form>
-						<p>Coordinates of Atoms</p>
-						<div id='atomsflex'>
-							<span>
-								<p>atoms</p>
-								<input id='atominput' type='text'>
-							</span>
-							<span>
-								<p>element</p>
-								<div id='elementinput'>H</div>
-							</span>
-							<span>
-								<p>X</p>
-								<input id='xinput' type='number' step='0.1' value='0'>
-							</span>
-							<span>
-								<p>Y</p>
-								<input id='yinput' type='number' step='0.1' value='0'>
-							</span>
-							<span>
-								<p>Z</p>
-								<input id='zinput' type='number' step='0.1' value='0'>
-							</span>
-							<span>
-								<p>Color</p>
-								<input type='text' class='colorpicker' id='atomcolorpicker'>
-							</span>
+				</div>
+				<div class='controlsboxdiv' id='atomform'>
+					<form>
+					<p>Coordinates of Atoms</p>
+					<div id='atomsflex'>
+						<span>
+							<p>atoms</p>
+							<input id='atominput' type='text'>
+						</span>
+						<span>
+							<p>element</p>
+							<div id='elementinput'>H</div>
+						</span>
+						<span>
+							<p>X</p>
+							<input id='xinput' type='number' step='0.1' value='0'>
+						</span>
+						<span>
+							<p>Y</p>
+							<input id='yinput' type='number' step='0.1' value='0'>
+						</span>
+						<span>
+							<p>Z</p>
+							<input id='zinput' type='number' step='0.1' value='0'>
+						</span>
+						<span>
+							<p>Color</p>
+							<input type='text' class='colorpicker' id='atomcolorpicker'>
+						</span>
 
-						</div>
 					</div>
-					<div class='controlsboxdiv' id='buttonflex'>
-						<input type='submit' value='Add' id='atomaddbutton' class='buttonrow'>
-						</form>
-						<button id='atomremovebutton' class='buttonrow'>Remove</button>
-						<button id='atomclearbutton' class='buttonrow'>Clear</button>
-					</div>
-					<div class='controlsboxdiv' id='atomslist'>
-						<table id='atomslisttable'>
-							<tr class='listheader'>
-								<td>Number</td>
-								<td>Element</td>
+				</div>
+				<div class='controlsboxdiv' id='buttonflex'>
+					<input type='submit' value='Add' id='atomaddbutton' class='buttonrow'>
+					</form>
+					<button id='atomremovebutton' class='buttonrow'>Remove</button>
+					<button id='atomclearbutton' class='buttonrow'>Clear</button>
+				</div>
+				<div class='controlsboxdiv' id='atomslist'>
+					<table id='atomslisttable'>
+						<tr class='listheader'>
+							<td>Number</td>
+							<td>Element</td>
+							<td>X</td>
+							<td>Y</td>
+							<td>Z</td>
+							<td>Color</td>
+						</tr>
+					</table>
+
+				</div>
+				<div class='controlsboxdiv' id='tablediv'>
+					<p>Scale # of Unit</p>
+					<div>
+
+						<table>
+							<tr>
 								<td>X</td>
 								<td>Y</td>
 								<td>Z</td>
-								<td>Color</td>
+							</tr>
+							<tr>
+								<td><input id='xcountnumber' type='number' value='1' max='4'></td>
+								<td><input id='ycountnumber' type='number' value='1' max='4'></td>
+								<td><input id='zcountnumber' type='number' value='1' max='4'></td>
+
 							</tr>
 						</table>
 
 					</div>
-					<div class='controlsboxdiv' id='tablediv'>
-						<p>Scale # of Unit</p>
-						<div>
+				</div>
+				<div class='controlsboxdiv' id='camerasnapbox'>
+					<span class='cameratitle'>u</span>
+					<span class='cameratitle'>v</span>
+					<span class='cameratitle'>w</span>
+					<input id='cameraposx' class='camerainput' value='1' step='0.5' type='number'></input>
+					<input id='cameraposy' class='camerainput' value='1' step='0.5' type='number'></input>
+					<input id='cameraposz' class='camerainput' value='3' step='0.5' type='number'></input>
 
-							<table>
-								<tr>
-									<td>X</td>
-									<td>Y</td>
-									<td>Z</td>
-								</tr>
-								<tr>
-									<td><input id='xcountnumber' type='number' value='1' max='4'></td>
-									<td><input id='ycountnumber' type='number' value='1' max='4'></td>
-									<td><input id='zcountnumber' type='number' value='1' max='4'></td>
-
-								</tr>
-							</table>
-
-						</div>
-					</div>
-					<div class='controlsboxdiv' id='camerasnapbox'>
-						<span class='cameratitle'>u</span>
-						<span class='cameratitle'>v</span>
-						<span class='cameratitle'>w</span>
-						<input id='cameraposx' class='camerainput' value='1' step='0.5' type='number'></input>
-						<input id='cameraposy' class='camerainput' value='1' step='0.5' type='number'></input>
-						<input id='cameraposz' class='camerainput' value='3' step='0.5' type='number'></input>
-
-					</div>
-					<div class='controlsboxdiv' id='externalbuttons'>
-						<span id='exportheader'>Export</span>
-						<button id='exportdatabasebutton'>Database</button>
-						<button id='exportlocallybutton'>Locally</button>
-						<span id='importheader'>Import</span>
-						<select id='importdatabasemenu'>
-							<option>Silicon</option>
-						</select>
-						<input type='file' id='importlocallybutton'/>
-						<span id='backgroundcolor'>Background Color</span>
-						<div id='backgroundcolordiv'>
-							<input type='text' id='backgroundcolorpicker' class='colorpicker'>
-						</div>
+				</div>
+				<div class='controlsboxdiv' id='externalbuttons'>
+					<span id='exportheader'>Export</span>
+					<button id='exportdatabasebutton'>Database</button>
+					<button id='exportlocallybutton'>Locally</button>
+					<span id='importheader'>Import</span>
+					<select id='importdatabasemenu'>
+						<option>Silicon</option>
+					</select>
+					<input type='file' id='importlocallybutton'/>
+					<span id='backgroundcolor'>Background Color</span>
+					<div id='backgroundcolordiv'>
+						<input type='text' id='backgroundcolorpicker' class='colorpicker'>
 					</div>
 				</div>
-			</form>
+			</div>
 		</div>
 
 		<div style='display:none;' id='controlsboxexpand'>
