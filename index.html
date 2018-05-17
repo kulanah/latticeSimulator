@@ -68,7 +68,6 @@
 						</div>
 					</div>
 					<div class='controlsboxdiv' id='atomform'>
-						<form>
 						<p>Coordinates of Atoms</p>
 						<div id='atomsflex'>
 							<span>
@@ -100,9 +99,8 @@
 					</div>
 					<div class='controlsboxdiv' id='buttonflex'>
 						<input type='submit' value='Add' id='atomaddbutton' class='buttonrow'>
-						</form>
-						<button id='atomremovebutton' class='buttonrow'>Remove</button>
-						<button id='atomclearbutton' class='buttonrow'>Clear</button>
+						<button type='button' id='atomremovebutton' class='buttonrow'>Remove</button>
+						<button type='button' id='atomclearbutton' class='buttonrow'>Clear</button>
 					</div>
 					<div class='controlsboxdiv' id='atomslist'>
 						<table id='atomslisttable'>
@@ -149,7 +147,7 @@
 					<div class='controlsboxdiv' id='externalbuttons'>
 						<span id='exportheader'>Export</span>
 						<button id='exportdatabasebutton' type='submit'>Database</button>
-						<button id='exportlocallybutton'>Locally</button>
+						<button id='exportlocallybutton' type='button'>Locally</button>
 						<span id='importheader'>Import</span>
 						<select id='importdatabasemenu'>
 							<option>Silicon</option>
