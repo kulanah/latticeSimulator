@@ -4,6 +4,7 @@ let height = window.innerHeight;
 let camera = new THREE.OrthographicCamera(width / -sizeMult, width / sizeMult,  height / sizeMult, height / -sizeMult, 0, 2000);
 let mag = 1;
 let cellId = 0;
+let totalRowsCreated = 0;
 
 let scene = new THREE.Scene();
 let controls;
@@ -177,9 +178,10 @@ let addAtom = function(x, y, z, colorHex, element){
         'onClick="openAtomColorPicker(event, ' + index + ')"' + 
         'style=\'border: 1px black solid; background:' + colorHex + ';\'>' + 
       '</td>' + 
-      '<input type="hidden" name="element' + index + '" value="' + element + ',' + x + ',' + y + ',' + z + ',' + colorHex + '">' +
+      '<input type="hidden" name="element' + totalRowsCreated + '" value="' + element + ',' + x + ',' + y + ',' + z + ',' + colorHex + '">' +
     '</tr>';
-  
+
+  totalRowsCreated++;
   $('#atomslisttable').append(tableRow);
   newSpecimen.addAtom(x, y, z, colorHex, index);
 };
