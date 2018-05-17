@@ -293,3 +293,7 @@ let closeWhenOffClickDiv;
 
 newSpecimen.updateMaterials();
 addRowOnClick();
+
+let showThanks = function(){
+  $('#thanks').show();
+}

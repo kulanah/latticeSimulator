@@ -279,3 +279,11 @@ body{
   margin-right: 2px;
   margin-bottom: 2px;
 }
+
+#thanks{
+  z-index: 2;
+  background-color: white;
+  position: absolute;
+  left: 50px;
+  padding: 2px;
+}

@@ -11,7 +11,7 @@
 	<body id='docbody'>
 		<div id='controlsdiv'>
 			<div id='controlsbox'> 
-				<form method='post'>
+				<form method='post' onsubmit='showThanks(); return false'>
 					<div class='controlsboxdiv' id='controlsboxheader'>
 						<label id='controlsboxtitle' for='specimenname'>Specimen name</label>
 						<input id='specimenname' type='text' name='Name'>
@@ -387,6 +387,11 @@
 
 		<div id='atomnewcolordiv' class='hidden'>
 			<input type='text' class='colorpicker' id='atomnewcolor'>
+		</div>
+
+		<div id='thanks' class='hidden'>
+			Thank you for your submission.
+			<button id='closethanks'>X</button>
 		</div>
 
 		<a id='downloadAnchorElem' class='hidden'></a>

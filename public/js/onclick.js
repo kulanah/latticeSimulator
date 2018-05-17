@@ -79,3 +79,7 @@ $('.element').on('click',  function(){
   $('#periodictable').hide();
   elementTarget = $('#elementinput');
 });
+
+$('#closethanks').on('click', function(){
+  $('#thanks').hide();
+});
