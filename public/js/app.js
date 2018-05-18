@@ -136,16 +136,6 @@ let createDownloadJson = function(){
   return dataStr;
 };
 
-let uploadAtomsFile = function(object, filename){
-  $.ajax({
-    url: 'https://www.e-microscopy.org/public/html/latticeSimulator/index.html',
-    type: 'POST',
-    contentType: 'application/json',
-    data: object,
-    dataType: 'json'
-  });
-};
-
 let downloadAtomsFile = function(object, filename){
   let dlAnchorElem = document.getElementById('downloadAnchorElem');
   dlAnchorElem.setAttribute('href', object);
