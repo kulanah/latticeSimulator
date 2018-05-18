@@ -93,7 +93,7 @@ let loadJSONAtoms = function(object){
 };
 
 
-let exportAtoms = function(destination){
+let exportAtoms = function(){
   let filename = $('#specimenname')[0].value + '.json';
   if (filename == '.json'){ 
     filename = 'atomconfig.json';
