@@ -97,6 +97,7 @@ let importDatabaseSpecimen = function(){
   clearAtomList();
   let importmenu = document.getElementById('importdatabasemenu');
   let obj = dbspecimens[importmenu.selectedIndex];
+  $('#latticeselector').val(obj.CrystalStructure);
   $('#lengthX').val(obj.LatticeA);
   $('#lengthY').val(obj.LatticeB);
   $('#lengthZ').val(obj.LatticeC);
