@@ -100,11 +100,7 @@ let exportAtoms = function(destination){
   }
 
   let object = createDownloadJson();
-  if(destination === 'database'){
-    uploadAtomsFile(object, filename);
-  } else {
-    downloadAtomsFile(object, filename);
-  }
+  downloadAtomsFile(object, filename);
   $('#specimenname')[0].value = '';
 };
 
