@@ -103,6 +103,13 @@ let importDatabaseSpecimen = function(){
   $('#angleA').val(obj.LatticeAlpha);
   $('#angleB').val(obj.LatticeBeta);
   $('#angleC').val(obj.LatticeGamma);
+  newSpecimen.changeAngleA($('#angleA')[0].value);
+  newSpecimen.changeAngleB($('#angleB')[0].value);
+  newSpecimen.changeAngleC($('#angleC')[0].value);
+  newSpecimen.changeLengthX($('#lengthX')[0].value);
+  newSpecimen.changeLengthY($('#lengthY')[0].value);
+  newSpecimen.changeLengthZ($('#lengthZ')[0].value);
+  newSpecimen.redrawCrystals();
 };
 
 let atomOnMouseup = function(e){
