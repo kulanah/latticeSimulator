@@ -132,7 +132,6 @@ let createDownloadJson = function(){
   };
 
   let dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj));
-  console.log(dataStr)
   return dataStr;
 };
 
