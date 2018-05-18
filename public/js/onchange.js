@@ -95,12 +95,14 @@ let onReaderLoad = function(event){
 
 let importDatabaseSpecimen = function(){
   clearAtomList();
-  /*$('#lengthX').val(obj.x);
-  $('#lengthY').val(obj.y);
-  $('#lengthZ').val(obj.z);
-  $('#angleA').val(obj.a);
-  $('#angleB').val(obj.b);
-  $('#angleC').val(obj.c);*/
+  let importmenu = document.getElementById('importdatabasemenu');
+  let obj = dbspecimens[importmenu.selectedIndex];
+  $('#lengthX').val(obj.LatticeA);
+  $('#lengthY').val(obj.LatticeB);
+  $('#lengthZ').val(obj.LatticeC);
+  $('#angleA').val(obj.LatticeAlpha);
+  $('#angleB').val(obj.LatticeBeta);
+  $('#angleC').val(obj.LatticeGamma);
 };
 
 let atomOnMouseup = function(e){
