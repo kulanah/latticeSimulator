@@ -287,7 +287,9 @@ $(document).ready(function(){
   let dbspecimens = JSON.parse(decodeURIComponent(location.href.split('?')[1]));
   for (let i = 0; i < dbspecimens.length; i++){
     let option = document.createElement('option');
+    option.id = dbspecimens[i].id;
     option.textContent = dbspecimens[i].Name;
+    option.value = dbspecimens[i].id;
     $('#importdatabasemenu').append(option)
   }
 });

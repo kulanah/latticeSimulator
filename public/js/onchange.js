@@ -93,6 +93,15 @@ let onReaderLoad = function(event){
   $('#importlocallybutton')[0].value = null;
 };
 
+let importDatabaseSpecimen = function(){
+  clearAtomList();
+  /*$('#lengthX').val(obj.x);
+  $('#lengthY').val(obj.y);
+  $('#lengthZ').val(obj.z);
+  $('#angleA').val(obj.a);
+  $('#angleB').val(obj.b);
+  $('#angleC').val(obj.c);*/
+};
 
 let atomOnMouseup = function(e){
   let $container = closeWhenOffClickDiv;
