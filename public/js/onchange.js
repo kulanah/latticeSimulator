@@ -123,6 +123,7 @@ let importDatabaseSpecimen = function(){
       addAtom(atom[1], atom[2], atom[3], atom[4], atom[0])
     }
   }
+  addRowOnClick();
   newSpecimen.redrawCrystals();
 };
 
