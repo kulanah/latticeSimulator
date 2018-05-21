@@ -1,6 +1,6 @@
 class Specimen{
   constructor(shape, countX, countY, countZ, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene, lineWeight){
-    this.mag = 10;
+    this.mag = 1;
     this.latticeColor = 0xff37d8;
     switch(shape){
     case 'square':
