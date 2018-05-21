@@ -1,14 +1,15 @@
 class Specimen{
   constructor(shape, countX, countY, countZ, lengthA, lengthB, lengthC, angleA, angleB, angleC, scene, lineWeight){
+    this.mag = 1;
     this.latticeColor = 0xff37d8;
     switch(shape){
     case 'square':
       this.shape = new THREE.Geometry();
       this.material = new THREE.LineBasicMaterial({color: this.latticeColor, linewidth: lineWeight});
       
-      this.lengthX = Number(lengthA);
-      this.lengthY = Number(lengthB);
-      this.lengthZ = Number(lengthC);
+      this.lengthX = Number(lengthA) * this.mag;
+      this.lengthY = Number(lengthB) * this.mag;
+      this.lengthZ = Number(lengthC) * this.mag;
       break;
     }
     this.countX = countX;
@@ -31,7 +32,6 @@ class Specimen{
     this.crystalCount = 0;
 
     this.zero = 0;
-    this.mag = 1.0;
   }
 
   createCrystals(){

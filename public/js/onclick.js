@@ -16,7 +16,6 @@ let addRowOnClick = function(){
 
 $('#atomaddbutton').on('click', function(event){
   event.preventDefault();
-  let atom = $('#atominput')[0].value;
   let element = $('#elementinput').text();
   let x = $('#xinput')[0].value;
   let y = $('#yinput')[0].value;
@@ -28,7 +27,6 @@ $('#atomaddbutton').on('click', function(event){
 
   addRowOnClick();
 
-  $('#atominput')[0].value = '';
   $('#elementinput').text('');
   $('#xinput')[0].value = '0.0';
   $('#yinput')[0].value = '0.0';

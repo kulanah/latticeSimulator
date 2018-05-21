@@ -93,6 +93,39 @@ let onReaderLoad = function(event){
   $('#importlocallybutton')[0].value = null;
 };
 
+let importDatabaseSpecimen = function(){
+  clearAtomList();
+  let importmenu = document.getElementById('importdatabasemenu');
+  let obj = dbspecimens[importmenu.selectedIndex];
+  $('#latticeselector').val(obj.CrystalStructure);
+  $('#lengthX').val(obj.LatticeA * 10);
+  $('#lengthY').val(obj.LatticeB * 10);
+  $('#lengthZ').val(obj.LatticeC * 10);
+  $('#angleA').val(obj.LatticeAlpha);
+  $('#angleB').val(obj.LatticeBeta);
+  $('#angleC').val(obj.LatticeGamma);
+  newSpecimen.changeAngleA($('#angleA')[0].value);
+  newSpecimen.changeAngleB($('#angleB')[0].value);
+  newSpecimen.changeAngleC($('#angleC')[0].value);
+  newSpecimen.changeLengthX($('#lengthX')[0].value);
+  newSpecimen.changeLengthY($('#lengthY')[0].value);
+  newSpecimen.changeLengthZ($('#lengthZ')[0].value);
+  let atoms = obj.AtomicCoordinates.split('[');
+  for(let i = 1; i < atoms.length; i++){
+    let atom = atoms[i].split(']')[0];
+    atom = atom.split(',');
+    console.log(atom)
+    if(atom.length < 5){
+      // No color value
+      addAtom(atom[1], atom[2], atom[3], '#00ff00', atom[0])
+    } else {
+      // Color value
+      addAtom(atom[1], atom[2], atom[3], atom[4], atom[0])
+    }
+  }
+  addRowOnClick();
+  newSpecimen.redrawCrystals();
+};
 
 let atomOnMouseup = function(e){
   let $container = closeWhenOffClickDiv;

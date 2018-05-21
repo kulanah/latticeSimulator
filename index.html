@@ -21,18 +21,18 @@
 						<label id='latticetitle' for='latticeselector'>Bravias lattice</label>
 						<select name='CrystalStructure' id='latticeselector'>
 							<option value='Primitive Cubic'>Primitive Cubic</option>
-							<option value='bcc'>bcc</option>
-							<option value='fcc'>fcc</option>
-							<option value='Tetragonal'>Tetragonal</option>
-							<option value='Body centered Tetragonal'>Body centered Tetragonal</option>
-							<option value='Orthohombic'>Orthohombic</option>
+							<option value='Body Centered Cubic'>Body Centered Cubic</option>
+							<option value='Face Centered Cubic'>Face Centered Cubic</option>
+							<option value='Primitive Tetragonal'>Primitive Tetragonal</option>
+							<option value='Body Centered Tetragonal'>Body Centered Tetragonal</option>
+							<option value='Primitive Orthohombic'>Primitive Orthohombic</option>
 							<option value='Body Centered Orthohombic'>Body Centered Orthohombic</option>
 							<option value='Face Centered Orthohombic'>Face Centered Orthohombic</option>
-							<option value='End Centered Orthohombic'>End Centered Orthohombic</option>
+							<option value='Base Centered Orthohombic'>Base Centered Orthohombic</option>
 							<option value='Hexagonal'>Hexagonal</option>
 							<option value='Rhombohedral'>Rhombohedral</option>
-							<option value='Monoclinic'>Monoclinic</option>
-							<option value='End Centered Monoclinic'>End Centered Monoclinic</option>
+							<option value='Primitive Monoclinic'>Primitive Monoclinic</option>
+							<option value='Base Centered Monoclinic'>Base Centered Monoclinic</option>
 							<option value='Triclinic'>Triclinic</option>
 						</select>
 						<input type='number' id='latticeweight' value='4' max='7' min='1'>
@@ -42,16 +42,16 @@
 						<p>Units</p>
 						<div id='unitsflex'>
 							<span class='unitsheader'>
-								a
-								<input id='lengthX' name='LatticeA' type='number' value='5.431'>
+								a (Å)
+								<input id='lengthX' name='LatticeA' type='number' value='5.431' step='any'>
 							</span>
 							<span class='unitsheader'>
-								b
-								<input id='lengthY' name='LatticeB' type='number' value='5.431'>
+								b (Å)
+								<input id='lengthY' name='LatticeB' type='number' value='5.431' step='any'>
 							</span>
 							<span class='unitsheader'>
-								c
-								<input id='lengthZ' name='LatticeC' type='number' value='5.431'>
+								c (Å)
+								<input id='lengthZ' name='LatticeC' type='number' value='5.431' step='any'>
 							</span>
 							<span class='unitsheader'>
 								Alpha
@@ -71,7 +71,7 @@
 						<p>Coordinates of Atoms</p>
 						<div id='atomsflex'>
 							<span>
-								<p>element</p>
+								<p>Element</p>
 								<div id='elementinput'>H</div>
 							</span>
 							<span>
@@ -145,8 +145,7 @@
 						<button id='exportdatabasebutton' type='submit'>Database</button>
 						<button id='exportlocallybutton' type='button'>Locally</button>
 						<span id='importheader'>Import</span>
-						<select id='importdatabasemenu'>
-							<option>Silicon</option>
+						<select id='importdatabasemenu' onchange='importDatabaseSpecimen()'>
 						</select>
 						<input type='file' id='importlocallybutton'/>
 						<span id='backgroundcolor'>Background Color</span>

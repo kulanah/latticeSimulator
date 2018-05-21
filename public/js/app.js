@@ -282,3 +282,14 @@ addRowOnClick();
 let showThanks = function(){
   $('#thanks').show();
 }
+
+let dbspecimens = []
+
+$(document).ready(function(){
+  dbspecimens = JSON.parse(decodeURIComponent(location.href.split('?')[1]));
+  for (let i = 0; i < dbspecimens.length; i++){
+    let option = document.createElement('option');
+    option.textContent = dbspecimens[i].Name;
+    $('#importdatabasemenu').append(option)
+  }
+});
