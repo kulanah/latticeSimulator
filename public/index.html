@@ -9,16 +9,16 @@
 		</style>
 	</head>
 	<body id='docbody'>
-		<!-- <div id='controlsdivreact'></div> -->
+		<div id='controlsdivreact'></div>
 		<div id='controlsdiv'>
-			<!-- <div id='controlsbox'> 
+			<div id='controlsboxold'> 
 				<form method='post' onsubmit='showThanks()'>
-					<div class='controlsboxdiv' id='controlsboxheader'>
-						<label id='controlsboxtitle' for='specimenname'>Specimen name</label>
+					<div class='controlsboxolddiv' id='controlsboxoldheader'>
+						<label id='controlsboxoldtitle' for='specimenname'>Specimen name</label>
 						<input id='specimenname' type='text' name='Name'>
-						<img src='./public/img/mini.svg' id='controlsboxhide'/>
+						<img src='./public/img/mini.svg' id='controlsboxoldhide'/>
 					</div>
-					<div class='controlsboxdiv' id='latticeoptions'>
+					<div class='controlsboxolddiv' id='latticeoptions'>
 						<label id='latticetitle' for='latticeselector'>Bravias lattice</label>
 						<select name='CrystalStructure' id='latticeselector'>
 							<option value='Primitive Cubic'>Primitive Cubic</option>
@@ -39,7 +39,7 @@
 						<input type='number' id='latticeweight' value='4' max='7' min='1'>
 						<input type='text' id='latticecolorpicker' class='colorpicker'>
 					</div>
-					<div class='controlsboxdiv' id='latticeunits'>
+					<div class='controlsboxolddiv' id='latticeunits'>
 						<p>Units</p>
 						<div id='unitsflex'>
 							<span class='unitsheader'>
@@ -68,7 +68,7 @@
 							</span>
 						</div>
 					</div>
-					<div class='controlsboxdiv' id='atomform'>
+					<div class='controlsboxolddiv' id='atomform'>
 						<p>Coordinates of Atoms</p>
 						<div id='atomsflex'>
 							<span>
@@ -98,12 +98,12 @@
 
 						</div>
 					</div>
-					<div class='controlsboxdiv' id='buttonflex'>
+					<div class='controlsboxolddiv' id='buttonflex'>
 						<input type='submit' value='Add' id='atomaddbutton' class='buttonrow'>
 						<button type='button' id='atomremovebutton' class='buttonrow'>Remove</button>
 						<button type='button' id='atomclearbutton' class='buttonrow'>Clear</button>
 					</div>
-					<div class='controlsboxdiv' id='atomslist'>
+					<div class='controlsboxolddiv' id='atomslist'>
 						<table id='atomslisttable'>
 							<tr class='listheader'>
 								<td>Number</td>
@@ -116,7 +116,7 @@
 						</table>
 
 					</div>
-					<div class='controlsboxdiv' id='tablediv'>
+					<div class='controlsboxolddiv' id='tablediv'>
 						<p>Scale # of Unit</p>
 						<div>
 
@@ -136,7 +136,7 @@
 
 						</div>
 					</div>
-					<div class='controlsboxdiv' id='camerasnapbox'>
+					<div class='controlsboxolddiv' id='camerasnapbox'>
 						<span class='cameratitle'>u</span>
 						<span class='cameratitle'>v</span>
 						<span class='cameratitle'>w</span>
@@ -145,7 +145,7 @@
 						<input id='cameraposz' class='camerainput' value='3' step='0.5' type='number'></input>
 
 					</div>
-					<div class='controlsboxdiv' id='externalbuttons'>
+					<div class='controlsboxolddiv' id='externalbuttons'>
 						<span id='exportheader'>Export</span>
 						<button id='exportdatabasebutton' type='submit'>Database</button>
 						<button id='exportlocallybutton' type='button'>Locally</button>
@@ -160,10 +160,10 @@
 						</div>
 					</div>
 				</form>
-			</div> -->
+			</div>
 		</div>
 
-		<div style='display:none;' id='controlsboxexpand'>
+		<div style='display:none;' id='controlsboxoldexpand'>
 			<button>Controls Box</button>
 		</div>
 
@@ -408,7 +408,7 @@
 		<script src='./js/onchange.js'></script>
 		<script src='./js/controls.js'></script>
 		<script src='./js/Specimen.js'></script>
-		<script src='./js/app.js'></script>
+		<script src='./js/latticeinit.js'></script>
 		<link rel='stylesheet' href='./css/spectrum.css'>
 		<link rel='stylesheet' href='./css/styles.css'>
 		<link rel='stylesheet' href='./css/periodictable.css'>
