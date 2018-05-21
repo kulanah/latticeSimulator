@@ -1,0 +1,106 @@
+*{
+  border-collapse: collapse;
+  /* border: none;
+  margin:  none;
+  padding: none; */
+}
+.tabsdiv{
+  display: grid;
+  grid-template: repeat(100, 1%) / repeat(100, 1%);
+}
+
+.controlsBox{
+  background: #D4D0C8;
+  width: 100%;
+  font-family: helvetica, ms-sans, sans-serif;
+  border: 1px #aaa solid;
+  border-radius: 2px;
+}
+
+.titleBar{
+  background: linear-gradient(to right, #808080 40%, #C0C0C0);
+  color: #D4D0C8;
+  width: 100%;
+  height: 1.5em;
+  grid-column: 1/100;
+  grid-row: 1/45;
+  text-align: left;
+  padding-left: 0.4em;
+  padding-top: 0.3em;
+  font-weight: 800;
+  font-size: 15px;
+
+}
+
+.tabs{
+  grid-column: 1/100;
+  padding-top: 0.25em;
+  height: 1.5em;
+  grid-row: 60/90;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+#selectedTab{
+  height: 2em;
+}
+
+
+.scrollarrows{
+  grid-column: 89/100;
+  grid-row: 60/90;
+  padding-top: 0.4em;
+}
+
+.arrowimage{
+  width: 1em;
+  height: .75em;
+}
+
+.arrowspan{
+  background: #D4D0C8;
+  border: solid 0.1em;
+  border-color: white grey grey white;
+}
+
+.tabsheader{
+  display: inline-block;
+  font-weight: lighter;
+  font-size: 10px;
+  margin-left: 0.2em;
+  padding: 0.3em 0.6em 0.1em 0.6em;
+  border-width: 0.75px;
+  border-color: #fff #333 transparent #fff; 
+  border-style: solid;
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.crystalDiv{
+  font-size: 14px;
+  display: flex;
+}
+
+#units{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 4px;
+}
+
+.controlsSection{
+  margin: 4px;
+}
+
+.unitsInput{
+  flex-shrink: 1;
+  width: 15%;
+
+}
+
+.unitsInput > input{
+  max-width: 95%;
+}
