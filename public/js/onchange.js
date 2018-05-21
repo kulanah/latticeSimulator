@@ -98,9 +98,9 @@ let importDatabaseSpecimen = function(){
   let importmenu = document.getElementById('importdatabasemenu');
   let obj = dbspecimens[importmenu.selectedIndex];
   $('#latticeselector').val(obj.CrystalStructure);
-  $('#lengthX').val(obj.LatticeA);
-  $('#lengthY').val(obj.LatticeB);
-  $('#lengthZ').val(obj.LatticeC);
+  $('#lengthX').val(obj.LatticeA * 10);
+  $('#lengthY').val(obj.LatticeB * 10);
+  $('#lengthZ').val(obj.LatticeC * 10);
   $('#angleA').val(obj.LatticeAlpha);
   $('#angleB').val(obj.LatticeBeta);
   $('#angleC').val(obj.LatticeGamma);
