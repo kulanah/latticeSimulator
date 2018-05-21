@@ -48,16 +48,16 @@ $('#atomremovebutton').on('click', function(){
 });
 
 
-$('#controlsboxhide').on('click', function(){
-  $('#controlsbox').hide();
+$('#controlsboxoldhide').on('click', function(){
+  $('#controlsboxold').hide();
 
-  $('#controlsboxexpand').show();
+  $('#controlsboxoldexpand').show();
 });
 
-$('#controlsboxexpand').on('click', function(){
-  $('#controlsbox').show();
+$('#controlsboxoldexpand').on('click', function(){
+  $('#controlsboxold').show();
 
-  $('#controlsboxexpand').hide();
+  $('#controlsboxoldexpand').hide();
 });
 
 
