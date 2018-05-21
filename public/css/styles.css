@@ -6,16 +6,27 @@ body{
   position: absolute;
   z-index: 1;
 }
+#controlsdivreact{
+  z-index: 3;
+  width: 400px;
+}
+
+#reacttest{
+  z-index: 4;
+  background: white;
+  width: 100%;
+  border-collapse: collapse;
+}
 
 #controlsdiv{
   display:inline-block;
 }
 
-#controlsbox{
+#controlsboxold{
+  position: absolute;
   margin: 0;
   border-collapse: collapse;
   padding: 0;
-  
   display: flex;
   flex-direction: column;
   bottom: 0;
@@ -26,7 +37,7 @@ body{
   border-radius: 5px;
 }
 
-.controlsboxdiv{
+.controlsboxolddiv{
   border: #aaa 1px solid;
   width: 408px;
   height: 80px;
@@ -82,7 +93,7 @@ body{
 }
 
 
-#controlsboxtitle{
+#controlsboxoldtitle{
   grid-row: 1/10;
   grid-column: 1/8;
 }
@@ -92,7 +103,7 @@ body{
   grid-column: 1/10;
 }
 
-#controlsboxhide{
+#controlsboxoldhide{
   border: 1px solid #A5A5A5;
   border-radius: 1px;
   background: linear-gradient(#F5F5F5, #DCDCDC);
@@ -115,14 +126,14 @@ body{
   width: 16%;
 }
 
-#controlsboxheader{
+#controlsboxoldheader{
 
   display: grid;
   grid-template: repeat(20, 1fr) / repeat(20, 1fr);
 }
 
 
-#controlsboxexpand{
+#controlsboxoldexpand{
   position: absolute;
   left: 0;
   bottom: 0;
@@ -214,6 +225,7 @@ body{
   position: absolute;
   left: 0;
   top: 0;
+  z-index: -1;
 }
 #specimenrow{
   display:flex;
