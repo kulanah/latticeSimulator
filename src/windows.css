@@ -93,6 +93,9 @@
 
 .controlsSection{
   margin: 4px;
+  padding: 4px;
+  border: 1px solid #aaa;
+  box-shadow: inset 1px #888;
 }
 
 .unitsInput{
@@ -103,4 +106,128 @@
 
 .unitsInput > input{
   max-width: 95%;
+}
+#atomsDiv{
+  height: 35vh;
+  display:flex;
+  flex-direction: column;
+}
+
+#addAtomDiv{
+  display:flex;
+  flex-direction: row;
+  height: 40%;
+  flex-grow: 3;
+}
+
+.atomAddItem{
+  width: 25%;
+  margin-left: 5px;
+}
+
+.atomAddItem > input {
+  width:  40%;
+  height:  60%;
+  padding-left: 20px;
+}
+
+#elementInput{
+  height: 35px;
+  width: 50px;
+  background: white;
+  border:  1px #a0a0a0 solid;
+  text-align: center;
+  padding-top: 15px;
+}
+
+#atomsList{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background: white;
+  flex-grow: 4;
+}
+
+td{
+  border:  1px #ccc solid;
+}
+
+#atomFormButtons{
+  display: flex;
+}
+
+#atomFormButtons > input{
+  flex-grow: 1;
+  width: 900px;
+}
+
+#scaleHeader{
+  display:flex;
+  flex-direction: column;
+}
+
+.trioHeaders{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.trioInputs{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.trioInputs > input{
+  width: 30%;
+}
+
+#exportDiv{
+  display: grid;
+  height: 40%;
+  grid-template: repeat(20, 1fr) / repeat(20, 1fr);
+}
+
+#viewDiv{
+  height: 28vh;
+}
+
+#exportHeader{
+  grid-row: 1/6;
+  grid-column: 1/5;
+}
+
+#exportLocallyButton{
+  grid-row: 14/19;
+  grid-column: 4/7;
+}
+
+#exportDatabaseButton{
+  grid-row: 7/12;
+  grid-column: 1/7;
+}
+
+#importHeader{
+  grid-row: 1/6;
+  grid-column: 8/10;
+}
+
+#importLocallyButton{
+  grid-row: 14/19;
+  grid-column: 9/14;
+  max-width: 90%;
+}
+
+#importDatabaseMenu{
+  grid-row: 7/12;
+  grid-column: 9/14;
+}
+
+#backgroundColor{
+  grid-row: 1/6;
+  grid-column: 14/20;
+}
+
+#backgroundColorDiv{
+  grid-row: 7/20;
+  grid-column: 16/20;
 }
