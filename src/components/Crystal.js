@@ -31,31 +31,33 @@ class Crystal extends React.Component{
             </select>
           </div>
         </div>
-        <div id='units'>
-          <span className='unitsInput' id='aInput'>
-            <p>A</p>
-            <input type='number' defaultValue='5.431' name='LatticeA' id='aInputBox'/>
-          </span>
-          <span className='unitsInput' id='bInput'>
-            <p>B</p>
-            <input type='number' defaultValue='5.431' name='LatticeB' id='bInputBox'/>
-          </span>
-          <span className='unitsInput' id='cInput'>
-            <p>C</p>
-            <input type='number' defaultValue='5.431' name='LatticeC' id='cInputBox'/>
-          </span>
-          <span className='unitsInput' id='alphaInput'>
-            <p>Alpha</p>
-            <input type='number' defaultValue='90' min='-180' max='180' name='LatticeAlpha' id='alphaInputBox'/>
-          </span>
-          <span className='unitsInput' id='betaInput'>
-            <p>Beta</p>
-            <input type='number' defaultValue='90' min='-180' max='180' name='LatticeBeta' id='betaInputBox'/>
-          </span>
-          <span className='unitsInput' id='gammaInput'>
-            <p>Gamma</p>
-            <input type='number' defaultValue='90' min='-180' max='180' name='LatticeGamma' id='gammaInputBox'/>
-          </span>
+        <div className='controlsSection'>
+          <div id='units'>
+            <span className='unitsInput' id='aInput'>
+              <p>A</p>
+              <input type='number' defaultValue='5.431' name='LatticeA' id='aInputBox'/>
+            </span>
+            <span className='unitsInput' id='bInput'>
+              <p>B</p>
+              <input type='number' defaultValue='5.431' name='LatticeB' id='bInputBox'/>
+            </span>
+            <span className='unitsInput' id='cInput'>
+              <p>C</p>
+              <input type='number' defaultValue='5.431' name='LatticeC' id='cInputBox'/>
+            </span>
+            <span className='unitsInput' id='alphaInput'>
+              <p>Alpha</p>
+              <input type='number' defaultValue='90' min='-180' max='180' name='LatticeAlpha' id='alphaInputBox'/>
+            </span>
+            <span className='unitsInput' id='betaInput'>
+              <p>Beta</p>
+              <input type='number' defaultValue='90' min='-180' max='180' name='LatticeBeta' id='betaInputBox'/>
+            </span>
+            <span className='unitsInput' id='gammaInput'>
+              <p>Gamma</p>
+              <input type='number' defaultValue='90' min='-180' max='180' name='LatticeGamma' id='gammaInputBox'/>
+            </span>
+          </div>
         </div>
       </div>
     )
